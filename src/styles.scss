@@ -77,3 +77,10 @@ hr {
   grid-auto-flow: column;
   grid-column-gap: 20px;
 }
+
+.error {
+  background-color: salmon;
+  border: darkred solid 3px;
+  color: white;
+  padding: 20px;
+}
