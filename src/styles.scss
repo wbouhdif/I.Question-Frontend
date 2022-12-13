@@ -1,1 +1,79 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+html {
+  font-family: "Open Sans", sans-serif !important;
+}
+
+button, input, input::placeholder {
+  font-size: 20px;
+}
+
+label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.button-primary {
+  background-color: #1d2951;
+  color: white;
+  border-width: 0;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 15px;
+  width: 100%;
+}
+
+.button-primary:hover {
+  background-color: #6883ba;
+  cursor: pointer;
+}
+
+.button-secondary {
+  background-color: #c2eabd;
+  outline: none;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  padding: 15px;
+  width: 15vw;
+}
+
+.button-secondary:hover {
+  background-color: seagreen;
+  color: white;
+  cursor: pointer;
+}
+
+.field-primary {
+  box-shadow: 0 0 3px 1px darkgray;
+  border-radius: 5px;
+  border: none;
+  padding: 15px;
+}
+
+.field-primary:focus {
+  box-shadow: 0 0 0 3px #1d2951;
+  outline: none;
+}
+
+hr {
+  width: 100%;
+}
+
+.form {
+  margin: auto;
+  width: 50%;
+  display: grid;
+  grid-row-gap: 20px;
+}
+
+.form-group-vertical {
+  display: grid;
+  grid-row-gap: 5px;
+}
+
+.form-group-horizontal {
+  grid-auto-columns: 1fr;
+  display: grid;
+  grid-auto-flow: column;
+  grid-column-gap: 20px;
+}
