@@ -35,6 +35,6 @@
     </div>
   </div>
   <button class="button-primary" type="submit" (click)="registerAccount(firstName.value, lastName.value, email.value, password.value, confirmPassword.value)">Registreer</button>
-  <button class="btn" type="button" [routerLink]="['/login']">Heb je al een account? Meld je dan aan.</button>
+  <p>Heb je al een account? <a [routerLink]="['/login']" style="text-decoration: none">Meld je dan aan.</a></p>
 </form>
 
