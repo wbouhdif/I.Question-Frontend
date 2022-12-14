@@ -14,9 +14,9 @@ export class RegisterComponent {
   map = new Map();
 
 
+  constructor(private httpService: HttpService) {
 
-
-
+  }
 
 
   registerAccount(firstName: string, lastName: string, email: string, password: string, confirmPassword: string) {
@@ -24,10 +24,23 @@ export class RegisterComponent {
       let accountType: AccountType = new AccountType(this.map.get(this.valueCheckBox), this.valueCheckBox);
       let account: Account = new Account(null, email, password, firstName, lastName, false, accountType);
 
+      console.log(account);
+      this.httpService.post("account/register", account).subscribe({
+        next: (response) => {
+          console.log(response);
+        },
+        error: (error) => {
+          console.log(error);
+        }
 
-
+      });
     }
   }
+
+
+
+
+
 
 
   passwordsAreEqual(password: string, confirmPassword: string) {
