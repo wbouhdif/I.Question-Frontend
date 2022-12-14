@@ -1,0 +1,30 @@
+<form class="form">
+  <h1>Inloggen</h1>
+  <hr>
+  <label class="error" [hidden]="statusCode == 200 || statusCode === undefined">
+    <h3>Er is een probleem opgetreden.</h3>
+    <p>Deze combinatie van email adres en wachtwoord komt niet voor in ons systeem.</p>
+  </label>
+  <div class="form-group-vertical">
+    <label class="label">Email adres</label>
+    <input [(ngModel)]="email" name="email" type="email" class="field-primary" placeholder="Email invoeren">
+    <small [hidden]="!(email === '') || !logInCalled">Vul uw email adres in.</small>
+  </div>
+  <div class="form-group-vertical">
+    <label class="label">Wachtwoord</label>
+    <input [(ngModel)]="password" name="password" type="password" class="field-primary" placeholder="Wachtwoord invoeren">
+    <small [hidden]="!(password === '') || !logInCalled">Vul uw wachtwoord in.</small>
+  </div>
+  <button class="button-primary" (click)="logIn()">Log In</button>
+  <hr>
+  <div class="form-group-horizontal">
+    <div class="form-group-vertical">
+      <label class="label">Wachtwoord vergeten?</label>
+      <button class="button-primary" (click)="resetPassword()">Wachtwoord opnieuw instellen</button>
+    </div>
+    <div class="form-group-vertical">
+      <label class="label">Nog geen account?</label>
+      <button class="button-primary" (click)="register()">Registreren</button>
+    </div>
+  </div>
+</form>

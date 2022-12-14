@@ -20,7 +20,7 @@ export class HttpService {
 
   post(destination: string, body: any) {
     let jsonBody = JSON.parse(JSON.stringify(body));
-    return this.http.post(this.apiPath + destination, jsonBody, this.requestOptions);
+    return this.http.post<any>(this.apiPath + destination, jsonBody, this.requestOptions);
   }
 
   delete(destination: string) {
