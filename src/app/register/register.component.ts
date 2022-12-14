@@ -21,7 +21,7 @@ export class RegisterComponent {
   registerAccount(firstName: string, lastName: string, email: string, password: string, confirmPassword: string) {
     if (this.fieldsAreFilled(firstName, lastName, email, password, confirmPassword) && this.passwordsAreEqual(password, confirmPassword) && this.accountTypeIsSelected()) {
       let accountType: AccountType = new AccountType(this.map.get(this.valueCheckBox), this.valueCheckBox);
-      let account: Account = new Account(null, email, password, firstName, lastName, false, accountType);
+      let account: Account = new Account(undefined, email, password, firstName, lastName, false, accountType);
 
       console.log(account);
       this.httpService.post("account/register", account).subscribe({
