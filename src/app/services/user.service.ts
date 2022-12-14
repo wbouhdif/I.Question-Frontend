@@ -10,7 +10,7 @@ export class UserService {
 
   constructor() { }
 
-  setActiveAccount(activeAccount: Account) {
+  setActiveAccount(activeAccount: Account | undefined) {
     this.activeAccount = activeAccount;
   }
 
