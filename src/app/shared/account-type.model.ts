@@ -1,19 +1,19 @@
 export class AccountType {
-    private id: string | null;
-    private name: string | null;
-    private canManageQuestionnaires: boolean | null;
-    private canFillQuestionnaires: boolean | null;
-    private canAuthoriseAccounts: boolean | null;
-    private canViewAnonymousData: boolean | null;
-    private canViewPersonalisedData: boolean | null;
+    private id: string | undefined;
+    private name: string | undefined;
+    private canManageQuestionnaires: boolean | undefined;
+    private canFillQuestionnaires: boolean | undefined;
+    private canAuthoriseAccounts: boolean | undefined;
+    private canViewAnonymousData: boolean | undefined;
+    private canViewPersonalisedData: boolean | undefined;
 
-    constructor(id?: string, name?: string, canManageQuestionnaires?: boolean, canFillQuestionnaires?: boolean, canAuthoriseAccounts?: boolean, canViewAnonymousData?: boolean, canViewPersonalisedData?: boolean) {
-        this.id = id ?? null;
-        this.name = name ?? null;
-        this.canManageQuestionnaires = canManageQuestionnaires ?? null;
-        this.canFillQuestionnaires = canFillQuestionnaires ?? null;
-        this.canAuthoriseAccounts = canAuthoriseAccounts ?? null;
-        this.canViewAnonymousData = canViewAnonymousData ?? null;
-        this.canViewPersonalisedData = canViewPersonalisedData ?? null;
+    constructor(id?: string | undefined, name?: string, canManageQuestionnaires?: boolean, canFillQuestionnaires?: boolean, canAuthoriseAccounts?: boolean, canViewAnonymousData?: boolean, canViewPersonalisedData?: boolean) {
+        this.id = id ?? undefined;
+        this.name = name ?? undefined;
+        this.canManageQuestionnaires = canManageQuestionnaires ?? undefined;
+        this.canFillQuestionnaires = canFillQuestionnaires ?? undefined;
+        this.canAuthoriseAccounts = canAuthoriseAccounts ?? undefined;
+        this.canViewAnonymousData = canViewAnonymousData ?? undefined;
+        this.canViewPersonalisedData = canViewPersonalisedData ?? undefined;
     }
 }
