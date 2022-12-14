@@ -28,6 +28,10 @@ label {
   cursor: pointer;
 }
 
+.button-primary:active {
+  box-shadow: 0 0 0 3px #1d2951;
+}
+
 .button-secondary {
   background-color: #c2eabd;
   outline: none;
