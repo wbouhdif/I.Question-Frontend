@@ -3,6 +3,7 @@ import {HttpService} from "../services/http.service";
 import {LoginCredentials} from "../shared/login-credentials.model";
 import {UserService} from "../services/user.service";
 import {Account} from "../shared/account.model";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import {Account} from "../shared/account.model";
 })
 export class LoginComponent {
 
-  constructor(private httpService: HttpService, private userService: UserService) {}
+  constructor(private httpService: HttpService, private userService: UserService, private router: Router) {}
 
   statusCode: any;
   password = "";
@@ -32,7 +33,11 @@ export class LoginComponent {
 
   postCredentials() {
     this.httpService.post("auth/login", new LoginCredentials(this.email, this.password)).subscribe({
-      next: (response) => {this.statusCode = response.status, this.setActiveAccount(this.email)},
+      next: (response) => {
+        this.statusCode = response.status;
+        this.setActiveAccount(this.email);
+        this.router.navigate(['home']);
+      },
       error: (error) => {this.statusCode = error.status}
     });
   }
@@ -46,7 +51,4 @@ export class LoginComponent {
     });
   }
 
-  register() {}
-  resetPassword() {}
-  
 }
