@@ -1,0 +1,40 @@
+<form class="form">
+  <div class="form-group-vertical">
+    <h1>Registeren</h1>
+    <hr>
+    <label>Naam</label>
+    <div class="form-group-horizontal">
+      <input type="text" class="form-control" id="voornaam" name="voornaam" placeholder="Voornaam"  required #firstName>
+      <input type="text" class="form-control" id="achternaam" name="achternaam" placeholder="Achternaam" #lastName required>
+    </div>
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" placeholder="E-mailadres" #email required>
+
+    <label for="password">Wachtwoord</label>
+    <input type="password" class="form-control" id="password" placeholder="Wachtwoord" #password required>
+
+    <label for="passwordrepeat">Wachtwoord herhalen</label>
+    <input type="password" class="form-control" id="passwordrepeat" placeholder="Wachtwoord herhalen" #confirmPassword >
+
+    <div class="form-group-vertical">
+      <fieldset class="nav-justified">
+        <label>Selecteer je rol:</label>
+<div class="form-group-horizontal">
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="radioRole" id="spineRadioButton" value="spine" [(ngModel)]="valueCheckBox" required>
+    <label class="form-check-label" for="spineRadioButton" style="font-weight: normal">
+      Spine-medewerker
+    </label>
+    </div>
+    <div class="form-check">
+    <input class="form-check-input" type="radio" name="radioRole" id="caregiverRadioButton" value="caregiver" [(ngModel)]="valueCheckBox">
+    <label class="form-check-label" for="caregiverRadioButton" style="font-weight: normal">
+      Zorgverlener
+    </label>
+  </div>
+</div>
+      </fieldset>
+    </div>
+  </div>
+  <button class="button-primary" type="submit" (click)="registerAccount(firstName.value, lastName.value, email.value, password.value, confirmPassword.value)">Registreer</button>
+</form>
