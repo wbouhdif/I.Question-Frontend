@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {HttpService} from "../services/http.service";
 import {LoginCredentials} from "../shared/login-credentials.model";
+import {UserService} from "../services/user.service";
+import {Account} from "../shared/account.model";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import {LoginCredentials} from "../shared/login-credentials.model";
 })
 export class LoginComponent {
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private userService: UserService) {}
 
   statusCode: any;
   password = "";
@@ -24,12 +26,27 @@ export class LoginComponent {
       return;
     }
 
+    this.postCredentials()
+
+  }
+
+  postCredentials() {
     this.httpService.post("auth/login", new LoginCredentials(this.email, this.password)).subscribe({
-      next: (response) => {this.statusCode = response.status},
+      next: (response) => {this.statusCode = response.status, this.setActiveAccount(this.email)},
       error: (error) => {this.statusCode = error.status}
-      });
+    });
+  }
+
+  setActiveAccount(email: string) {
+    let account = new Account();
+
+    this.httpService.get("account/email=" + email).subscribe({
+      next: (response) => {Object.assign(account, response.body); this.userService.setActiveAccount(account)},
+      error: (error) => console.log(error)
+    });
   }
 
   register() {}
-  resetPassword() {};
+  resetPassword() {}
+  
 }
