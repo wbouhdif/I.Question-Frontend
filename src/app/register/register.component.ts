@@ -18,7 +18,6 @@ export class RegisterComponent {
 
   }
 
-
   registerAccount(firstName: string, lastName: string, email: string, password: string, confirmPassword: string) {
     if (this.fieldsAreFilled(firstName, lastName, email, password, confirmPassword) && this.passwordsAreEqual(password, confirmPassword) && this.accountTypeIsSelected()) {
       let accountType: AccountType = new AccountType(this.map.get(this.valueCheckBox), this.valueCheckBox);
