@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,8 @@ export class HttpService {
   private apiPath: string = 'http://localhost:8080/api/';
   private requestOptions: Object = {
     observe: 'response',
-    responseType: 'json'
+    responseType: 'json',
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
   constructor(private http: HttpClient) { }
@@ -31,5 +32,4 @@ export class HttpService {
     let jsonBody = JSON.parse(JSON.stringify(body));
     return this.http.put(this.apiPath + destination, jsonBody)
   }
-
 }
