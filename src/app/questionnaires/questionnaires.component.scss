@@ -1,0 +1,19 @@
+.questionnaire:hover .column {
+  background-color: rgba(#1d2951, 0.2);
+  cursor: pointer;
+}
+
+thead {
+  background-color: #1d2951;
+  color: white;
+}
+
+div {
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  height: 80vh;
+  overflow-y: scroll;
+}
+
+td {
+  width: 33%;
+}
