@@ -1,0 +1,9 @@
+<nav class="navbar navbar-expand-lg px-4">
+  <a class="navbar-brand" (click)="toHome()">
+    <img class="logo" src="favicon.ico">
+    <h3>I.Question</h3>
+  </a>
+  <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarSupportedContent">
+    <button class="btn btn-danger" type="submit" (click)="logOut()" [routerLink]="['/login']">Log Uit</button>
+  </div>
+</nav>
