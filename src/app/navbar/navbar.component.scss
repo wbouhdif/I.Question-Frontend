@@ -1,0 +1,20 @@
+.navbar-brand {
+  height: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  color: white;
+  grid-column-gap: 5px;
+}
+
+nav {
+  background-color: #1d2951;
+  color: white;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+button {
+  color: white;
+}
