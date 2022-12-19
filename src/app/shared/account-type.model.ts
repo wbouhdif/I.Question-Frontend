@@ -1,19 +1,26 @@
 export class AccountType {
-    private id: string | undefined;
-    private name: string | undefined;
-    private canManageQuestionnaires: boolean | undefined;
-    private canFillQuestionnaires: boolean | undefined;
-    private canAuthoriseAccounts: boolean | undefined;
-    private canViewAnonymousData: boolean | undefined;
-    private canViewPersonalisedData: boolean | undefined;
+    private _id: string | undefined;
+    private _name: string | undefined;
 
-    constructor(id?: string | undefined, name?: string, canManageQuestionnaires?: boolean, canFillQuestionnaires?: boolean, canAuthoriseAccounts?: boolean, canViewAnonymousData?: boolean, canViewPersonalisedData?: boolean) {
-        this.id = id ?? undefined;
-        this.name = name ?? undefined;
-        this.canManageQuestionnaires = canManageQuestionnaires ?? undefined;
-        this.canFillQuestionnaires = canFillQuestionnaires ?? undefined;
-        this.canAuthoriseAccounts = canAuthoriseAccounts ?? undefined;
-        this.canViewAnonymousData = canViewAnonymousData ?? undefined;
-        this.canViewPersonalisedData = canViewPersonalisedData ?? undefined;
+    constructor(id?: string | undefined, name?: string) {
+        this._id = id;
+        this._name = name;
     }
+
+  get id(): string | undefined {
+    return this._id;
+  }
+
+  set id(value: string | undefined) {
+    this._id = value;
+  }
+
+  get name(): string | undefined {
+    return this._name;
+  }
+
+  set name(value: string | undefined) {
+    this._name = value;
+  }
+
 }

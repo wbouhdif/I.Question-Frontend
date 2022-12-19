@@ -6,8 +6,8 @@ export class Option {
   private question: Question | undefined;
 
   constructor(id?: string | undefined, text?: string, question?: Question) {
-    this.id = id ?? undefined;
-    this.text = text ?? undefined;
-    this.question = question ?? undefined;
+    this.id = id;
+    this.text = text;
+    this.question = question;
   }
 }

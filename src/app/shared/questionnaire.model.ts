@@ -7,9 +7,9 @@ export class Questionnaire {
   private _length: number | undefined;
 
   constructor(id?: string | undefined, name?: string, account?: Account) {
-    this._id = id ?? undefined;
-    this._name = name ?? undefined;
-    this._account = account ?? undefined;
+    this._id = id;
+    this._name = name;
+    this._account = account;
   }
 
   get id(): string | undefined {

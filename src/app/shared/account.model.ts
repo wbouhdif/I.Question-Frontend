@@ -10,13 +10,13 @@ export class Account {
     private _type: AccountType | undefined;
 
     constructor(id? : string | undefined, email?: string, password?: string, firstName?: string, lastName?: string, authorised?: boolean, type?: AccountType) {
-        this._id = id ?? undefined;
-        this._email = email ?? undefined;
-        this._password = password ?? undefined;
-        this._firstName = firstName ?? undefined;
-        this._lastName = lastName ?? undefined;
-        this._authorised = authorised ?? undefined;
-        this._type = type ?? undefined;
+        this._id = id;
+        this._email = email;
+        this._password = password;
+        this._firstName = firstName;
+        this._lastName = lastName;
+        this._authorised = authorised;
+        this._type = type;
     }
 
 

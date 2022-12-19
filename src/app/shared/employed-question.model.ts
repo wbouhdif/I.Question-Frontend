@@ -10,9 +10,9 @@ export class EmployedQuestion {
 
 
   constructor(id?: string | undefined, question?: Question, questionnaire?: Questionnaire, position?: number) {
-    this.id = id ?? undefined;
-    this.question = question ?? undefined;
-    this.questionnaire = questionnaire ?? undefined;
-    this.position = position ?? undefined;
+    this.id = id;
+    this.question = question;
+    this.questionnaire = questionnaire;
+    this.position = position;
   }
 }
