@@ -20,8 +20,9 @@ export class HttpService {
   }
 
   post(destination: string, body: any) {
-    let jsonBody = JSON.parse(JSON.stringify(body));
-    return this.http.post<any>(this.apiPath + destination, jsonBody, this.requestOptions);
+    body = (JSON.stringify(body)).replaceAll("_", "");
+
+    return this.http.post<any>(this.apiPath + destination, body, this.requestOptions);
   }
 
   delete(destination: string) {
