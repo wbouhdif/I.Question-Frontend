@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+<body class="mx-5 my-3">
+<h3>Beantwoorde Vragenlijsten</h3>
+<hr>
+<div class="table-container">
+  <table class="table table-responsive-md table-striped">
+    <thead class="sticky-top">
+    <tr>
+      <th scope="col">Vragenlijst</th>
+      <th scope="col">Cliënt</th>
+      <th scope="col">Versie</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let answeredQuestionnaire of answeredQuestionnaires"
+        class="questionnaire"
+        (click)="selectedQuestionnaire = answeredQuestionnaire"
+        [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
+      <th class="column" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}" scope="row"> {{ answeredQuestionnaire.questionnaire?.name }} </th>
+      <td class="column" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}"> {{ answeredQuestionnaire.clientName }} </td>
+      <td class="column" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}"></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+
