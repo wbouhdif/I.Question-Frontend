@@ -15,15 +15,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let account of accounts"
-    class="account">
+    <tr *ngFor="let account of accounts">
       <td class="column"> {{ account.firstName }}</td>
       <td class="column"> {{ account.lastName }}</td>
       <td class="column"> {{ account.email }}</td>
       <td class="column"> {{ account.type?.name}}</td>
       <td class="column"> {{ account.authorised}}</td>
       <td class="column">
-        <button class="btn btn-primary" (click)="editAccount(account)">Autoriseren</button>
+        <button class="btn btn-primary" (click)="authorizeAccount(account)">Autoriseren</button>
         <button class="btn btn-danger" (click)="deleteAccount(account)">Verwijderen</button>
       <td class="column" [ngStyle]="selectedAccount === account ? {'color': 'white'}: {}"></td>
     </tr>

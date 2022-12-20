@@ -35,8 +35,7 @@ export class AuthoriseAccountsComponent {
     this.assignAccounts()
   }
 
-  editAccount(account: Account) {
-
+  authorizeAccount(account: Account) {
 
   }
 
