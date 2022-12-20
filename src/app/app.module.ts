@@ -11,6 +11,7 @@ import { HomeComponent } from "./home/home.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { QuestionnairesComponent } from './questionnaires/questionnaires.component';
 import { AnsweredQuestionnairesComponent } from './answered-questionnaires/answered-questionnaires.component';
+import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accounts.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AnsweredQuestionnairesComponent } from './answered-questionnaires/answe
     HomeComponent,
     NavbarComponent,
     QuestionnairesComponent,
-    AnsweredQuestionnairesComponent
+    AnsweredQuestionnairesComponent,
+    AuthoriseAccountsComponent
   ],
   imports: [
     BrowserModule,
