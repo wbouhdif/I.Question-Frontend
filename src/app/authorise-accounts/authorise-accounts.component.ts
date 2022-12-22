@@ -12,8 +12,6 @@ export class AuthoriseAccountsComponent {
 
   accounts: Account[] = [];
 
-  selectedAccount: any
-
   constructor(private httpService: HttpService) {}
 
   assignAccounts() {
