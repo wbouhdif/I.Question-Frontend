@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import {Account} from "../shared/account.model";
 import {HttpService} from "../services/http.service";
-import {AccountType} from "../shared/account-type.model";
 
 @Component({
   selector: 'app-authorise-accounts',
@@ -34,7 +33,13 @@ export class AuthoriseAccountsComponent {
   }
 
   authorizeAccount(account: Account) {
-
+    this.httpService.put('account/' + account.id + '/authorised', (!account.authorised)).subscribe({
+      next: (response) => {
+        let index = this.accounts.indexOf(account);
+        this.accounts[index].authorised = !this.accounts[index].authorised;
+      },
+      error: (error) => { console.log(error) }
+    });
   }
 
   deleteAccount(account: Account) {
