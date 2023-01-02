@@ -1,26 +1,21 @@
 <app-navbar></app-navbar>
 <body class="mx-5 my-3">
-  <h3>Vragenlijsten</h3>
-  <hr>
-  <div class="table-container">
-    <table class="table table-responsive-md table-striped">
-      <thead class="sticky-top">
-        <tr>
-          <th scope="col">Naam</th>
-          <th scope="col">Aantal vragen</th>
-          <th scope="col">Versie</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let questionnaire of questionnaires"
-            class="questionnaire"
-            (click)="selectedQuestionnaire = questionnaire"
-            [ngStyle]="selectedQuestionnaire === questionnaire ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
-          <th class="column" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}" scope="row"> {{ questionnaire.name }} </th>
-          <td class="column" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}"> {{ questionnaire.length }} </td>
-          <td class="column" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}"></td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="flex">
+    <h3>Vragenlijsten</h3>
+    <div class="button-box">
+      <button [disabled]="selectedQuestionnaire == undefined" class="button-primary px-3 fw-bold" (click)="editQuestionnaire()"><mat-icon>edit</mat-icon>Vragenlijst Aanpassen</button>
+      <button class="button-primary px-3 fw-bold" (click)="createQuestionnaire()"><mat-icon>add</mat-icon>Vragenlijst Aanmaken</button>
+    </div>
   </div>
+  <hr>
+  <app-table [columns]="['Naam', 'Aantal Vragen', 'Versie']" [height]="80">
+    <tr *ngFor="let questionnaire of questionnaires"
+        class="table-item"
+        (click)="selectedQuestionnaire = questionnaire"
+        [ngStyle]="selectedQuestionnaire === questionnaire ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
+      <th class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}" scope="row"> {{ questionnaire.name }} </th>
+      <td class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}"> {{ questionnaire.length }} </td>
+      <td class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}"></td>
+    </tr>
+  </app-table>
 </body>
