@@ -1,0 +1,35 @@
+.icon-background {
+  border-radius: 20px !important;
+  width: 40px;
+  display: flex;
+}
+
+mat-icon {
+  margin: auto;
+}
+
+.questionnaire-name {
+  width: 50%;
+  display: flex;
+  height: 40px;
+  gap: 10px;
+}
+
+.name-input {
+  min-width: 200px;
+}
+
+.middle {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 0.6fr 0.4fr;
+}
+
+.table-item:hover .column {
+  background-color: rgba(#1d2951, 0.2);
+  cursor: pointer;
+}
+
+mat-icon {
+
+}
