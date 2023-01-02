@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-home',
@@ -7,10 +6,5 @@ import {UserService} from "../services/user.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-
-  constructor(private userService: UserService) {}
-
-  logOut() {
-    this.userService.setActiveAccount(undefined);
-  }
+  constructor() {}
 }
