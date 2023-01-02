@@ -9,12 +9,10 @@
 nav {
   background-color: #1d2951;
   color: white;
+  display: flex;
+  gap: 10px;
 }
 
 a:hover {
   cursor: pointer;
-}
-
-button {
-  color: white;
 }

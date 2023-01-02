@@ -14,6 +14,6 @@ export class NavbarComponent {
   toHome() {}
 
   logOut() {
-    this.userService.setActiveAccount(undefined);
+    this.userService.logOut();
   }
 }
