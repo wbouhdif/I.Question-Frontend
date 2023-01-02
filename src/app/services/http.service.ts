@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { jsonIgnoreReplacer} from "json-ignore";
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class HttpService {
   }
 
   post(destination: string, body: any) {
-    body = (JSON.stringify(body)).replaceAll("_", "");
+    body = (JSON.stringify(body, jsonIgnoreReplacer));
 
     return this.http.post<any>(this.apiPath + destination, body, this.requestOptions);
   }
