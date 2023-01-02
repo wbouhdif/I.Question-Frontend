@@ -6,7 +6,7 @@ html {
 }
 
 button, input, input::placeholder, p {
-  font-size: 20px !important;
+  font-size: 20px;
 }
 
 label {
@@ -14,43 +14,51 @@ label {
   font-weight: bold;
 }
 
-.button-primary {
-  background-color: #1d2951;
+button {
+  display: flex;
+  gap: 5px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
   color: white;
   border-width: 0;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
-  padding: 15px;
+  border-radius: 10px !important;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 1px 5px;
+}
+
+.button-primary {
+  background-color: #1d2951;
 }
 
 .button-primary:hover {
   background-color: #6883ba;
-  cursor: pointer;
 }
 
 .button-primary:active {
-  box-shadow: 0 0 0 3px #1d2951;
+  background-color: #0b0f1e;
 }
 
 .button-secondary {
-  background-color: #c2eabd;
-  outline: none;
-  border-radius: 5px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
-  padding: 15px;
+  background-color: #e95c4b;
 }
 
 .button-secondary:hover {
-  background-color: seagreen;
-  color: white;
-  cursor: pointer;
+  background-color: rgba(#e95c4b, 0.7);
+}
+
+.button-secondary:active {
+  background-color: darkred;
+}
+
+button:disabled {
+  pointer-events: none;
+  opacity: 0.3;
 }
 
 .field-primary {
   box-shadow: 0 0 3px 1px darkgray;
   border-radius: 5px;
   border: none;
-  padding: 15px;
 }
 
 .field-primary:focus {
