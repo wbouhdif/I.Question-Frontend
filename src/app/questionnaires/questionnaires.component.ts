@@ -22,8 +22,8 @@ export class QuestionnairesComponent implements OnInit {
 
   assignQuestionnaires() {
     this.httpService.get('questionnaire').subscribe({
-      next: (response) => {
-        Object.assign(this.questionnaires, response.body);
+        next: (response) => {
+        this.questionnaires = response.body;
         this.questionnaires.forEach((questionnaire) => {
           this.setLength(questionnaire);
         })
@@ -44,10 +44,15 @@ export class QuestionnairesComponent implements OnInit {
   }
 
   editQuestionnaire() {
-    console.log(this.selectedQuestionnaire)
-
     localStorage.setItem('edited-questionnaire', JSON.stringify(this.selectedQuestionnaire));
     this.setEmployedQuestions();
+  }
+
+  deleteQuestionnaire() {
+    this.httpService.delete('questionnaire/' + this.selectedQuestionnaire.id).subscribe({
+      next: (response) => { this.assignQuestionnaires(); this.selectedQuestionnaire = undefined },
+      error: (error) => console.log(error)
+    })
   }
 
   setEmployedQuestions() {
