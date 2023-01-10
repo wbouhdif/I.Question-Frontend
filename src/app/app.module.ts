@@ -16,6 +16,8 @@ import { EditQuestionnaireComponent } from './edit-questionnaire/edit-questionna
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from './table/table.component';
+import { CreateQuestionComponent } from './edit-questionnaire/create-question/create-question.component';
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { TableComponent } from './table/table.component';
     QuestionnairesComponent,
     AnsweredQuestionnairesComponent,
     EditQuestionnaireComponent,
-    TableComponent
+    TableComponent,
+    CreateQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { TableComponent } from './table/table.component';
     FormsModule,
     MatIconModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
