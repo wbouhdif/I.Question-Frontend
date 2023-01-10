@@ -17,6 +17,7 @@ export class EditQuestionnaireComponent implements OnInit {
   questions: Question[] = [];
   employedQuestions: EmployedQuestion[] = [];
 
+  creatingQuestion = false;
   editingName = false;
 
   selectedQuestion: any;
@@ -25,7 +26,7 @@ export class EditQuestionnaireComponent implements OnInit {
   removedEmployedQuestions: string[] = [];
 
   @ViewChild('questionnaire_name', {static: false}) questionnaireName: any;
-  @ViewChild('questionnaire_name_input', {static: false}) questionnaireNameInput: any;
+  @ViewChild('questionnaire_name_input', {static: false}) questionnaireNameInput: any
 
   constructor(private router: Router, private ngZone: NgZone, private httpService: HttpService, private toastr: ToastrService, private userService: UserService) { }
 
@@ -182,12 +183,17 @@ export class EditQuestionnaireComponent implements OnInit {
 
   deleteQuestion() {
     this.httpService.delete('question/' + this.selectedQuestion.id).subscribe({
-      next: (response) => {
+      next: () => {
         this.questions.splice(this.questions.indexOf(this.selectedQuestion), 1);
       },
-      error: (error) => { this.toastr.error("Deze vraag wordt nog gebruikt in één of meerdere vragenlijsten.", 'Vraag nog in gebruik!')
+      error: (error) => {
+        error.status == 500 ? this.toastr.error("Deze vraag wordt nog gebruikt in één of meerdere vragenlijsten.", 'Vraag nog in gebruik!') : console.log(error);
       }
     })
+  }
+
+  createQuestion() {
+    this.creatingQuestion = true;
   }
 
 }
