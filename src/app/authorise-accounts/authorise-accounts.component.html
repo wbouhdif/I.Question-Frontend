@@ -19,7 +19,7 @@
       <td class="column"> {{ account.firstName }}</td>
       <td class="column"> {{ account.lastName }}</td>
       <td class="column"> {{ account.email }}</td>
-      <td class="column"> {{ account.type?.name}} account</td>
+      <td class="column"> {{ account.type?.getName()}} account</td>
       <td class="column"> {{ account.authorised}}</td>
       <td class="column">
         <button class="btn btn-primary" (click)="authorizeAccount(account)">Autoriseren</button>

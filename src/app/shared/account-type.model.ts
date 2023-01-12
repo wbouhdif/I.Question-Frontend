@@ -7,4 +7,12 @@ export class AccountType {
         this.id = id;
         this.name = name;
     }
+
+    public getId(): string | undefined {
+        return this.id;
+    }
+
+    public getName(): string | undefined {
+        return this.name;
+    }
 }
