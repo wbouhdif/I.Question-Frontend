@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,13 @@ import { HomeComponent } from "./home/home.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { QuestionnairesComponent } from './questionnaires/questionnaires.component';
 import { AnsweredQuestionnairesComponent } from './answered-questionnaires/answered-questionnaires.component';
+import { EditQuestionnaireComponent } from './edit-questionnaire/edit-questionnaire.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TableComponent } from './table/table.component';
+import { CreateQuestionComponent } from './edit-questionnaire/create-question/create-question.component';
+import { MatCheckboxModule } from "@angular/material/checkbox";
+
 import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accounts.component';
 
 @NgModule({
@@ -22,13 +30,20 @@ import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accou
     NavbarComponent,
     QuestionnairesComponent,
     AnsweredQuestionnairesComponent,
+    EditQuestionnaireComponent,
+    TableComponent,
+    CreateQuestionComponent,
     AuthoriseAccountsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatIconModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -23,7 +23,6 @@ export class RegisterComponent {
       let accountType: AccountType = new AccountType(this.map.get(this.valueCheckBox), this.valueCheckBox);
       let account: Account = new Account(undefined, email, password, firstName, lastName, false, accountType);
 
-      console.log(account);
       this.httpService.post("account/register", account).subscribe({
         next: (response) => {
           console.log(response);

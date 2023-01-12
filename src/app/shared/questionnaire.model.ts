@@ -1,46 +1,18 @@
 import {Account} from "./account.model";
+import {EmployedQuestion} from "./employed-question.model";
+import { jsonIgnore } from "json-ignore";
 
 export class Questionnaire {
-  private _id: string | undefined;
-  private _name: string | undefined;
-  private _account: Account | undefined;
-  private _length: number | undefined;
+  id: string | undefined;
+  name: string | undefined;
+  account: Account | undefined;
+
+  @jsonIgnore()
+  length: number | undefined;
 
   constructor(id?: string | undefined, name?: string, account?: Account) {
-    this._id = id;
-    this._name = name;
-    this._account = account;
-  }
-
-  get id(): string | undefined {
-    return this._id;
-  }
-
-  set id(value: string | undefined) {
-    this._id = value;
-  }
-
-  get name(): string | undefined {
-    return this._name;
-  }
-
-  set name(value: string | undefined) {
-    this._name = value;
-  }
-
-  get account(): Account | undefined {
-    return this._account;
-  }
-
-  set account(value: Account | undefined) {
-    this._account = value;
-  }
-
-  set length(value: number | undefined) {
-    this._length = value;
-  }
-
-  get length(): number | undefined {
-    return this._length;
+    this.id = id;
+    this.name = name;
+    this.account = account;
   }
 }

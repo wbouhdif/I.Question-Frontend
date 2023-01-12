@@ -1,23 +1,14 @@
-.questionnaire:hover .column {
+.table-item:hover .column {
   background-color: rgba(#1d2951, 0.2);
   cursor: pointer;
 }
 
-thead {
-  background-color: #1d2951;
-  color: white;
-}
-
-.table-container {
-  height: 80vh;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  overflow-y: scroll;
-}
-
-td {
-  width: 33%;
-}
-
 h3 {
   font-weight: bold;
+}
+
+.button-box {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
 }

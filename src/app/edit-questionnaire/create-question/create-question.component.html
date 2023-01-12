@@ -1,0 +1,36 @@
+<div class="component">
+  <div class="window">
+    <div class="top px-4 py-2">
+      <h4>Vraag Aanmaken</h4>
+    </div>
+    <form class="form px-4 py-3">
+      <div class="form-group-vertical">
+        <label class="label">Vraag</label>
+        <input class="field-primary" placeholder="Vraag invoeren" name='text' [(ngModel)]="questionText">
+        <small [hidden]="questionText != '' || !saveCalled">Er is nog geen vraag ingevuld.</small>
+      </div>
+      <div class="form-group-vertical">
+        <label class="label">Soort</label>
+        <div class="flex">
+          <div class="radioGroup">
+            <input type="radio" name="type" id="multipleChoice" (change)="onChangeType()" [checked]="multipleChoice">
+            <label for="multipleChoice">Meerkeuze</label>
+          </div>
+          <div class="radioGroup">
+            <input type="radio" name="type" id="open" (change)="onChangeType()" [checked]="!multipleChoice">
+            <label for="open">Open</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group-vertical" [hidden]="!multipleChoice">
+        <label class="label">Opties</label>
+        <input *ngFor="let option of options" class="field-primary" name='option' [(ngModel)]="option.text" [placeholder]="option.name">
+        <small [hidden]="checkEnoughOptions() || !saveCalled">Een meerkeuze vraag heeft tenminste twee opties nodig.</small>
+      </div>
+      <div class="button-box">
+        <button class="button-primary px-3 py-2" (click)="postQuestion()"><mat-icon>save</mat-icon>Opslaan</button>
+        <button class="button-primary px-3" (click)="closeWindow()"><mat-icon>cancel</mat-icon>Annuleren</button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+.component {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  height: 100%;
+  width: 100vw;
+  width: 100%;
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(black, 0.6);
+}
+
+.form {
+  grid-row-gap: 10px;
+}
+
+.window {
+  position: relative;
+  background-color: white;
+  width: 50%;
+}
+
+.top {
+  display: flex;
+  color: white;
+  align-items: center;
+  background-color: #1d2951;
+}
+
+.field-primary {
+  padding: 5px;
+  width: 100%;
+}
+
+.field-primary::placeholder {
+  font-size: 15px;
+}
+
+.flex {
+  gap: 10px;
+}
+
+.radioGroup {
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 0.5em;
+}
+
+.radioGroup label {
+  font-weight: normal;
+  font-size: 15px;
+}
+
+small {
+  color: red;
+}
