@@ -31,13 +31,13 @@ export class EditQuestionnaireComponent implements OnInit {
   constructor(private router: Router, private ngZone: NgZone, private httpService: HttpService, private toastr: ToastrService, private userService: UserService) { }
 
   ngOnInit() {
-    let questionnaire: any = localStorage.getItem('edited-questionnaire');
+    let questionnaire: any = sessionStorage.getItem('edited-questionnaire');
     questionnaire = JSON.parse(questionnaire);
 
-    let removedEmployedQuestions: any = localStorage.getItem('removed-employed-questions');
+    let removedEmployedQuestions: any = sessionStorage.getItem('removed-employed-questions');
     removedEmployedQuestions = JSON.parse(removedEmployedQuestions);
 
-    let employedQuestions: any = localStorage.getItem('edited-questionnaire-employed-questions');
+    let employedQuestions: any = sessionStorage.getItem('edited-questionnaire-employed-questions');
     employedQuestions = JSON.parse(employedQuestions);
 
     Object.assign(this.questionnaire, questionnaire);
@@ -47,10 +47,10 @@ export class EditQuestionnaireComponent implements OnInit {
     this.setQuestions();
   }
 
-  updateLocalStorage() {
-    localStorage.setItem('edited-questionnaire', JSON.stringify(this.questionnaire));
-    localStorage.setItem('edited-questionnaire-employed-questions', JSON.stringify(this.employedQuestions))
-    localStorage.setItem('removed-employed-questions', JSON.stringify(this.removedEmployedQuestions));
+  updateSessionStorage() {
+    sessionStorage.setItem('edited-questionnaire', JSON.stringify(this.questionnaire));
+    sessionStorage.setItem('edited-questionnaire-employed-questions', JSON.stringify(this.employedQuestions))
+    sessionStorage.setItem('removed-employed-questions', JSON.stringify(this.removedEmployedQuestions));
   }
 
   editName() {
@@ -68,7 +68,7 @@ export class EditQuestionnaireComponent implements OnInit {
   saveName(questionnaire_name: string) {
     this.editingName = false;
     this.questionnaire.name = questionnaire_name;
-    this.updateLocalStorage();
+    this.updateSessionStorage();
   }
 
   cancelNameEditing() {
@@ -77,9 +77,9 @@ export class EditQuestionnaireComponent implements OnInit {
   }
 
   cancelEdits() {
-    localStorage.removeItem('edited-questionnaire');
-    localStorage.removeItem('edited-questionnaire-employed-questions');
-    localStorage.removeItem('removed-employed-questions');
+    sessionStorage.removeItem('edited-questionnaire');
+    sessionStorage.removeItem('edited-questionnaire-employed-questions');
+    sessionStorage.removeItem('removed-employed-questions');
     this.router.navigate(['questionnaires']);
   }
 
@@ -122,7 +122,7 @@ export class EditQuestionnaireComponent implements OnInit {
 
   switchMandatory() {
     this.selectedEmployedQuestion.mandatory = !this.selectedEmployedQuestion.mandatory
-    this.updateLocalStorage()
+    this.updateSessionStorage()
   }
 
   moveUp() {
@@ -130,7 +130,7 @@ export class EditQuestionnaireComponent implements OnInit {
       this.selectedEmployedQuestion) + 1,
       0,
       this.employedQuestions.splice(this.employedQuestions.indexOf(this.selectedEmployedQuestion), 1)[0]);
-    this.updateLocalStorage()
+    this.updateSessionStorage()
   }
 
   moveDown() {
@@ -138,7 +138,7 @@ export class EditQuestionnaireComponent implements OnInit {
       this.selectedEmployedQuestion) - 1,
       0,
       this.employedQuestions.splice(this.employedQuestions.indexOf(this.selectedEmployedQuestion), 1)[0]);
-    this.updateLocalStorage()
+    this.updateSessionStorage()
   }
 
   removeEmployedQuestion() {
@@ -147,7 +147,7 @@ export class EditQuestionnaireComponent implements OnInit {
       this.removedEmployedQuestions.push(this.selectedEmployedQuestion.id)
     }
     this.selectedEmployedQuestion = undefined
-    this.updateLocalStorage()
+    this.updateSessionStorage()
   }
 
   setQuestions() {
@@ -161,7 +161,7 @@ export class EditQuestionnaireComponent implements OnInit {
     let addedEmployedQuestion = new EmployedQuestion(undefined, this.selectedQuestion, undefined, undefined, false)
     this.employedQuestions.push(addedEmployedQuestion)
 
-    this.updateLocalStorage()
+    this.updateSessionStorage()
   }
 
   deleteQuestion() {

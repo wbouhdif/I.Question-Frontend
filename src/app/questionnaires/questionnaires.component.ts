@@ -52,7 +52,7 @@ export class QuestionnairesComponent implements OnInit {
   }
 
   editQuestionnaire() {
-    localStorage.setItem('edited-questionnaire', JSON.stringify(this.selectedQuestionnaire));
+    sessionStorage.setItem('edited-questionnaire', JSON.stringify(this.selectedQuestionnaire));
     this.setEmployedQuestions();
   }
 
@@ -67,7 +67,7 @@ export class QuestionnairesComponent implements OnInit {
     this.httpService.get('employed_question/questionnaire=' + this.selectedQuestionnaire.id).subscribe({
       next: (response) => {
         response.body.sort((a: { position: number; }, b: { position: number; }) => (a.position > b.position) ? 1 : -1);
-        localStorage.setItem('edited-questionnaire-employed-questions', JSON.stringify(response.body));
+        sessionStorage.setItem('edited-questionnaire-employed-questions', JSON.stringify(response.body));
         this.router.navigate(['edit-questionnaire']);
         console.log(response.body)
       },
