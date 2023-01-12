@@ -9,8 +9,9 @@ export class Account {
     lastName: string | undefined;
     authorised: boolean | undefined;
     type: AccountType | undefined;
+    dateCreated: Date | undefined;
 
-    constructor(id? : string | undefined, email?: string, password?: string, firstName?: string, lastName?: string, authorised?: boolean, type?: AccountType) {
+  constructor(id? : string | undefined, email?: string, password?: string, firstName?: string, lastName?: string, authorised?: boolean, type?: AccountType, dateCreated?: Date) {
         this.id = id;
         this.email = email;
         this.password = password;

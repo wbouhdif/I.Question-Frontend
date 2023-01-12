@@ -6,6 +6,10 @@ export class Questionnaire {
   id: string | undefined;
   name: string | undefined;
   account: Account | undefined;
+  dateCreated: Date | undefined;
+
+  @jsonIgnore()
+  answeredCount: number | undefined;
 
   @jsonIgnore()
   length: number | undefined;
