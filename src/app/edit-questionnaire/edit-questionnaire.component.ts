@@ -84,24 +84,7 @@ export class EditQuestionnaireComponent implements OnInit {
   }
 
   saveEdits() {
-    let questionnaireNames: string | any = [];
-    let questionnaireIds: string | any = [];
-
-    this.httpService.get('questionnaire').subscribe({
-      next: (response) => {
-        for(let questionnaire of response.body) {
-          questionnaireNames.push(questionnaire.name);
-          questionnaireIds.push(questionnaire.id);
-        }
-        if (questionnaireNames.includes(this.questionnaire.name) && !questionnaireIds.includes(this.questionnaire.id)) {
-          this.toastr.error("Er bestaat al een vragenlijst met de naam '" + this.questionnaire.name + "'.", 'Vragenlijst bestaat al!')
-        } else {
-          this.postQuestionnaire()
-        }
-      },
-      error: (error) => { console.log(error) }
-    });
-
+    this.postQuestionnaire()
   }
 
   postQuestionnaire() {

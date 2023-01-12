@@ -46,7 +46,7 @@
         </button>
       </div>
     </div>
-    <app-table [columns]="['Positie', 'Vraag', 'Type', 'Verplicht']" [height]="75">
+    <app-table [columns]="['#', 'Vraag', 'Type', 'Verplicht']" [height]="75">
       <tr *ngFor="let employedQuestion of this.employedQuestions"
           class="table-item"
           (click)="selectedEmployedQuestion === employedQuestion ? selectedEmployedQuestion = undefined : selectedEmployedQuestion = employedQuestion; selectedQuestion = undefined"
