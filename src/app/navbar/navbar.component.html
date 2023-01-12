@@ -4,6 +4,7 @@
     <h3>I.Question</h3>
   </a>
   <div class="button-box">
-    <button class="button-secondary flex px-3" (click)="logOut()" [routerLink]="['/login']"><mat-icon>exit_to_app</mat-icon>Uitloggen</button>
+    <label class="px-3"><mat-icon>account_circle</mat-icon>{{accountName}}</label>
+    <button class="button-secondary flex px-3" id="logOutButton" (click)="logOut()" [routerLink]="['/login']"><mat-icon>exit_to_app</mat-icon>Uitloggen</button>
   </div>
 </nav>
