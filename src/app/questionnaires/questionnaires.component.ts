@@ -26,6 +26,7 @@ export class QuestionnairesComponent implements OnInit {
         this.questionnaires = response.body;
         this.questionnaires.forEach((questionnaire) => {
           this.setLength(questionnaire);
+          this.setAnsweredCount(questionnaire);
         })
       },
       error: (error) => { console.log(error) }
@@ -37,6 +38,13 @@ export class QuestionnairesComponent implements OnInit {
       next: (response) => {questionnaire.length = response.body.length},
       error: (error) => {console.log(error)}
       })
+  }
+
+  setAnsweredCount(questionnaire: Questionnaire) {
+    this.httpService.get("answered_questionnaire/questionnaire=" + questionnaire.id).subscribe({
+      next: (response) => {questionnaire.answeredCount = response.body.length},
+      error: (error) => {console.log(error)}
+    })
   }
 
   createQuestionnaire() {
