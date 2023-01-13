@@ -6,7 +6,7 @@ import { HomeComponent } from "./home/home.component";
 import { QuestionnairesComponent } from "./questionnaires/questionnaires.component";
 import { AnsweredQuestionnairesComponent } from "./answered-questionnaires/answered-questionnaires.component";
 import { EditQuestionnaireComponent } from "./edit-questionnaire/edit-questionnaire.component";
-import { Questionnaire } from "./shared/questionnaire.model";
+import { AnswerQuestionnaireComponent } from "./answer-questionnaire/answer-questionnaire.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -15,7 +15,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'questionnaires', component: QuestionnairesComponent },
   { path: 'answered-questionnaires', component: AnsweredQuestionnairesComponent },
-  { path: 'edit-questionnaire', component: EditQuestionnaireComponent, data: Questionnaire }
+  { path: 'create-questionnaire', component: EditQuestionnaireComponent },
+  { path: 'edit-questionnaire/:id', component: EditQuestionnaireComponent },
+  { path: 'answer-questionnaire/:id', component: AnswerQuestionnaireComponent }
 ];
 
 @NgModule({
