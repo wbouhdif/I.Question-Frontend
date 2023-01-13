@@ -3,9 +3,10 @@
   <div class="flex">
     <h3>Vragenlijsten</h3>
     <div class="button-box">
-      <button [disabled]="selectedQuestionnaire == undefined" class="button-secondary px-3 fw-bold" (click)="deleteQuestionnaire()"><mat-icon>delete</mat-icon>Vragenlijst Verwijderen</button>
-      <button [disabled]="selectedQuestionnaire == undefined" class="button-primary px-3 fw-bold" (click)="editQuestionnaire()"><mat-icon>edit</mat-icon>Vragenlijst Aanpassen</button>
-      <button class="button-primary px-3 fw-bold" (click)="createQuestionnaire()"><mat-icon>add</mat-icon>Vragenlijst Aanmaken</button>
+      <button [disabled]="selectedQuestionnaire == undefined" class="button-secondary px-3" (click)="deleteQuestionnaire()"><mat-icon>delete</mat-icon>Vragenlijst Verwijderen</button>
+      <button [disabled]="selectedQuestionnaire == undefined" class="button-primary px-3" (click)="editQuestionnaire()"><mat-icon>edit</mat-icon>Vragenlijst Aanpassen</button>
+      <button [disabled]="selectedQuestionnaire == undefined" class="button-primary px-3" (click)="answerQuestionnaire()"><mat-icon>list</mat-icon>Vragenlijst Invullen</button>
+      <button class="button-primary px-3" (click)="createQuestionnaire()"><mat-icon>add</mat-icon>Vragenlijst Aanmaken</button>
     </div>
   </div>
   <hr>

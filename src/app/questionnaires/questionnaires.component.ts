@@ -48,7 +48,7 @@ export class QuestionnairesComponent implements OnInit {
   }
 
   createQuestionnaire() {
-    this.router.navigate(['edit-questionnaire']);
+    this.router.navigate(['create-questionnaire']);
   }
 
   editQuestionnaire() {
@@ -68,11 +68,17 @@ export class QuestionnairesComponent implements OnInit {
       next: (response) => {
         response.body.sort((a: { position: number; }, b: { position: number; }) => (a.position > b.position) ? 1 : -1);
         sessionStorage.setItem('edited-questionnaire-employed-questions', JSON.stringify(response.body));
-        this.router.navigate(['edit-questionnaire']);
+        this.router.navigate(['edit-questionnaire', this.selectedQuestionnaire.id]);
         console.log(response.body)
       },
-      error: (error) => { console.log(error) }
+      error: (error) => {
+        console.log(error)
+      }
     })
+  }
+
+  answerQuestionnaire() {
+    this.router.navigate(['answer-questionnaire', this.selectedQuestionnaire.id]);
   }
 
 }
