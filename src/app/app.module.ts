@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from './table/table.component';
 import { CreateQuestionComponent } from './edit-questionnaire/create-question/create-question.component';
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { AnswerQuestionnaireComponent } from './answer-questionnaire/answer-questionnaire.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     AnsweredQuestionnairesComponent,
     EditQuestionnaireComponent,
     TableComponent,
-    CreateQuestionComponent
+    CreateQuestionComponent,
+    AnswerQuestionnaireComponent
   ],
   imports: [
     BrowserModule,
