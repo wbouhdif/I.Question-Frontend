@@ -13,15 +13,15 @@ export class UserService {
 
   setActiveAccount(activeAccount: Account) {
     this.activeAccount = activeAccount;
-    localStorage.setItem('active-account', JSON.stringify(activeAccount));
+    sessionStorage.setItem('active-account', JSON.stringify(activeAccount));
   }
 
   logOut() {
-    localStorage.removeItem('active-account');
+    sessionStorage.removeItem('active-account');
   }
 
   getActiveAccount() {
-    let activeAccount: any = localStorage.getItem('active-account');
+    let activeAccount: any = sessionStorage.getItem('active-account');
     if (activeAccount == undefined) {
       this.router.navigate(['login']);
       return;

@@ -7,8 +7,9 @@ export class AnsweredQuestionnaire {
   caregiver: Account | undefined;
   questionnaire: Questionnaire | undefined;
   clientName: string | undefined;
+  dateCreated: Date | undefined;
 
-  constructor(id?: string | undefined, caregiver?: Account, questionnaire?: Questionnaire, clientName?: string) {
+  constructor(id?: string | undefined, caregiver?: Account, questionnaire?: Questionnaire, clientName?: string, dateCreated?: Date) {
     this.id = id;
     this.caregiver = caregiver;
     this.questionnaire = questionnaire;

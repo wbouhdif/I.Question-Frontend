@@ -26,6 +26,7 @@ export class QuestionnairesComponent implements OnInit {
         this.questionnaires = response.body;
         this.questionnaires.forEach((questionnaire) => {
           this.setLength(questionnaire);
+          this.setAnsweredCount(questionnaire);
         })
       },
       error: (error) => { console.log(error) }
@@ -39,12 +40,19 @@ export class QuestionnairesComponent implements OnInit {
       })
   }
 
+  setAnsweredCount(questionnaire: Questionnaire) {
+    this.httpService.get("answered_questionnaire/questionnaire=" + questionnaire.id).subscribe({
+      next: (response) => {questionnaire.answeredCount = response.body.length},
+      error: (error) => {console.log(error)}
+    })
+  }
+
   createQuestionnaire() {
     this.router.navigate(['edit-questionnaire']);
   }
 
   editQuestionnaire() {
-    localStorage.setItem('edited-questionnaire', JSON.stringify(this.selectedQuestionnaire));
+    sessionStorage.setItem('edited-questionnaire', JSON.stringify(this.selectedQuestionnaire));
     this.setEmployedQuestions();
   }
 
@@ -59,7 +67,7 @@ export class QuestionnairesComponent implements OnInit {
     this.httpService.get('employed_question/questionnaire=' + this.selectedQuestionnaire.id).subscribe({
       next: (response) => {
         response.body.sort((a: { position: number; }, b: { position: number; }) => (a.position > b.position) ? 1 : -1);
-        localStorage.setItem('edited-questionnaire-employed-questions', JSON.stringify(response.body));
+        sessionStorage.setItem('edited-questionnaire-employed-questions', JSON.stringify(response.body));
         this.router.navigate(['edit-questionnaire']);
         console.log(response.body)
       },

@@ -9,14 +9,15 @@
     </div>
   </div>
   <hr>
-  <app-table [columns]="['Naam', 'Aantal Vragen', 'Versie']" [height]="80">
+  <app-table [columns]="['Naam', 'Aantal Vragen', 'Datum Aangemaakt', 'Keer Ingevuld']" [height]="80">
     <tr *ngFor="let questionnaire of questionnaires"
         class="table-item"
         (click)="selectedQuestionnaire = questionnaire"
         [ngStyle]="selectedQuestionnaire === questionnaire ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
       <th class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}" scope="row"> {{ questionnaire.name }} </th>
       <td class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}"> {{ questionnaire.length }} </td>
-      <td class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}"></td>
+      <td class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}"> {{questionnaire.dateCreated }} </td>
+      <td class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}"> {{questionnaire.answeredCount }} </td>
     </tr>
   </app-table>
 </body>
