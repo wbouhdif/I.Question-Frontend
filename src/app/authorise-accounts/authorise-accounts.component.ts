@@ -11,9 +11,14 @@ export class AuthoriseAccountsComponent {
 
   accounts: Account[] = [];
 
+  selectedAccount: any;
+
+
   constructor(private httpService: HttpService) {}
 
   assignAccounts() {
+    this.accounts = [];
+    this.selectedAccount = null;
     this.httpService.get('account').subscribe({
       next: (response) => {
         for (let account of response.body) {
@@ -35,14 +40,31 @@ export class AuthoriseAccountsComponent {
   changeAuthorisationAccount(account: Account, authorisation: boolean) {
     this.httpService.put('account/' + account.id + '/authorised', authorisation).subscribe({
       next: (response) => {
-        let index = this.accounts.indexOf(account);
-        this.accounts[index].authorised = !this.accounts[index].authorised;
+        this.assignAccounts();
       },
       error: (error) => { console.log(error) }
     });
   }
 
   deleteAccount(account: Account) {
+      this.httpService.delete('account/' + account.id).subscribe({
+        next: (response) => {
+          this.assignAccounts();
+        },
+      error: (error) => { console.log(error) }
+    });
+  }
 
+
+  setSelectedAccount(account: Account) {
+    if(this.selectedAccount === account) {
+      this.selectedAccount = null;
+    }else{
+      this.selectedAccount = account;
+    }
+  }
+
+  checkIfSelectedAccountIsAuthorised() {
+    return this.selectedAccount?.authorised;
   }
 }

@@ -2,9 +2,9 @@
 <body class="mx-5 my-3">
 <h3>Accounts</h3>
 <div class="button-container">
-  <button class="btn btn-primary">Autoriseer</button>
-  <button class="btn btn-primary">Deautoriseer</button>
-  <button class="btn btn-danger">Verwijderen</button>
+  <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, true)">Autoriseer</button>
+  <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || !checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, false)">Deautoriseer</button>
+  <button class="btn btn-danger"  [disabled]="selectedAccount === null || selectedAccount === undefined">Verwijderen</button>
 </div>
 <hr>
 <div class="table-container">
