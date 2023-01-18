@@ -1,6 +1,11 @@
 <app-navbar></app-navbar>
 <body class="mx-5 my-3">
 <h3>Accounts</h3>
+<div class="button-container">
+  <button class="btn btn-primary">Autoriseer</button>
+  <button class="btn btn-primary">Deautoriseer</button>
+  <button class="btn btn-danger">Verwijderen</button>
+</div>
 <hr>
 <div class="table-container">
   <table class="table table-responsive-md table-striped">
@@ -11,7 +16,7 @@
       <th scope="col">E-mailadres</th>
       <th scope="col">Type account</th>
       <th scope="col">Geautoriseerd</th>
-      <th scope="col">Acties</th>
+      <th scope="col">Datum aangemaakt</th>
     </tr>
     </thead>
     <tbody>
@@ -21,10 +26,7 @@
       <td class="column"> {{ account.email }}</td>
       <td class="column"> {{ account.type?.getName()}} account</td>
       <td class="column"> {{ account.authorised}}</td>
-      <td class="column">
-        <button class="btn btn-primary" (click)="authorizeAccount(account)">Autoriseren</button>
-        <button class="btn btn-danger" (click)="deleteAccount(account)">Verwijderen</button>
-      <td class="column"></td>
+      <td class="column"> {{ account.createdDate | date: 'dd-MM-yyyy'}}</td>
     </tr>
     </tbody>
   </table>
