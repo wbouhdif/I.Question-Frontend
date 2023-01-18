@@ -20,13 +20,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let account of accounts">
+    <tr *ngFor="let account of accounts" (click)="setSelectedAccount(account)" [ngStyle]="selectedAccount === account ?
+    {'background-color': '#e0e0e0'} : {'background-color': 'white'}">
       <td class="column"> {{ account.firstName }}</td>
       <td class="column"> {{ account.lastName }}</td>
       <td class="column"> {{ account.email }}</td>
       <td class="column"> {{ account.type?.getName()}} account</td>
       <td class="column"> {{ account.authorised}}</td>
-      <td class="column"> {{ account.createdDate | date: 'dd-MM-yyyy'}}</td>
+      <td class="column"> {{ account.dateCreated | date: 'dd-MM-yyyy'}}</td>
     </tr>
     </tbody>
   </table>
