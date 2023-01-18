@@ -32,8 +32,8 @@ export class AuthoriseAccountsComponent {
     this.assignAccounts()
   }
 
-  authorizeAccount(account: Account) {
-    this.httpService.put('account/' + account.id + '/authorised', (!account.authorised)).subscribe({
+  changeAuthorisationAccount(account: Account, authorisation: boolean) {
+    this.httpService.put('account/' + account.id + '/authorised', authorisation).subscribe({
       next: (response) => {
         let index = this.accounts.indexOf(account);
         this.accounts[index].authorised = !this.accounts[index].authorised;
