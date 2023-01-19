@@ -19,6 +19,7 @@ import { TableComponent } from './table/table.component';
 import { CreateQuestionComponent } from './edit-questionnaire/create-question/create-question.component';
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { AnswerQuestionnaireComponent } from './answer-questionnaire/answer-questionnaire.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { AnswerQuestionnaireComponent } from './answer-questionnaire/answer-ques
     EditQuestionnaireComponent,
     TableComponent,
     CreateQuestionComponent,
-    AnswerQuestionnaireComponent
+    AnswerQuestionnaireComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
