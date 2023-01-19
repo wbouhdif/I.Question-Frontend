@@ -1,6 +1,6 @@
 import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
 import {Questionnaire} from "../shared/questionnaire.model";
-import {Router} from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import {HttpService} from "../services/http.service";
 import {ToastrService} from "ngx-toastr";
 import {EmployedQuestion} from "../shared/employed-question.model";
@@ -17,6 +17,8 @@ export class EditQuestionnaireComponent implements OnInit {
   questions: Question[] = [];
   employedQuestions: EmployedQuestion[] = [];
 
+  routeId: any;
+
   creatingQuestion = false;
   editingName = false;
 
@@ -28,9 +30,18 @@ export class EditQuestionnaireComponent implements OnInit {
   @ViewChild('questionnaire_name', {static: false}) questionnaireName: any;
   @ViewChild('questionnaire_name_input', {static: false}) questionnaireNameInput: any
 
-  constructor(private router: Router, private ngZone: NgZone, private httpService: HttpService, private toastr: ToastrService, private userService: UserService) { }
+  constructor(private router: Router, private ngZone: NgZone, private httpService: HttpService, private toastr: ToastrService, private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.routeId = params['id'];
+      this.getSessionStorage();
+    })
+
+    this.setQuestions();
+  }
+
+  getSessionStorage() {
     let questionnaire: any = sessionStorage.getItem('edited-questionnaire');
     questionnaire = JSON.parse(questionnaire);
 
@@ -40,11 +51,51 @@ export class EditQuestionnaireComponent implements OnInit {
     let employedQuestions: any = sessionStorage.getItem('edited-questionnaire-employed-questions');
     employedQuestions = JSON.parse(employedQuestions);
 
-    Object.assign(this.questionnaire, questionnaire);
-    Object.assign(this.employedQuestions, employedQuestions);
-    Object.assign(this.removedEmployedQuestions, removedEmployedQuestions);
+    console.log(this.routeId === questionnaire?.id)
+    if (this.routeId === questionnaire?.id) {
+      Object.assign(this.questionnaire, questionnaire);
+      Object.assign(this.employedQuestions, employedQuestions);
+      Object.assign(this.removedEmployedQuestions, removedEmployedQuestions);
+    } else {
+      this.clearSessionStorage();
+      this.loadQuestionnaire();
+    }
+  }
 
-    this.setQuestions();
+  loadQuestionnaire() {
+    console.log(this.routeId != undefined);
+    if (this.routeId != undefined) {
+      this.setQuestionnaire();
+    }
+  }
+
+  setQuestionnaire() {
+    this.httpService.get('questionnaire/' + this.routeId).subscribe({
+      next: (response) => {
+        this.questionnaire = response.body;
+        this.setEmployedQuestions()
+      },
+      error: (error) => { this.router.navigate(['create-questionnaire']) }
+    })
+  }
+
+  setEmployedQuestions() {
+    this.httpService.get('employed_question/questionnaire=' + this.routeId).subscribe({
+      next: (response) => {
+        response.body.sort((a: { position: number; }, b: { position: number; }) => (a.position > b.position) ? 1 : -1);
+        this.employedQuestions = response.body;
+        console.log(response.body)
+      },
+      error: (error) => {
+        console.log(error)
+      }
+    })
+  }
+
+  clearSessionStorage() {
+    sessionStorage.removeItem('edited-questionnaire');
+    sessionStorage.removeItem('edited-questionnaire-employed-questions');
+    sessionStorage.removeItem('removed-employed-questions');
   }
 
   updateSessionStorage() {
@@ -77,9 +128,7 @@ export class EditQuestionnaireComponent implements OnInit {
   }
 
   cancelEdits() {
-    sessionStorage.removeItem('edited-questionnaire');
-    sessionStorage.removeItem('edited-questionnaire-employed-questions');
-    sessionStorage.removeItem('removed-employed-questions');
+    this.clearSessionStorage();
     this.router.navigate(['questionnaires']);
   }
 
