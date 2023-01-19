@@ -52,28 +52,13 @@ export class QuestionnairesComponent implements OnInit {
   }
 
   editQuestionnaire() {
-    sessionStorage.setItem('edited-questionnaire', JSON.stringify(this.selectedQuestionnaire));
-    this.setEmployedQuestions();
+    this.router.navigate(['edit-questionnaire', this.selectedQuestionnaire.id])
   }
 
   deleteQuestionnaire() {
     this.httpService.delete('questionnaire/' + this.selectedQuestionnaire.id).subscribe({
       next: (response) => { this.assignQuestionnaires(); this.selectedQuestionnaire = undefined },
       error: (error) => console.log(error)
-    })
-  }
-
-  setEmployedQuestions() {
-    this.httpService.get('employed_question/questionnaire=' + this.selectedQuestionnaire.id).subscribe({
-      next: (response) => {
-        response.body.sort((a: { position: number; }, b: { position: number; }) => (a.position > b.position) ? 1 : -1);
-        sessionStorage.setItem('edited-questionnaire-employed-questions', JSON.stringify(response.body));
-        this.router.navigate(['edit-questionnaire', this.selectedQuestionnaire.id]);
-        console.log(response.body)
-      },
-      error: (error) => {
-        console.log(error)
-      }
     })
   }
 
