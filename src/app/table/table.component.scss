@@ -11,3 +11,11 @@ thead {
 .sticky-top {
   z-index:0
 }
+
+table {
+  overflow-wrap: anywhere;
+}
+
+th {
+  min-width: 11vw;
+}
