@@ -3,15 +3,19 @@ import {EmployedQuestion} from "./employed-question.model";
 
 export class Answer {
 
-  private id: string | undefined;
-  private text: string | undefined;
-  private answeredQuestionnaire: AnsweredQuestionnaire | undefined;
-  private employedQuestions: EmployedQuestion | undefined;
+  id: string | undefined;
+  text: string | undefined;
+  answeredQuestionnaire: AnsweredQuestionnaire | undefined;
+  employedQuestion: EmployedQuestion | undefined;
 
-  constructor(id: string | undefined, text: string, answeredQuestionnaire: AnsweredQuestionnaire, employedQuestions: EmployedQuestion) {
+  constructor(id?: string | undefined, text?: string, answeredQuestionnaire?: AnsweredQuestionnaire, employedQuestion?: EmployedQuestion) {
     this.id = id;
     this.text = text;
     this.answeredQuestionnaire = answeredQuestionnaire;
-    this.employedQuestions = employedQuestions;
+    this.employedQuestion = employedQuestion;
+  }
+
+  setText(text: string) {
+    this.text = text;
   }
 }
