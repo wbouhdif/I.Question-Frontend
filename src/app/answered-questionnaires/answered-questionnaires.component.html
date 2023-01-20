@@ -2,14 +2,14 @@
 <body class="mx-5 my-3">
 <h3>Beantwoorde Vragenlijsten</h3>
 <hr>
-<app-table [columns]="['Vragenlijst', 'Cliënt', 'Versie']" [height]="80">
+<app-table [columns]="['Vragenlijst', 'Cliënt', 'Datum Ingevuld']" [height]="80">
   <tr *ngFor="let answeredQuestionnaire of answeredQuestionnaires"
       class="questionnaire"
       (click)="selectedQuestionnaire = answeredQuestionnaire"
       [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
     <th class="column px-4" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}" scope="row"> {{ answeredQuestionnaire.questionnaire?.name }} </th>
     <td class="column px-4" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}"> {{ answeredQuestionnaire.clientName }} </td>
-    <td class="column px-4" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}"></td>
+    <td class="column px-4" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}"> {{ answeredQuestionnaire.dateCreated }} </td>
   </tr>
 </app-table>
 </body>

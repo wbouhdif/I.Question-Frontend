@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from './table/table.component';
 import { CreateQuestionComponent } from './edit-questionnaire/create-question/create-question.component';
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { AnswerQuestionnaireComponent } from './answer-questionnaire/answer-questionnaire.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     AnsweredQuestionnairesComponent,
     EditQuestionnaireComponent,
     TableComponent,
-    CreateQuestionComponent
+    CreateQuestionComponent,
+    AnswerQuestionnaireComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

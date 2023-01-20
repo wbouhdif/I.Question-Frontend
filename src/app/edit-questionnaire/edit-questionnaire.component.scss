@@ -1,18 +1,28 @@
 .icon-background {
   border-radius: 20px !important;
-  width: 40px;
+  min-width: 40px;
   display: flex;
+  min-height: 40px;
 }
 
 mat-icon {
   margin: auto;
 }
 
-.questionnaire-name {
-  width: 50%;
-  display: flex;
+button {
   height: 40px;
+}
+
+.questionnaire-name {
+  display: flex;
   gap: 10px;
+}
+
+h2 {
+  max-width: 75vw;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .name-input {
@@ -30,6 +40,9 @@ mat-icon {
   cursor: pointer;
 }
 
-mat-icon {
-
+.top-bar {
+  height: 4vh;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 8fr 2fr;
 }
