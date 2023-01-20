@@ -30,7 +30,13 @@ export class EditQuestionnaireComponent implements OnInit {
   @ViewChild('questionnaire_name', {static: false}) questionnaireName: any;
   @ViewChild('questionnaire_name_input', {static: false}) questionnaireNameInput: any
 
-  constructor(private router: Router, private ngZone: NgZone, private httpService: HttpService, private toastr: ToastrService, private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private router: Router,
+              private ngZone: NgZone,
+              private httpService: HttpService,
+              private toastr: ToastrService,
+              private userService: UserService,
+              private route: ActivatedRoute
+  ) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -75,7 +81,7 @@ export class EditQuestionnaireComponent implements OnInit {
         this.questionnaire = response.body;
         this.setEmployedQuestions()
       },
-      error: (error) => { this.router.navigate(['create-questionnaire']) }
+      error: (error) => { this.router.navigate(['questionnaires']) }
     })
   }
 
@@ -84,11 +90,8 @@ export class EditQuestionnaireComponent implements OnInit {
       next: (response) => {
         response.body.sort((a: { position: number; }, b: { position: number; }) => (a.position > b.position) ? 1 : -1);
         this.employedQuestions = response.body;
-        console.log(response.body)
       },
-      error: (error) => {
-        console.log(error)
-      }
+      error: (error) => { console.log(error) }
     })
   }
 
