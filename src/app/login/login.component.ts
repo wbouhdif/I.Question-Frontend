@@ -58,7 +58,7 @@ export class LoginComponent {
 
   onLoginSuccessful() {
     this.userService.setActiveAccount(this.account);
-    this.router.navigate(['home']);
+    this.router.navigate(['questionnaires']);
   }
 
 }
