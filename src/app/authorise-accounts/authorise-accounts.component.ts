@@ -48,7 +48,8 @@ export class AuthoriseAccountsComponent {
           this.toastr.success('Account gedeauthoriseerd', 'Succes');
         }
       },
-      error: (error) => { console.log(error) }
+      error: (error) => {
+      this.toastr.error('Error, er heeft zich een probleem plaatsgevonden', 'Error');}
     });
   }
 
