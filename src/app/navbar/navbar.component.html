@@ -1,10 +1,15 @@
-<nav class="navbar-expand-lg px-5 py-3 flex">
-  <a class="navbar-brand" (click)="toHome()">
+<nav class="px-5 py-3">
+  <div class="navbar-brand" (click)="toHome()">
     <img class="logo" src="favicon.ico">
     <h3>I.Question</h3>
-  </a>
-  <div class="button-box">
-    <label class="px-3"><mat-icon>account_circle</mat-icon>{{accountName}}</label>
+  </div>
+  <div class="tabs mx-5">
+    <a [routerLink]="['/questionnaires']"><mat-icon>list</mat-icon><h5>Vragenlijsten</h5></a>
+    <a [routerLink]="['/answered-questionnaires']"><mat-icon>view_list</mat-icon><h5>Beantwoorde Vragenlijsten</h5></a>
+    <a [routerLink]="['/answered-questionnaires']"><mat-icon>account_box</mat-icon><h5>Account Beheer</h5></a>
+  </div>
+  <div class="button-box" style="height: 40px">
+    <label class="px-3 account-label"><mat-icon>account_circle</mat-icon>{{accountName}}</label>
     <button class="button-secondary flex px-3" id="logOutButton" (click)="logOut()" [routerLink]="['/login']"><mat-icon>exit_to_app</mat-icon>Uitloggen</button>
   </div>
 </nav>
