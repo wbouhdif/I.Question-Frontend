@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Account} from "../shared/account.model";
 import {HttpService} from "../services/http.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-authorise-accounts',
@@ -14,7 +15,7 @@ export class AuthoriseAccountsComponent {
   selectedAccount: any;
 
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private toastr: ToastrService,) {}
 
   assignAccounts() {
     this.accounts = [];
@@ -41,6 +42,11 @@ export class AuthoriseAccountsComponent {
     this.httpService.put('account/' + account.id + '/authorised', authorisation).subscribe({
       next: (response) => {
         this.assignAccounts();
+        if (authorisation){
+          this.toastr.success('Account geauthoriseerd', 'Succes');
+        }else{
+          this.toastr.success('Account gedeauthoriseerd', 'Succes');
+        }
       },
       error: (error) => { console.log(error) }
     });
