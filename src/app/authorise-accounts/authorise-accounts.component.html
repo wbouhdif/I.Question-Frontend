@@ -4,7 +4,7 @@
 <div class="button-container">
   <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, true)">Autoriseer</button>
   <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || !checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, false)">Deautoriseer</button>
-  <button class="btn btn-danger"  [disabled]="selectedAccount === null || selectedAccount === undefined">Verwijderen</button>
+  <button class="btn btn-danger"  [disabled]="selectedAccount === null || selectedAccount === undefined" (click)="showDeleteAccountWarning(selectedAccount)">Verwijderen</button>
 </div>
 <hr>
 <div class="table-container">

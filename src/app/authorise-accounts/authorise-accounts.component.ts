@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Account} from "../shared/account.model";
 import {HttpService} from "../services/http.service";
 import {ToastrService} from "ngx-toastr";
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-authorise-accounts',
@@ -13,7 +14,6 @@ export class AuthoriseAccountsComponent {
   accounts: Account[] = [];
 
   selectedAccount: any;
-
 
   constructor(private httpService: HttpService, private toastr: ToastrService,) {}
 
@@ -31,8 +31,6 @@ export class AuthoriseAccountsComponent {
       error: (error) => { console.log(error) }
       });
   }
-
-
 
   ngOnInit() {
     this.assignAccounts()
@@ -54,14 +52,32 @@ export class AuthoriseAccountsComponent {
   }
 
   deleteAccount(account: Account) {
-      this.httpService.delete('account/' + account.id).subscribe({
-        next: (response) => {
-          this.assignAccounts();
-        },
-      error: (error) => { console.log(error) }
-    });
-  }
+    this.httpService.delete('account/' + account.id).subscribe({
+      next: (response) => {
+        this.assignAccounts();
+        this.toastr.success('Account verwijderd', 'Succes');
+          },
+          error: (error) => {
+            this.toastr.error('Error, er heeft zich een probleem plaatsgevonden', 'Error');
+          }
+        });
+      }
 
+  showDeleteAccountWarning(account: Account){
+  swal.fire({
+    title: 'Weet je het zeker?',
+    text: 'Je staat op het punt om het account van ' + account.firstName + ' ' + account.lastName + ' te verwijderen. Je kan dit niet ongedaan maken!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Ja, verwijder het',
+    cancelButtonText: 'Nee, annuleer het'
+  }).then((result) => {
+    if(result.isConfirmed){
+      this.deleteAccount(account)
+    }
+  })}
 
   setSelectedAccount(account: Account) {
     if(this.selectedAccount === account) {
