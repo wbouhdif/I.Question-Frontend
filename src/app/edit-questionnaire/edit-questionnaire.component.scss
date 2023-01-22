@@ -9,10 +9,6 @@ mat-icon {
   margin: auto;
 }
 
-button {
-  height: 40px;
-}
-
 .questionnaire-name {
   display: flex;
   gap: 10px;
@@ -23,6 +19,7 @@ h2 {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  height: 100%;
 }
 
 .name-input {
