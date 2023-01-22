@@ -18,7 +18,7 @@
   <div class="middle gap-4">
     <div class="form-group-vertical">
       <div class="flex">
-        <h3 class="">Vragen in vragenlijst</h3>
+        <h3>Vragen in vragenlijst</h3>
         <div class="button-box">
           <button
             [disabled]="selectedEmployedQuestion === undefined || this.employedQuestions.indexOf(selectedEmployedQuestion) == 0"
@@ -60,7 +60,7 @@
     </div>
     <div class="form-group-vertical">
       <div class="flex">
-        <h3 class="">Vragen</h3>
+        <h3>Vragen</h3>
         <div class="button-box">
           <button class="button-primary px-3" [disabled]="selectedQuestion === undefined" (click)="addEmployedQuestion()"><mat-icon>add_circle</mat-icon>Toevoegen</button>
           <button class="button-primary px-3" (click)="createQuestion()"><mat-icon>build</mat-icon>Vraag Aanmaken</button>
