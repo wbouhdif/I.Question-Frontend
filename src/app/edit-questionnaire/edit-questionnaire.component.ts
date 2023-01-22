@@ -210,7 +210,7 @@ export class EditQuestionnaireComponent implements OnInit {
   }
 
   addEmployedQuestion() {
-    let addedEmployedQuestion = new EmployedQuestion(undefined, this.selectedQuestion, undefined, undefined, false)
+    let addedEmployedQuestion = new EmployedQuestion(undefined, this.selectedQuestion, undefined, undefined, true)
     this.employedQuestions.push(addedEmployedQuestion)
 
     this.updateSessionStorage()

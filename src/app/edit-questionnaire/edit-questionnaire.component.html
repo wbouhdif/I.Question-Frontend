@@ -46,7 +46,7 @@
           </button>
         </div>
       </div>
-      <app-table [columns]="['#', 'Vraag', 'Type', 'Verplicht']" [height]="75">
+      <app-table [columns]="['#', 'Vraag', 'Type', 'Optioneel']" [height]="75">
         <tr *ngFor="let employedQuestion of this.employedQuestions"
             class="table-item"
             (click)="selectedEmployedQuestion === employedQuestion ? selectedEmployedQuestion = undefined : selectedEmployedQuestion = employedQuestion; selectedQuestion = undefined"
@@ -54,7 +54,7 @@
           <th class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}" scope="row"> {{ this.employedQuestions.indexOf(employedQuestion) + 1 }} </th>
           <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}"> {{ employedQuestion.question?.text }} </td>
           <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}"> {{ employedQuestion.question?.type == "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>
-          <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {'color': '#1d2951'}"><mat-icon>{{employedQuestion.mandatory ? 'check_box' : 'check_box_outline_blank'}}</mat-icon></td>
+          <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {'color': '#1d2951'}"><mat-icon>{{!employedQuestion.mandatory ? 'check_box' : 'check_box_outline_blank'}}</mat-icon></td>
         </tr>
       </app-table>
     </div>
