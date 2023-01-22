@@ -25,8 +25,8 @@
       <td class="column"> {{ account.firstName }}</td>
       <td class="column"> {{ account.lastName }}</td>
       <td class="column"> {{ account.email }}</td>
-      <td class="column"> {{ account.type?.getName()}} account</td>
-      <td class="column"> {{ account.authorised}}</td>
+      <td class="column"> {{ account.type?.name}}</td>
+      <td class="column"> {{ account.authorised ? 'Ja' : 'Nee'}}</td>
       <td class="column"> {{ account.dateCreated | date: 'dd-MM-yyyy'}}</td>
     </tr>
     </tbody>
