@@ -18,6 +18,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from './table/table.component';
 import { CreateQuestionComponent } from './edit-questionnaire/create-question/create-question.component';
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { AnswerQuestionnaireComponent } from './answer-questionnaire/answer-questionnaire.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accounts.component';
 
@@ -32,6 +34,9 @@ import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accou
     AnsweredQuestionnairesComponent,
     EditQuestionnaireComponent,
     TableComponent,
+    CreateQuestionComponent,
+    AnswerQuestionnaireComponent,
+    PageNotFoundComponent,
     CreateQuestionComponent,
     AuthoriseAccountsComponent
   ],

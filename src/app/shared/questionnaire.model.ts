@@ -1,5 +1,4 @@
 import {Account} from "./account.model";
-import {EmployedQuestion} from "./employed-question.model";
 import { jsonIgnore } from "json-ignore";
 
 export class Questionnaire {
@@ -8,11 +7,11 @@ export class Questionnaire {
   account: Account | undefined;
   dateCreated: Date | undefined;
 
-  @jsonIgnore()
-  answeredCount: number | undefined;
+    @jsonIgnore()
+    answeredCount: number | undefined;
 
-  @jsonIgnore()
-  length: number | undefined;
+    @jsonIgnore()
+    length: number | undefined;
 
   constructor(id?: string | undefined, name?: string, account?: Account) {
     this.id = id;

@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<body class="mx-5 my-3">
+  <h2>{{questionnaire.name}}</h2>
+  <div class="questions-container p-3 my-3">
+    <div *ngFor="let employedQuestion of employedQuestions" class="question">
+      <div class="question-text px-3 py-1">Vraag {{employedQuestion.position}}: {{employedQuestion.question?.text}} {{employedQuestion.mandatory ? '(Verplicht)' : ''}}</div>
+      <div *ngIf="employedQuestion.question?.type == 'MULTIPLE_CHOICE'" class="p-3">
+        <div class="radioGroup" *ngFor="let option of employedQuestion.options">
+          <input id="{{option.text}}" [value]='option.text' type="radio" name="options{{employedQuestion.position}}" (change)="getAnswerOfEmployedQuestion(employedQuestion).setText(option.text)">
+          {{option.text}}
+        </div>
+      </div>
+      <div *ngIf="employedQuestion.question?.type == 'OPEN'" class="p-3">
+        <textarea class="field-primary px-3 py-2" [(ngModel)]="getAnswerOfEmployedQuestion(employedQuestion).text"></textarea>
+      </div>
+    </div>
+  </div>
+  <div class="button-box">
+    <input class="field-primary px-3" placeholder="Naam" [(ngModel)]="answeredQuestionnaire.clientName">
+    <button class="button-primary px-3" (click)="submit()"><mat-icon>archive</mat-icon>Indienen</button>
+    <button class="button-primary px-3" [routerLink]="['../../questionnaires']" ><mat-icon>cancel</mat-icon>Annuleren</button>
+  </div>
+</body>

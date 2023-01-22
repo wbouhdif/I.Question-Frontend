@@ -1,81 +1,81 @@
 <app-create-question (setQuestionsEvent)="setQuestions()" (onHide)="creatingQuestion = $event.valueOf()" [hidden]="!creatingQuestion"></app-create-question>
 <app-navbar></app-navbar>
 <body class="mx-5 my-3">
-<div class="flex">
-  <div class="questionnaire-name">
-    <h2 #questionnaire_name  [style.width.px]="" [hidden]="editingName" class="fw-bold">{{this.questionnaire.name}}</h2>
-    <input #questionnaire_name_input [hidden]="!editingName" class="name-input px-3" value="{{this.questionnaire.name}}">
-    <button class="button-primary icon-background" (click)="editingName ? saveName(questionnaire_name_input.value) : editName()"><mat-icon>{{editingName ? 'checkmark' : 'edit'}}</mat-icon></button>
-    <button [hidden]="!editingName" class="button-primary icon-background" (click)="cancelNameEditing()"><mat-icon>clear</mat-icon></button>
-    <input [hidden]="true" class="position-absolute" class="field-primary" [(ngModel)]="questionnaire.name">
-  </div>
-  <div class="button-box">
-    <button class="button-primary px-3" (click)="saveEdits()"><mat-icon>save</mat-icon>Opslaan</button>
-    <button class="button-primary px-3" (click)="cancelEdits()"><mat-icon>cancel</mat-icon>Annuleren</button>
-  </div>
-</div>
-<hr>
-<div class="middle gap-5">
-  <div class="form-group-vertical">
-    <div class="flex">
-      <h3 class="">Vragen in vragenlijst</h3>
-      <div class="button-box">
-        <button
-          [disabled]="selectedEmployedQuestion === undefined || this.employedQuestions.indexOf(selectedEmployedQuestion) == 0"
-          class="button-primary"
-          (click)="moveDown()">
-          <mat-icon>expand_less</mat-icon>
-        </button>
-        <button
-          [disabled]="selectedEmployedQuestion === undefined || this.employedQuestions.indexOf(selectedEmployedQuestion) == this.employedQuestions.length - 1"
-          class="button-primary"
-          (click)="moveUp()">
-          <mat-icon>expand_more</mat-icon>
-        </button>
-        <button
-          [disabled]="selectedEmployedQuestion === undefined"
-          class="button-primary px-3"
-          (click)="switchMandatory()">
-          <mat-icon>priority_high</mat-icon>Verplichtheid Wisselen
-        </button>
-        <button
-          [disabled]="selectedEmployedQuestion === undefined"
-          class="button-secondary px-3"
-          (click)="removeEmployedQuestion()">
-          <mat-icon>remove_circle</mat-icon>Verwijderen
-        </button>
-      </div>
+  <div class="top-bar">
+    <div class="questionnaire-name">
+      <h2 #questionnaire_name  [style.width.px]="" [hidden]="editingName" class="fw-bold">{{this.questionnaire.name}}</h2>
+      <input #questionnaire_name_input [hidden]="!editingName" class="name-input px-3" value="{{this.questionnaire.name}}">
+      <button class="button-primary icon-background" (click)="editingName ? saveName(questionnaire_name_input.value) : editName()"><mat-icon>{{editingName ? 'checkmark' : 'edit'}}</mat-icon></button>
+      <button [hidden]="!editingName" class="button-primary icon-background" (click)="cancelNameEditing()"><mat-icon>clear</mat-icon></button>
+      <input [hidden]="true" class="position-absolute" class="field-primary" [(ngModel)]="questionnaire.name">
     </div>
-    <app-table [columns]="['#', 'Vraag', 'Type', 'Verplicht']" [height]="75">
-      <tr *ngFor="let employedQuestion of this.employedQuestions"
-          class="table-item"
-          (click)="selectedEmployedQuestion === employedQuestion ? selectedEmployedQuestion = undefined : selectedEmployedQuestion = employedQuestion; selectedQuestion = undefined"
-          [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
-        <th class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}" scope="row"> {{ this.employedQuestions.indexOf(employedQuestion) + 1 }} </th>
-        <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}"> {{ employedQuestion.question?.text }} </td>
-        <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}"> {{ employedQuestion.question?.type == "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>
-        <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {'color': '#1d2951'}"><mat-icon>{{employedQuestion.mandatory ? 'check_box' : 'check_box_outline_blank'}}</mat-icon></td>
-      </tr>
-    </app-table>
-  </div>
-  <div class="form-group-vertical">
-    <div class="flex">
-      <h3 class="">Vragen</h3>
-      <div class="button-box">
-        <button class="button-primary px-3" [disabled]="selectedQuestion === undefined" (click)="addEmployedQuestion()"><mat-icon>add_circle</mat-icon>Toevoegen</button>
-        <button class="button-primary px-3" (click)="createQuestion()"><mat-icon>build</mat-icon>Vraag aanmaken</button>
-        <button class="button-secondary px-3" [disabled]="selectedQuestion === undefined" (click)="deleteQuestion()"><mat-icon>delete</mat-icon>Verwijderen</button>
-      </div>
+    <div class="button-box">
+      <button class="button-primary px-3" (click)="saveEdits()"><mat-icon>save</mat-icon>Opslaan</button>
+      <button class="button-primary px-3" (click)="cancelEdits()"><mat-icon>cancel</mat-icon>Annuleren</button>
     </div>
-    <app-table [columns]="['Vraag', 'Type']" [height]="75">
-      <tr *ngFor="let question of this.questions"
-          class="table-item"
-          (click)="selectedQuestion === question ? selectedQuestion = undefined : selectedQuestion = question; selectedEmployedQuestion = undefined"
-          [ngStyle]="selectedQuestion === question ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
-        <th class="column px-4" [ngStyle]="selectedQuestion === question ? {'color': 'white'} : {}" scope="row"> {{ question.text}} </th>
-        <td class="column px-4" [ngStyle]="selectedQuestion === question ? {'color': 'white'} : {}"> {{ question.type === "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>
-      </tr>
-    </app-table>
   </div>
-</div>
+  <hr>
+  <div class="middle gap-4">
+    <div class="form-group-vertical">
+      <div class="flex">
+        <h3 class="">Vragen in vragenlijst</h3>
+        <div class="button-box">
+          <button
+            [disabled]="selectedEmployedQuestion === undefined || this.employedQuestions.indexOf(selectedEmployedQuestion) == 0"
+            class="button-primary"
+            (click)="moveDown()">
+            <mat-icon>expand_less</mat-icon>
+          </button>
+          <button
+            [disabled]="selectedEmployedQuestion === undefined || this.employedQuestions.indexOf(selectedEmployedQuestion) == this.employedQuestions.length - 1"
+            class="button-primary"
+            (click)="moveUp()">
+            <mat-icon>expand_more</mat-icon>
+          </button>
+          <button
+            [disabled]="selectedEmployedQuestion === undefined"
+            class="button-primary px-3"
+            (click)="switchMandatory()">
+            <mat-icon>priority_high</mat-icon>Verplichtheid Wisselen
+          </button>
+          <button
+            [disabled]="selectedEmployedQuestion === undefined"
+            class="button-secondary px-3"
+            (click)="removeEmployedQuestion()">
+            <mat-icon>remove_circle</mat-icon>Verwijderen
+          </button>
+        </div>
+      </div>
+      <app-table [columns]="['#', 'Vraag', 'Type', 'Verplicht']" [height]="75">
+        <tr *ngFor="let employedQuestion of this.employedQuestions"
+            class="table-item"
+            (click)="selectedEmployedQuestion === employedQuestion ? selectedEmployedQuestion = undefined : selectedEmployedQuestion = employedQuestion; selectedQuestion = undefined"
+            [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
+          <th class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}" scope="row"> {{ this.employedQuestions.indexOf(employedQuestion) + 1 }} </th>
+          <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}"> {{ employedQuestion.question?.text }} </td>
+          <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}"> {{ employedQuestion.question?.type == "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>
+          <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {'color': '#1d2951'}"><mat-icon>{{employedQuestion.mandatory ? 'check_box' : 'check_box_outline_blank'}}</mat-icon></td>
+        </tr>
+      </app-table>
+    </div>
+    <div class="form-group-vertical">
+      <div class="flex">
+        <h3 class="">Vragen</h3>
+        <div class="button-box">
+          <button class="button-primary px-3" [disabled]="selectedQuestion === undefined" (click)="addEmployedQuestion()"><mat-icon>add_circle</mat-icon>Toevoegen</button>
+          <button class="button-primary px-3" (click)="createQuestion()"><mat-icon>build</mat-icon>Vraag aanmaken</button>
+          <button class="button-secondary px-3" [disabled]="selectedQuestion === undefined" (click)="deleteQuestion()"><mat-icon>delete</mat-icon>Verwijderen</button>
+        </div>
+      </div>
+      <app-table [columns]="['Vraag', 'Type']" [height]="75">
+        <tr *ngFor="let question of this.questions"
+            class="table-item"
+            (click)="selectedQuestion === question ? selectedQuestion = undefined : selectedQuestion = question; selectedEmployedQuestion = undefined"
+            [ngStyle]="selectedQuestion === question ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
+          <th class="column px-4" [ngStyle]="selectedQuestion === question ? {'color': 'white'} : {}" scope="row"> {{ question.text}} </th>
+          <td class="column px-4" [ngStyle]="selectedQuestion === question ? {'color': 'white'} : {}"> {{ question.type === "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>
+        </tr>
+      </app-table>
+    </div>
+  </div>
 </body>
