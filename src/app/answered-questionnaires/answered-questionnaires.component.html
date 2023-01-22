@@ -10,7 +10,7 @@
 <app-table [columns]="['Vragenlijst', 'Cliënt', 'Datum Ingevuld']" [height]="80">
   <tr *ngFor="let answeredQuestionnaire of answeredQuestionnaires"
       class="questionnaire"
-      (click)="selectedQuestionnaire = answeredQuestionnaire"
+      (click)="setSelectedQuestionnaire(answeredQuestionnaire)"
       [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
     <th class="column px-4" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}" scope="row"> {{ answeredQuestionnaire.questionnaire?.name }} </th>
     <td class="column px-4" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}"> {{ answeredQuestionnaire.clientName }} </td>

@@ -33,4 +33,8 @@ export class AnsweredQuestionnairesComponent implements OnInit {
     })
   }
 
+  setSelectedQuestionnaire(answeredQuestionnaire: AnsweredQuestionnaire) {
+    this.selectedQuestionnaire === answeredQuestionnaire ? this.selectedQuestionnaire = undefined : this.selectedQuestionnaire = answeredQuestionnaire;
+  }
+
 }

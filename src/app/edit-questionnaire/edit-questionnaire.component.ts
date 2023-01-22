@@ -231,4 +231,14 @@ export class EditQuestionnaireComponent implements OnInit {
     this.creatingQuestion = true;
   }
 
+  setSelectedQuestion(question: Question) {
+    this.selectedQuestion === question ? this.selectedQuestion = undefined : this.selectedQuestion = question;
+    this.selectedEmployedQuestion = undefined
+  }
+
+  setSelectedEmployedQuestion(employedQuestion: EmployedQuestion) {
+    this.selectedEmployedQuestion === employedQuestion ? this.selectedEmployedQuestion = undefined : this.selectedEmployedQuestion = employedQuestion;
+    this.selectedQuestion = undefined
+  }
+
 }
