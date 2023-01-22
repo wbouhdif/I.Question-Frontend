@@ -1,23 +1,47 @@
 .navbar-brand {
-  height: 100%;
-  display: grid;
-  grid-auto-flow: column;
+  display: flex;
+  align-items: center;
   color: white;
-  grid-column-gap: 5px;
+  gap: 5px;
 }
 
 nav {
   background-color: #1d2951;
   color: white;
   display: flex;
+  align-items: center;
   gap: 10px;
+}
+
+.tabs {
+  display: flex;
+  gap: 3vw;
+  margin: 0;
+}
+
+h3 {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  vertical-align: center;
+}
+
+a {
+  display: flex;
+  gap: 5px;
+  color: white;
+  text-decoration: none;
 }
 
 a:hover {
   cursor: pointer;
 }
 
-label {
+a:hover h5 {
+  text-decoration: underline;
+}
+
+.account-label {
   box-shadow: rgba(0, 0, 0, 0.1) 0 1px 5px inset;
   background-color: #455588;
   font-size: 16px;
