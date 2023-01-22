@@ -21,6 +21,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { AnswerQuestionnaireComponent } from './answer-questionnaire/answer-questionnaire.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
+import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accounts.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     TableComponent,
     CreateQuestionComponent,
     AnswerQuestionnaireComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    CreateQuestionComponent,
+    AuthoriseAccountsComponent
   ],
   imports: [
     BrowserModule,

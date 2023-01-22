@@ -19,5 +19,6 @@ export class Account {
         this.lastName = lastName;
         this.authorised = authorised;
         this.type = type;
+        this.dateCreated = dateCreated;
     }
 }

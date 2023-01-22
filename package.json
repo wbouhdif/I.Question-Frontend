@@ -27,6 +27,7 @@
     "ngx-toastr": "^16.0.1",
     "npm": "^9.2.0",
     "rxjs": "~7.5.0",
+    "sweetalert2": "^11.7.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
   },
@@ -35,6 +36,7 @@
     "@angular/cli": "~15.0.0",
     "@angular/compiler-cli": "^15.0.0",
     "@types/jasmine": "~4.3.0",
+    "cypress": "^12.1.0",
     "jasmine-core": "~4.5.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.1.0",

@@ -35,12 +35,6 @@ export class RegisterComponent {
     }
   }
 
-
-
-
-
-
-
   passwordsAreEqual(password: string, confirmPassword: string) {
     return password === confirmPassword;
   }

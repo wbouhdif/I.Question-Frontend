@@ -1,0 +1,35 @@
+<app-navbar></app-navbar>
+<body class="mx-5 my-3">
+<h3>Accounts</h3>
+<div class="button-container">
+  <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, true)">Autoriseer</button>
+  <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || !checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, false)">Deautoriseer</button>
+  <button class="btn btn-danger"  [disabled]="selectedAccount === null || selectedAccount === undefined" (click)="showDeleteAccountWarning(selectedAccount)">Verwijderen</button>
+</div>
+<hr>
+<div class="table-container">
+  <table class="table table-responsive-md table-striped">
+    <thead class="sticky-top">
+    <tr>
+      <th scope="col">Voornaam</th>
+      <th scope="col">Achternaam</th>
+      <th scope="col">E-mailadres</th>
+      <th scope="col">Type account</th>
+      <th scope="col">Geautoriseerd</th>
+      <th scope="col">Datum aangemaakt</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let account of accounts" (click)="setSelectedAccount(account)" [ngStyle]="selectedAccount === account ?
+    {'background-color': '#e0e0e0'} : {'background-color': 'white'}">
+      <td class="column"> {{ account.firstName }}</td>
+      <td class="column"> {{ account.lastName }}</td>
+      <td class="column"> {{ account.email }}</td>
+      <td class="column"> {{ account.type?.name}}</td>
+      <td class="column"> {{ account.authorised ? 'Ja' : 'Nee'}}</td>
+      <td class="column"> {{ account.dateCreated | date: 'dd-MM-yyyy'}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
