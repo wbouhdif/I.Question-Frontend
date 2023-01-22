@@ -21,9 +21,16 @@ export class AnsweredQuestionnairesComponent implements OnInit {
 
   assignAnsweredQuestionnaires() {
     this.httpService.get('answered_questionnaire').subscribe({
-      next: (response) => { Object.assign(this.answeredQuestionnaires, response.body); },
+      next: (response) => { this.answeredQuestionnaires =  response.body; },
       error: (error) => { console.log(error); }
     });
+  }
+
+  delete() {
+    this.httpService.delete('answered_questionnaire/' + this.selectedQuestionnaire.id).subscribe({
+      next: (response) => { this.assignAnsweredQuestionnaires(); this.selectedQuestionnaire = undefined },
+      error: (error) => console.log(error)
+    })
   }
 
 }
