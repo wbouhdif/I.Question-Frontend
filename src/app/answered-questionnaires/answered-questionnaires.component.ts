@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Questionnaire} from "../shared/questionnaire.model";
 import {HttpService} from "../services/http.service";
 import {AnsweredQuestionnaire} from "../shared/answered-questionnaire.model";
+import {UserService} from "../services/user.service";
 
 @Component({
   selector: 'app-answered-questionnaires',
@@ -13,14 +14,14 @@ export class AnsweredQuestionnairesComponent implements OnInit {
   answeredQuestionnaires: AnsweredQuestionnaire[] = [];
   selectedQuestionnaire: any;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private userService: UserService) {}
 
   ngOnInit() {
     this.assignAnsweredQuestionnaires();
   }
 
   assignAnsweredQuestionnaires() {
-    this.httpService.get('answered_questionnaire').subscribe({
+    this.httpService.get('answered_questionnaire/account=' + this.userService.getActiveAccount()?.id).subscribe({
       next: (response) => { this.answeredQuestionnaires =  response.body; },
       error: (error) => { console.log(error); }
     });
