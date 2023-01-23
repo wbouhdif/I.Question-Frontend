@@ -1,35 +1,20 @@
 <app-navbar></app-navbar>
 <body class="mx-5 my-3">
-<h3>Accounts</h3>
+<h2>Accounts</h2>
 <div class="button-container">
-  <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, true)">Autoriseren</button>
-  <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || !checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, false)">Ontzeggen</button>
-  <button class="btn btn-danger"  [disabled]="selectedAccount === null || selectedAccount === undefined" (click)="showDeleteAccountWarning(selectedAccount)">Verwijderen</button>
+  <button class="button-secondary px-3"  [disabled]="selectedAccount === null || selectedAccount === undefined" (click)="showDeleteAccountWarning(selectedAccount)"><mat-icon>delete</mat-icon>Verwijderen</button>
+
+  <button class="button-primary px-3" [disabled]="selectedAccount === null || selectedAccount === undefined || checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, true)"><mat-icon>lock_open</mat-icon>Autoriseren</button>
+  <button class="button-primary px-3" [disabled]="selectedAccount === null || selectedAccount === undefined || !checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, false)"><mat-icon>lock</mat-icon>Ontzeggen</button>
 </div>
 <hr>
-<div class="table-container">
-  <table class="table table-responsive-md table-striped">
-    <thead class="sticky-top">
-    <tr>
-      <th scope="col">Voornaam</th>
-      <th scope="col">Achternaam</th>
-      <th scope="col">E-mailadres</th>
-      <th scope="col">Type account</th>
-      <th scope="col">Geautoriseerd</th>
-      <th scope="col">Datum aangemaakt</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let account of accounts" (click)="setSelectedAccount(account)" [ngStyle]="selectedAccount === account ?
-    {'background-color': '#e0e0e0'} : {'background-color': 'white'}">
-      <td class="column"> {{ account.firstName }}</td>
-      <td class="column"> {{ account.lastName }}</td>
-      <td class="column"> {{ account.email }}</td>
-      <td class="column"> {{ account.type?.name == 'Caregiver' ? 'Zorgverlener' : 'Spine-medewerker'}}</td>
-      <td class="column"> {{ account.authorised ? 'Ja' : 'Nee'}}</td>
-      <td class="column"> {{ account.dateCreated | date: 'dd-MM-yyyy'}}</td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+<app-table [columns]="['E-mailadres', 'Naam', 'Type account', 'Geautoriseerd', 'Datum aangemaakt']" [height]="80">
+  <tr *ngFor="let account of accounts" (click)="setSelectedAccount(account)" [ngStyle]="selectedAccount === account ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}" [ngClass]="selectedAccount == account ? 'white' : 'black'">
+    <th class="column px-4"> {{ account.email }}</th>
+    <td class="column px-4"> {{ account.firstName  + ' ' + account.lastName}}</td>
+    <td class="column px-4"> {{ account.type?.name == 'Caregiver' ? 'Zorgverlener' : 'Spine-medewerker'}}</td>
+    <td class="column px-4"> {{ account.authorised ? 'Ja' : 'Nee'}}</td>
+    <td class="column px-4"> {{ account.dateCreated | date: 'dd-MM-yyyy'}}</td>
+  </tr>
+</app-table>
 </body>

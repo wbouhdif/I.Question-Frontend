@@ -5,10 +5,16 @@
     height: 100%;
     margin-top: 20px;
 }
-h3 {
+h2 {
   position: absolute;
 }
 
 button {
   margin-left: 10px;
+}
+
+
+tr:hover .column{
+  cursor: pointer;
+  background-color: rgba(#1d2951, 0.2);
 }

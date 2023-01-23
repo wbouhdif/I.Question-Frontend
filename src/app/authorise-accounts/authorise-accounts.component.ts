@@ -3,6 +3,7 @@ import {Account} from "../shared/account.model";
 import {HttpService} from "../services/http.service";
 import {ToastrService} from "ngx-toastr";
 import swal from 'sweetalert2';
+import {AlertService} from "../services/alert.service";
 
 @Component({
   selector: 'app-authorise-accounts',
@@ -15,7 +16,7 @@ export class AuthoriseAccountsComponent {
 
   selectedAccount: any;
 
-  constructor(private httpService: HttpService, private toastr: ToastrService,) {}
+  constructor(private httpService: HttpService, private toastr: ToastrService, private alertservice: AlertService) {}
 
   assignAccounts() {
     this.accounts = [];
