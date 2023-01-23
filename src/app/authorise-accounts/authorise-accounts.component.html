@@ -2,8 +2,8 @@
 <body class="mx-5 my-3">
 <h3>Accounts</h3>
 <div class="button-container">
-  <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, true)">Autoriseer</button>
-  <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || !checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, false)">Deautoriseer</button>
+  <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, true)">Autoriseren</button>
+  <button class="btn btn-primary" [disabled]="selectedAccount === null || selectedAccount === undefined || !checkIfSelectedAccountIsAuthorised()" (click)="changeAuthorisationAccount(selectedAccount, false)">Ontzeggen</button>
   <button class="btn btn-danger"  [disabled]="selectedAccount === null || selectedAccount === undefined" (click)="showDeleteAccountWarning(selectedAccount)">Verwijderen</button>
 </div>
 <hr>
@@ -25,7 +25,7 @@
       <td class="column"> {{ account.firstName }}</td>
       <td class="column"> {{ account.lastName }}</td>
       <td class="column"> {{ account.email }}</td>
-      <td class="column"> {{ account.type?.name}}</td>
+      <td class="column"> {{ account.type?.name == 'Caregiver' ? 'Zorgverlener' : 'Spine-medewerker'}}</td>
       <td class="column"> {{ account.authorised ? 'Ja' : 'Nee'}}</td>
       <td class="column"> {{ account.dateCreated | date: 'dd-MM-yyyy'}}</td>
     </tr>
