@@ -14,11 +14,11 @@
     <tr *ngFor="let questionnaire of questionnaires"
         class="table-item"
         (click)="setSelectedQuestionnaire(questionnaire)"
-        [ngStyle]="selectedQuestionnaire === questionnaire ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
-      <th class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}" scope="row"> {{ questionnaire.name }} </th>
-      <td class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}"> {{ questionnaire.length }} </td>
-      <td class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}"> {{questionnaire.dateCreated }} </td>
-      <td class="column px-4" [ngStyle]="selectedQuestionnaire === questionnaire ? {'color': 'white'}: {}"> {{questionnaire.answeredCount }} </td>
+        [ngStyle]="selectedQuestionnaire === questionnaire ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}" [ngClass]="selectedQuestionnaire == questionnaire ? 'white' : 'black'">
+      <th class="column px-4" scope="row"> {{ questionnaire.name }} </th>
+      <td class="column px-4"> {{ questionnaire.length }} </td>
+      <td class="column px-4"> {{questionnaire.dateCreated }} </td>
+      <td class="column px-4"> {{questionnaire.answeredCount }} </td>
     </tr>
   </app-table>
 </body>

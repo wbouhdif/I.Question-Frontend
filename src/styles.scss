@@ -14,6 +14,23 @@ label {
   font-weight: bold;
 }
 
+
+.black th {
+  color: black !important;
+}
+
+.white th {
+  color: white !important;
+}
+
+.white td {
+  color: white !important;
+}
+
+.black td {
+  color: black !important;
+}
+
 button {
   min-height: 40px;
   display: flex;

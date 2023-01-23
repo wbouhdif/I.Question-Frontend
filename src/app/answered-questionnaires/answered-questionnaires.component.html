@@ -11,10 +11,10 @@
   <tr *ngFor="let answeredQuestionnaire of answeredQuestionnaires"
       class="questionnaire"
       (click)="setSelectedQuestionnaire(answeredQuestionnaire)"
-      [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
-    <th class="column px-4" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}" scope="row"> {{ answeredQuestionnaire.questionnaire?.name }} </th>
-    <td class="column px-4" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}"> {{ answeredQuestionnaire.clientName }} </td>
-    <td class="column px-4" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}"> {{ answeredQuestionnaire.dateCreated }} </td>
+      [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}" [ngClass]="selectedQuestionnaire == answeredQuestionnaire ? 'white' : 'black'">
+    <th class="column px-4" scope="row"> {{ answeredQuestionnaire.questionnaire?.name }} </th>
+    <td class="column px-4"> {{ answeredQuestionnaire.clientName }} </td>
+    <td class="column px-4"> {{ answeredQuestionnaire.dateCreated }} </td>
   </tr>
 </app-table>
 </body>

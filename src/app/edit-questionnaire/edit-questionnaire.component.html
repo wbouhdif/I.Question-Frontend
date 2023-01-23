@@ -50,11 +50,11 @@
         <tr *ngFor="let employedQuestion of this.employedQuestions"
             class="table-item"
             (click)="setSelectedEmployedQuestion(employedQuestion)"
-            [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
-          <th class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}" scope="row"> {{ this.employedQuestions.indexOf(employedQuestion) + 1 }} </th>
-          <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}"> {{ employedQuestion.question?.text }} </td>
-          <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}"> {{ employedQuestion.question?.type == "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>
-          <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {'color': '#1d2951'}"><mat-icon>{{!employedQuestion.mandatory ? 'check_box' : 'check_box_outline_blank'}}</mat-icon></td>
+            [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}" [ngClass]="selectedEmployedQuestion == employedQuestion ? 'white' : 'black'">
+          <th class="column px-4" scope="row"> {{ this.employedQuestions.indexOf(employedQuestion) + 1 }} </th>
+          <td class="column px-4"> {{ employedQuestion.question?.text }} </td>
+          <td class="column px-4"> {{ employedQuestion.question?.type == "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>
+          <td class="column px-4"><mat-icon>{{!employedQuestion.mandatory ? 'check_box' : 'check_box_outline_blank'}}</mat-icon></td>
         </tr>
       </app-table>
     </div>
@@ -71,9 +71,9 @@
         <tr *ngFor="let question of this.questions"
             class="table-item"
             (click)="setSelectedQuestion(question)"
-            [ngStyle]="selectedQuestion === question ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
-          <th class="column px-4" [ngStyle]="selectedQuestion === question ? {'color': 'white'} : {}" scope="row"> {{ question.text}} </th>
-          <td class="column px-4" [ngStyle]="selectedQuestion === question ? {'color': 'white'} : {}"> {{ question.type === "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>
+            [ngStyle]="selectedQuestion === question ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}" [ngClass]="selectedQuestion == question ? 'white' : 'black'">
+          <th class="column px-4" scope="row"> {{ question.text}} </th>
+          <td class="column px-4"> {{ question.type === "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>
         </tr>
       </app-table>
     </div>
