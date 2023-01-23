@@ -41,9 +41,9 @@ export class AuthoriseAccountsComponent {
       next: (response) => {
         this.assignAccounts();
         if (authorisation){
-          this.toastr.success('Account geauthoriseerd', 'Succes');
+          this.toastr.success('Account geautoriseerd', 'Succes');
         }else{
-          this.toastr.success('Account gedeauthoriseerd', 'Succes');
+          this.toastr.success('Account autorisatie ontzegt', 'Succes');
         }
       },
       error: (error) => {
