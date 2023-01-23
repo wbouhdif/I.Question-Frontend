@@ -14,7 +14,7 @@ export class QuestionnairesComponent implements OnInit {
   questionnaires: Questionnaire[] = [];
   selectedQuestionnaire: any;
 
-  constructor(private httpService: HttpService, private router: Router, private userService: UserService) {}
+  constructor(private httpService: HttpService, private router: Router, public userService: UserService) {}
 
   ngOnInit() {
     this.assignQuestionnaires()
@@ -70,4 +70,7 @@ export class QuestionnairesComponent implements OnInit {
     this.selectedQuestionnaire === questionnaire ? this.selectedQuestionnaire = undefined : this.selectedQuestionnaire = questionnaire;
   }
 
+  accountIsCaregiver() {
+    return this.userService.getActiveAccount()?.type?.name == 'Caregiver';
+  }
 }

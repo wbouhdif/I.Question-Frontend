@@ -3,10 +3,10 @@
   <div class="flex">
     <h2>Vragenlijsten</h2>
     <div class="button-box">
-      <button [disabled]="selectedQuestionnaire == undefined" class="button-secondary px-3" (click)="deleteQuestionnaire()"><mat-icon>delete</mat-icon>Verwijderen</button>
-      <button [disabled]="selectedQuestionnaire == undefined" class="button-primary px-3" (click)="editQuestionnaire()"><mat-icon>edit</mat-icon>Aanpassen</button>
+      <button [hidden]="accountIsCaregiver()" [disabled]="selectedQuestionnaire == undefined" class="button-secondary px-3" (click)="deleteQuestionnaire()"><mat-icon>delete</mat-icon>Verwijderen</button>
+      <button [hidden]="accountIsCaregiver()" [disabled]="selectedQuestionnaire == undefined" class="button-primary px-3" (click)="editQuestionnaire()"><mat-icon>edit</mat-icon>Aanpassen</button>
       <button [disabled]="selectedQuestionnaire == undefined" class="button-primary px-3" (click)="answerQuestionnaire()"><mat-icon>list</mat-icon>Invullen</button>
-      <button class="button-primary px-3" (click)="createQuestionnaire()"><mat-icon>add</mat-icon>Vragenlijst Aanmaken</button>
+      <button [hidden]="accountIsCaregiver()" class="button-primary px-3" (click)="createQuestionnaire()"><mat-icon>add</mat-icon>Vragenlijst Aanmaken</button>
     </div>
   </div>
   <hr>

@@ -23,4 +23,8 @@ export class NavbarComponent implements OnInit {
   logOut() {
     this.userService.logOut();
   }
+
+  accountIsAdmin() {
+    return this.userService.getActiveAccount()?.type?.name == 'Admin';
+  }
 }
