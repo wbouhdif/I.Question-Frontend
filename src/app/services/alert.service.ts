@@ -10,7 +10,7 @@ export class AlertService {
 
   fireWarning(text: string) {
     return swal.fire({
-      title: 'Weet je het zeker?',
+      title: 'Weet u het zeker?',
       text: text,
       icon: 'warning',
       iconColor: '#e95c4b',

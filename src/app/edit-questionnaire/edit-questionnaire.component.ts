@@ -274,7 +274,7 @@ export class EditQuestionnaireComponent implements OnInit {
   }
 
   showDeleteQuestionAlert() {
-    this.alertService.fireWarning('Je staat op het punt om de vraag: ' + '"' + this.selectedQuestion.text + '"' + ' te verwijderen. Je kan dit niet ongedaan maken!')
+    this.alertService.fireWarning('U staat op het punt om de vraag: ' + '"' + this.selectedQuestion.text + '"' + ' te verwijderen. U kunt dit niet ongedaan maken!')
       .then((result) => {
       if(result.isConfirmed){
         this.deleteQuestion()

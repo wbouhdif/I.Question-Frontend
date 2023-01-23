@@ -40,10 +40,10 @@ export class AnsweredQuestionnairesComponent implements OnInit {
 
   showDeleteAlert() {
     this.alertService.fireWarning(
-      'Je staat op het punt om de vragenlijst: '
+      'U staat op het punt om de vragenlijst: '
       + '"' + this.selectedQuestionnaire.questionnaire.name + '", ingevuld door: '
       + '"' + this.selectedQuestionnaire.clientName + '"'
-      + ' te verwijderen. Je kan dit niet ongedaan maken!',)
+      + ' te verwijderen. U kunt dit niet ongedaan maken!',)
       .then((result) => {
       if(result.isConfirmed){
         this.delete()

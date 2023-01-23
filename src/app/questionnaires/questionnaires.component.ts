@@ -64,7 +64,7 @@ export class QuestionnairesComponent implements OnInit {
   }
 
   showDeleteAlert() {
-    this.alertService.fireWarning('Je staat op het punt om de vragenlijst: ' + '"' + this.selectedQuestionnaire.name + '"' + ' te verwijderen. Je kan dit niet ongedaan maken!')
+    this.alertService.fireWarning('U staat op het punt om de vragenlijst: ' + '"' + this.selectedQuestionnaire.name + '"' + ' te verwijderen. U kunt dit niet ongedaan maken!')
       .then((result) => {
       if(result.isConfirmed){
         this.deleteQuestionnaire()
