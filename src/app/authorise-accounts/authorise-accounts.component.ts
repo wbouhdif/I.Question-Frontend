@@ -64,20 +64,11 @@ export class AuthoriseAccountsComponent {
       }
 
   showDeleteAccountWarning(account: Account){
-  swal.fire({
-    title: 'Weet je het zeker?',
-    text: 'Je staat op het punt om het account van ' + account.firstName + ' ' + account.lastName + ' te verwijderen. Je kan dit niet ongedaan maken!',
-    icon: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'Ja, verwijder het',
-    cancelButtonText: 'Nee, annuleer het'
-  }).then((result) => {
-    if(result.isConfirmed){
-      this.deleteAccount(account)
-    }
-  })}
+    this.alertservice.fireWarning('Je staat op het punt om het account van ' + account.firstName + ' ' + account.lastName + ' te verwijderen. Je kan dit niet ongedaan maken!')
+      .then((result) => {
+        if(result.isConfirmed){
+          this.deleteAccount(account)}
+      })}
 
   setSelectedAccount(account: Account) {
     if(this.selectedAccount === account) {
