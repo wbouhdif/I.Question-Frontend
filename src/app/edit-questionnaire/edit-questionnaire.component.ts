@@ -6,6 +6,7 @@ import {ToastrService} from "ngx-toastr";
 import {EmployedQuestion} from "../shared/employed-question.model";
 import {UserService} from "../services/user.service";
 import {Question} from "../shared/question.model";
+import {AlertService} from "../services/alert.service";
 
 @Component({
   selector: 'app-edit-questionnaire',
@@ -35,7 +36,8 @@ export class EditQuestionnaireComponent implements OnInit {
               private httpService: HttpService,
               private toastr: ToastrService,
               private userService: UserService,
-              private route: ActivatedRoute
+              private route: ActivatedRoute,
+              private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -239,6 +241,15 @@ export class EditQuestionnaireComponent implements OnInit {
   setSelectedEmployedQuestion(employedQuestion: EmployedQuestion) {
     this.selectedEmployedQuestion === employedQuestion ? this.selectedEmployedQuestion = undefined : this.selectedEmployedQuestion = employedQuestion;
     this.selectedQuestion = undefined
+  }
+
+  showDeleteQuestionAlert() {
+    this.alertService.fireWarning('Je staat op het punt om de vraag: ' + '"' + this.selectedQuestion.text + '"' + ' te verwijderen. Je kan dit niet ongedaan maken!')
+      .then((result) => {
+      if(result.isConfirmed){
+        this.deleteQuestion()
+      }
+    })
   }
 
 }
