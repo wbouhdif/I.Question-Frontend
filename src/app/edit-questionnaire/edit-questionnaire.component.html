@@ -18,7 +18,7 @@
   <div class="middle gap-4">
     <div class="form-group-vertical">
       <div class="flex">
-        <h3 class="">Vragen in vragenlijst</h3>
+        <h3>Vragen in vragenlijst</h3>
         <div class="button-box">
           <button
             [disabled]="selectedEmployedQuestion === undefined || this.employedQuestions.indexOf(selectedEmployedQuestion) == 0"
@@ -49,7 +49,7 @@
       <app-table [columns]="['#', 'Vraag', 'Type', 'Optioneel']" [height]="75">
         <tr *ngFor="let employedQuestion of this.employedQuestions"
             class="table-item"
-            (click)="selectedEmployedQuestion === employedQuestion ? selectedEmployedQuestion = undefined : selectedEmployedQuestion = employedQuestion; selectedQuestion = undefined"
+            (click)="setSelectedEmployedQuestion(employedQuestion)"
             [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
           <th class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}" scope="row"> {{ this.employedQuestions.indexOf(employedQuestion) + 1 }} </th>
           <td class="column px-4" [ngStyle]="selectedEmployedQuestion === employedQuestion ? {'color': 'white'} : {}"> {{ employedQuestion.question?.text }} </td>
@@ -60,7 +60,7 @@
     </div>
     <div class="form-group-vertical">
       <div class="flex">
-        <h3 class="">Vragen</h3>
+        <h3>Vragen</h3>
         <div class="button-box">
           <button class="button-primary px-3" [disabled]="selectedQuestion === undefined" (click)="addEmployedQuestion()"><mat-icon>add_circle</mat-icon>Toevoegen</button>
           <button class="button-primary px-3" (click)="createQuestion()"><mat-icon>build</mat-icon>Vraag Aanmaken</button>
@@ -70,7 +70,7 @@
       <app-table [columns]="['Vraag', 'Type']" [height]="75">
         <tr *ngFor="let question of this.questions"
             class="table-item"
-            (click)="selectedQuestion === question ? selectedQuestion = undefined : selectedQuestion = question; selectedEmployedQuestion = undefined"
+            (click)="setSelectedQuestion(question)"
             [ngStyle]="selectedQuestion === question ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
           <th class="column px-4" [ngStyle]="selectedQuestion === question ? {'color': 'white'} : {}" scope="row"> {{ question.text}} </th>
           <td class="column px-4" [ngStyle]="selectedQuestion === question ? {'color': 'white'} : {}"> {{ question.type === "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>

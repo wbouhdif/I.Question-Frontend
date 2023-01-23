@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 <body class="mx-5 my-3">
 <div class="flex">
-  <h3>Beantwoorde Vragenlijsten</h3>
+  <h2>Beantwoorde Vragenlijsten</h2>
   <div class="button-box">
     <button class="button-secondary px-3" [disabled]="selectedQuestionnaire == undefined" (click)="delete()"><mat-icon>delete</mat-icon>Verwijderen</button>
   </div>
@@ -10,7 +10,7 @@
 <app-table [columns]="['Vragenlijst', 'Cliënt', 'Datum Ingevuld']" [height]="80">
   <tr *ngFor="let answeredQuestionnaire of answeredQuestionnaires"
       class="questionnaire"
-      (click)="selectedQuestionnaire = answeredQuestionnaire"
+      (click)="setSelectedQuestionnaire(answeredQuestionnaire)"
       [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}">
     <th class="column px-4" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}" scope="row"> {{ answeredQuestionnaire.questionnaire?.name }} </th>
     <td class="column px-4" [ngStyle]="selectedQuestionnaire === answeredQuestionnaire ? {'color': 'white'}: {}"> {{ answeredQuestionnaire.clientName }} </td>

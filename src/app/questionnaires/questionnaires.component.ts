@@ -66,4 +66,8 @@ export class QuestionnairesComponent implements OnInit {
     this.router.navigate(['answer-questionnaire', this.selectedQuestionnaire.id]);
   }
 
+  setSelectedQuestionnaire(questionnaire: Questionnaire) {
+    this.selectedQuestionnaire === questionnaire ? this.selectedQuestionnaire = undefined : this.selectedQuestionnaire = questionnaire;
+  }
+
 }
