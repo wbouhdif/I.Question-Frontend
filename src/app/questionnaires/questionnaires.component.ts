@@ -3,6 +3,7 @@ import { Questionnaire } from "../shared/questionnaire.model";
 import { HttpService } from "../services/http.service";
 import { Router } from "@angular/router";
 import { UserService } from "../services/user.service";
+import {AlertService} from "../services/alert.service";
 
 @Component({
   selector: 'app-questionnaires',
@@ -14,7 +15,7 @@ export class QuestionnairesComponent implements OnInit {
   questionnaires: Questionnaire[] = [];
   selectedQuestionnaire: any;
 
-  constructor(private httpService: HttpService, private router: Router, public userService: UserService) {}
+  constructor(private httpService: HttpService, private router: Router, private userService: UserService, private alertService: AlertService) {}
 
   ngOnInit() {
     this.assignQuestionnaires()
@@ -59,6 +60,15 @@ export class QuestionnairesComponent implements OnInit {
     this.httpService.delete('questionnaire/' + this.selectedQuestionnaire.id).subscribe({
       next: (response) => { this.assignQuestionnaires(); this.selectedQuestionnaire = undefined },
       error: (error) => console.log(error)
+    })
+  }
+
+  showDeleteAlert() {
+    this.alertService.fireWarning('Je staat op het punt om de vragenlijst: ' + '"' + this.selectedQuestionnaire.name + '"' + ' te verwijderen. Je kan dit niet ongedaan maken!')
+      .then((result) => {
+      if(result.isConfirmed){
+        this.deleteQuestionnaire()
+      }
     })
   }
 
