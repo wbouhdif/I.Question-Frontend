@@ -58,7 +58,10 @@ export class QuestionnairesComponent implements OnInit {
 
   deleteQuestionnaire() {
     this.httpService.delete('questionnaire/' + this.selectedQuestionnaire.id).subscribe({
-      next: (response) => { this.assignQuestionnaires(); this.selectedQuestionnaire = undefined },
+      next: (response) => {
+        this.questionnaires.splice(this.questionnaires.indexOf(this.selectedQuestionnaire), 1);
+        this.selectedQuestionnaire = undefined;
+      },
       error: (error) => console.log(error)
     })
   }
