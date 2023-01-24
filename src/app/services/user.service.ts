@@ -9,7 +9,7 @@ import {ToastrService} from "ngx-toastr";
 export class UserService {
 
   private activeAccount: Account | undefined;
-  private jwtToken: string | undefined;
+  private jwtToken: any;
 
   constructor(private router: Router, private toastr: ToastrService) { }
 
@@ -43,11 +43,8 @@ export class UserService {
   }
 
   getJwtToken() {
-    let jwtToken = sessionStorage.getItem('jwt-token');
-    if (jwtToken == undefined) {
-      this.router.navigate(['login']);
-      return;
-    }
+    let jwtToken: any = sessionStorage.getItem('jwt-token');
+    jwtToken = JSON.parse(jwtToken);
     this.jwtToken = jwtToken;
 
     return this.jwtToken;
