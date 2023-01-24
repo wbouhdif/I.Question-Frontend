@@ -9,6 +9,7 @@ import {ToastrService} from "ngx-toastr";
 export class UserService {
 
   private activeAccount: Account | undefined;
+  private jwtToken: string | undefined;
 
   constructor(private router: Router, private toastr: ToastrService) { }
 
@@ -17,8 +18,14 @@ export class UserService {
     sessionStorage.setItem('active-account', JSON.stringify(activeAccount));
   }
 
+  setJwtToken(jwtToken: string) {
+    this.jwtToken = jwtToken;
+    sessionStorage.setItem('jwt-token', JSON.stringify(jwtToken))
+  }
+
   logOut() {
     sessionStorage.removeItem('active-account');
+    sessionStorage.removeItem('jwt-token');
     this.toastr.success('Succesvol uitgelogd', 'Succes')
   }
 
@@ -33,5 +40,17 @@ export class UserService {
     this.activeAccount = activeAccount;
 
     return this.activeAccount;
+  }
+
+  getJwtToken() {
+    let jwtToken = sessionStorage.getItem('jwt-token');
+    if (jwtToken == undefined) {
+      this.router.navigate(['login']);
+      return;
+    }
+    this.jwtToken = jwtToken;
+
+    return this.jwtToken;
+
   }
 }
