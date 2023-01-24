@@ -15,14 +15,12 @@ export class LoginComponent {
 
   constructor(private httpService: HttpService, private userService: UserService, private router: Router, private toastr: ToastrService) {}
 
-  account = new Account();
   statusCode: any;
   password = "";
   email = "";
   logInCalled = false;
 
   logIn() {
-    this.account = new Account();
     this.statusCode = undefined;
     this.logInCalled = true;
 
@@ -36,27 +34,22 @@ export class LoginComponent {
 
   postCredentials() {
     this.httpService.post("auth/login", new LoginCredentials(this.email, this.password)).subscribe({
-      next: () => {
-        this.checkAuthorised(this.email);
-      },
-      error: () => this.toastr.error('Deze combinatie van e-mailadres en wachtwoord komt niet voor in het systeem.', 'Error')
-    });
-  }
-
-  checkAuthorised(email: string) {
-    this.httpService.get("account/email=" + email).subscribe({
       next: (response) => {
-        Object.assign(this.account, response.body);
-        this.account.authorised ? this.onLoginSuccessful() : this.toastr.error('Het account waarop u probeert in te loggen is niet geautoriseerd.', 'Error');
-      },
-      error: (error) => console.log(error)
-    });
-  }
 
-  onLoginSuccessful() {
-    this.toastr.success('Succesvol ingelogd', 'Succes');
-    this.userService.setActiveAccount(this.account);
-    this.router.navigate(['questionnaires']);
+        this.userService.setActiveAccount(response.body.account);
+        this.userService.setJwtToken(response.body.token);
+
+        this.toastr.success('Succesvol ingelogd', 'Succes');
+        this.router.navigate(['questionnaires']);
+      },
+      error: (error) => {
+        if (error.status == 401) {
+          this.toastr.error('Het account waarop u probeert in te loggen is niet geautoriseerd.', 'Error');
+        } else if (error.status == 406) {
+          this.toastr.error('Deze combinatie van e-mailadres en wachtwoord komt niet voor in het systeem.', 'Error');
+        }
+      }
+    });
   }
 
 }
