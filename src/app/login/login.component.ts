@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {HttpService} from "../services/http.service";
 import {LoginCredentials} from "../shared/login-credentials.model";
 import {UserService} from "../services/user.service";
-import {Account} from "../shared/account.model";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 
@@ -39,7 +38,7 @@ export class LoginComponent {
         this.userService.setActiveAccount(response.body.account);
         this.userService.setJwtToken(response.body.token);
 
-        this.toastr.success('Succesvol ingelogd', 'Succes');
+        this.toastr.success('Succesvol ingelogd.', 'Succes');
         this.router.navigate(['questionnaires']);
       },
       error: (error) => {
