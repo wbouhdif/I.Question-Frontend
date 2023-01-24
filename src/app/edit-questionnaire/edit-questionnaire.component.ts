@@ -219,42 +219,12 @@ export class EditQuestionnaireComponent implements OnInit {
   }
 
   deleteQuestion() {
-    if (this.selectedQuestion.type == 'MULTIPLE_CHOICE') {
-      this.deleteOptions()
-    } else {
-      this.sendDeleteQuestionRequest();
-    }
-  }
-
-  deleteOptions() {
-    this.httpService.get('option/question=' + this.selectedQuestion.id).subscribe({
-      next: (response) => {
-        for (let option of response.body) {
-          this.deleteOption(option.id, response.body.indexOf(option) == response.body.length - 1);
-        }
-      },
-      error: (error) => { (console.log(error)) }
-    })
-  }
-
-  deleteOption(optionId: string, isLastOption: boolean) {
-    this.httpService.delete('option/' + optionId).subscribe({
-      next: () => {
-        if (isLastOption) {
-          this.sendDeleteQuestionRequest();
-        }
-      },
-      error: (error) => { console.log(error) }
-    })
-  }
-
-  sendDeleteQuestionRequest() {
     this.httpService.delete('question/' + this.selectedQuestion.id).subscribe({
       next: () => {
         this.questions.splice(this.questions.indexOf(this.selectedQuestion), 1);
       },
-      error: (error) => {
-        error.status == 500 ? this.toastr.error("Deze vraag wordt nog gebruikt in één of meerdere vragenlijsten.", 'Vraag nog in gebruik!') : console.log(error);
+      error: () => {
+        this.toastr.error("Deze vraag wordt nog in één of meerdere vragenlijsten gebruikt.", 'Vraag nog in gebruik!');
       }
     })
   }
