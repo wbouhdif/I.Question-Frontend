@@ -1,39 +1,35 @@
-<form class="form">
-  <h1>Registreren</h1>
-  <hr>
-  <div class="form-group-vertical">
+ <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+    <h1>Registreren</h1>
+    <hr>
+  <div>
     <label>Naam</label>
     <div class="form-group-horizontal">
-      <input type="text" class="field-primary" id="voornaam" name="voornaam" placeholder="Voornaam"  required #firstName>
-      <input type="text" class="field-primary" id="achternaam" name="achternaam" placeholder="Achternaam" #lastName required>
+      <input type="text" class="field-primary" formControlName="firstName" placeholder="Voornaam">
+      <input type="text" class="field-primary" formControlName="lastName" placeholder="Achternaam">
     </div>
   </div>
   <div class="form-group-vertical">
-    <label for="email">E-mailadres</label>
-    <input type="email" class="field-primary" id="email" placeholder="E-mailadres" #email required>
+    <label>E-mailadres</label>
+    <input type="email" class="field-primary" formControlName="email" placeholder="E-mailadres" >
   </div>
   <div class="form-group-vertical">
-    <label for="password">Wachtwoord</label>
-    <input type="password" class="field-primary" id="password" placeholder="Wachtwoord" #password required>
+    <label>Wachtwoord</label>
+    <input type="password" class="field-primary" formControlName="password" placeholder="Wachtwoord">
+
   </div>
   <div class="form-group-vertical">
-    <label for="passwordRepeat">Wachtwoord herhalen</label>
-    <input type="password" class="field-primary" id="passwordRepeat" placeholder="Wachtwoord herhalen" #confirmPassword >
+    <input type="password" class="field-primary" formControlName="confirmPassword" placeholder="Wachtwoord herhalen">
   </div>
 
   <div class="form-group-vertical">
-    <label>Selecteer je rol:</label>
+    <label>Rol</label>
     <div class="form-group-horizontal">
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="radioRole" id="spineRadioButton" value="spine" [(ngModel)]="valueCheckBox" required>
-        <label class="form-check-label" for="spineRadioButton" style="font-weight: normal">Spine-medewerker</label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="radioRole" id="caregiverRadioButton" value="caregiver" [(ngModel)]="valueCheckBox">
-        <label class="form-check-label" for="caregiverRadioButton" style="font-weight: normal">Zorgverlener</label>
-      </div>
+      <select formControlName="role" class="form-select-lg">
+        <option value="" disabled selected>Selecteer uw rol</option>
+        <option *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
+      </select>
     </div>
   </div>
-  <button class="button-primary" type="submit" (click)="registerAccount(firstName.value, lastName.value, email.value, password.value, confirmPassword.value)">Registreer</button>
+  <button class="button-primary" type="submit">Registreer</button>
   <p>Heeft u al een account? <a [routerLink]="['/login']" style="text-decoration: none">Meld u zich dan aan.</a></p>
 </form>

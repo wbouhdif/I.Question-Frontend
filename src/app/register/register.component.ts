@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import {Account} from "../shared/account.model";
-import { AccountType } from "../shared/account-type.model";
-import {HttpService} from "../services/http.service";
+import { HttpService} from "../services/http.service";
+import { FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -10,12 +9,22 @@ import {HttpService} from "../services/http.service";
 })
 export class RegisterComponent {
 
-  valueCheckBox = "";
-  map = new Map();
+  registerForm: FormGroup = new FormGroup({});
+
+  roles = [
+    {name: 'Zorgverlener', value: 'a0211c55-911f-4520-b240-da9f670eb976'},
+    {name: 'Spine-medewerker', value: 'd2de260f-097e-436f-85df-02419a41257a'}];
 
 
-  constructor(private httpService: HttpService) {
-
+  constructor(private httpService: HttpService, private fb: FormBuilder) {
+    this.registerForm = this.fb.group({
+      firstName: [''],
+      lastName: [''],
+      email: [''],
+      password: ['', Validators.required],
+      confirmPassword: [''],
+      role: ['']
+    })
   }
 
   registerAccount(firstName: string, lastName: string, email: string, password: string, confirmPassword: string) {
@@ -35,12 +44,8 @@ export class RegisterComponent {
     }
   }
 
-  passwordsAreEqual(password: string, confirmPassword: string) {
-    return password === confirmPassword;
-  }
+  onSubmit() {
 
-  accountTypeIsSelected() {
-    return this.valueCheckBox !== "";
   }
 
 
