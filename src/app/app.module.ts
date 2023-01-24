@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { RegisterComponent } from "./register/register.component";
 import { NavbarComponent } from './navbar/navbar.component';
 import { QuestionnairesComponent } from './questionnaires/questionnaires.component';
@@ -21,6 +21,7 @@ import { AnswerQuestionnaireComponent } from './answer-questionnaire/answer-ques
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accounts.component';
+import { PasswordStrengthComponent } from './register/password-strength/password-strength.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accou
     AnswerQuestionnaireComponent,
     PageNotFoundComponent,
     CreateQuestionComponent,
-    AuthoriseAccountsComponent
+    AuthoriseAccountsComponent,
+    PasswordStrengthComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accou
     MatIconModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

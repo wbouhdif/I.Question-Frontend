@@ -27,36 +27,40 @@ export class RegisterComponent {
     })
   }
 
-  registerAccount(firstName: string, lastName: string, email: string, password: string, confirmPassword: string) {
-    if (this.fieldsAreFilled(firstName, lastName, email, password, confirmPassword) && this.passwordsAreEqual(password, confirmPassword) && this.accountTypeIsSelected()) {
-      let accountType: AccountType = new AccountType(this.map.get(this.valueCheckBox), this.valueCheckBox);
-      let account: Account = new Account(undefined, email, password, firstName, lastName, false, accountType);
+  /*  registerAccount(firstName: string, lastName: string, email: string, password: string, confirmPassword: string) {
+        let account: Account = new Account(undefined, email, password, firstName, lastName, false, accountType);
 
-      this.httpService.post("account/register", account).subscribe({
-        next: (response) => {
-          console.log(response);
-        },
-        error: (error) => {
-          console.log(error);
-        }
+        this.httpService.post("account/register", account).subscribe({
+          next: (response) => {
+            console.log(response);
+          },
+          error: (error) => {
+            console.log(error);
+          }
 
-      });
-    }
-  }
+        });
+      }*/
 
   onSubmit() {
 
   }
 
-
-  fieldsAreFilled(firstName: string, lastName: string, email: string, password: string, confirmPassword: string) {
-    return firstName !== "" && lastName !== "" && email !== "" && password !== "" && confirmPassword !== "";
+  allFieldsFilled(): boolean {
+    for(let key in this.registerForm.value) {
+      if (this.registerForm.get(key)?.value == '') {
+        alert('Vul alle velden in');
+        return false;
+      }
+    }
+    return true;
   }
 
-
-  ngOnInit(): void {
-    this.map.set("spine", "d2de260f-097e-436f-85df-02419a41257a");
-    this.map.set("caregiver", "a0211c55-911f-4520-b240-da9f670eb976");
+  passwordsMatch(): boolean {
+    if (this.registerForm.get('password')?.value != this.registerForm.get('confirmPassword')?.value) {
+      alert('Wachtwoorden komen niet overeen');
+      return false;
+    }
+    return true;
   }
 
 }
