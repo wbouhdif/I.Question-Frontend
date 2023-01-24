@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Account} from "../shared/account.model";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ export class UserService {
 
   private activeAccount: Account | undefined;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private toastr: ToastrService) { }
 
   setActiveAccount(activeAccount: Account) {
     this.activeAccount = activeAccount;
@@ -18,6 +19,7 @@ export class UserService {
 
   logOut() {
     sessionStorage.removeItem('active-account');
+    this.toastr.success('Succesvol uitgelogd', 'Succes')
   }
 
   getActiveAccount() {

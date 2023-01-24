@@ -38,7 +38,7 @@ export class AnswerQuestionnaireComponent implements OnInit {
         this.answeredQuestionnaire.questionnaire = this.questionnaire;
         this.setEmployedQuestions()
       },
-      error: (error) => { this.router.navigate(['questionnaires'])}
+      error: () => { this.router.navigate(['questionnaires'])}
     })
   }
 
@@ -70,8 +70,7 @@ export class AnswerQuestionnaireComponent implements OnInit {
   }
 
   getAnswerOfEmployedQuestion(employedQuestion: EmployedQuestion): Answer {
-    let answer = (<Answer>this.answers.find(answer => answer.employedQuestion == employedQuestion));
-    return answer;
+    return (<Answer>this.answers.find(answer => answer.employedQuestion == employedQuestion));
   }
 
   submit() {
@@ -86,8 +85,10 @@ export class AnswerQuestionnaireComponent implements OnInit {
       next: (response) => {
         this.postAnswers(new AnsweredQuestionnaire(response.body));
         this.router.navigate(['questionnaires'])
-        },
-      error: (error) => { console.log(error) }
+
+        this.toastr.success('Beantwoorde vragenlijst succesvol ingediend.', 'Succes');
+      },
+      error: () => this.toastr.error('Beantwoorde vragenlijst kon niet ingediend worden.', 'Error')
     })
   }
 
@@ -113,7 +114,7 @@ export class AnswerQuestionnaireComponent implements OnInit {
     }
 
     if (unansweredQuestions.length != 0) {
-      this.toastr.error(this.constructUnansweredString(unansweredQuestions), 'Nog niet alle vragen ingevuld')
+      this.toastr.error(this.constructUnansweredString(unansweredQuestions), 'Error')
       return false;
     }
     return true;
@@ -121,7 +122,7 @@ export class AnswerQuestionnaireComponent implements OnInit {
 
   nameFilled() {
     if (this.answeredQuestionnaire.clientName == '') {
-      this.toastr.error('Voer uw naam in het naamveld in.', 'Naamveld leeg')
+      this.toastr.error('Er is nog geen naam ingevoerd.', 'Error')
       return false;
     }
     return true;

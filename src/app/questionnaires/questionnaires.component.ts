@@ -4,6 +4,7 @@ import { HttpService } from "../services/http.service";
 import { Router } from "@angular/router";
 import { UserService } from "../services/user.service";
 import {AlertService} from "../services/alert.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-questionnaires',
@@ -15,7 +16,7 @@ export class QuestionnairesComponent implements OnInit {
   questionnaires: Questionnaire[] = [];
   selectedQuestionnaire: any;
 
-  constructor(private httpService: HttpService, private router: Router, private userService: UserService, private alertService: AlertService) {}
+  constructor(private httpService: HttpService, private router: Router, private userService: UserService, private alertService: AlertService, private toastr: ToastrService) {}
 
   ngOnInit() {
     this.assignQuestionnaires()
@@ -58,11 +59,13 @@ export class QuestionnairesComponent implements OnInit {
 
   deleteQuestionnaire() {
     this.httpService.delete('questionnaire/' + this.selectedQuestionnaire.id).subscribe({
-      next: (response) => {
+      next: () => {
         this.questionnaires.splice(this.questionnaires.indexOf(this.selectedQuestionnaire), 1);
         this.selectedQuestionnaire = undefined;
+
+        this.toastr.success('Vragenlijst succesvol verwijderd.', 'Succes');
       },
-      error: (error) => console.log(error)
+      error: () => this.toastr.error('Vragenlijst kon niet verwijdered worden.','Error')
     })
   }
 

@@ -4,6 +4,7 @@ import {LoginCredentials} from "../shared/login-credentials.model";
 import {UserService} from "../services/user.service";
 import {Account} from "../shared/account.model";
 import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent {
 
-  constructor(private httpService: HttpService, private userService: UserService, private router: Router) {}
+  constructor(private httpService: HttpService, private userService: UserService, private router: Router, private toastr: ToastrService) {}
 
   account = new Account();
   statusCode: any;
@@ -34,13 +35,11 @@ export class LoginComponent {
   }
 
   postCredentials() {
-
     this.httpService.post("auth/login", new LoginCredentials(this.email, this.password)).subscribe({
-      next: (response) => {
-        this.statusCode = response.status;
+      next: () => {
         this.checkAuthorised(this.email);
       },
-      error: (error) => {this.statusCode = error.status}
+      error: () => this.toastr.error('Deze combinatie van e-mailadres en wachtwoord komt niet voor in het systeem.', 'Error')
     });
   }
 
@@ -48,15 +47,14 @@ export class LoginComponent {
     this.httpService.get("account/email=" + email).subscribe({
       next: (response) => {
         Object.assign(this.account, response.body);
-        if (this.account.authorised) {
-          this.onLoginSuccessful()
-        }
+        this.account.authorised ? this.onLoginSuccessful() : this.toastr.error('Het account waarop u probeert in te loggen is niet geautoriseerd.', 'Error');
       },
       error: (error) => console.log(error)
     });
   }
 
   onLoginSuccessful() {
+    this.toastr.success('Succesvol ingelogd', 'Succes');
     this.userService.setActiveAccount(this.account);
     this.router.navigate(['questionnaires']);
   }

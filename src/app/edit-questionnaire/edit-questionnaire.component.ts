@@ -83,7 +83,7 @@ export class EditQuestionnaireComponent implements OnInit {
         this.questionnaire = response.body;
         this.setEmployedQuestions()
       },
-      error: (error) => { this.router.navigate(['questionnaires']) }
+      error: () => { this.router.navigate(['questionnaires']) }
     })
   }
 
@@ -145,11 +145,14 @@ export class EditQuestionnaireComponent implements OnInit {
     this.httpService.post('questionnaire', this.questionnaire).subscribe({
       next: (response) => {
         this.router.navigate(['questionnaires']);
+
         this.cancelEdits();
         this.deleteEmployedQuestions();
         this.postEmployedQuestions(new Questionnaire(response.body));
+
+        this.toastr.success('Vragenlijst succesvol opgeslagen.', 'Succes')
       },
-      error: (error) => {console.log(error); this.router.navigate(['questionnaires'])}
+      error: () => this.toastr.error('Vragenlijst kon niet opgeslagen worden.', 'Error')
     })
   }
 
@@ -222,10 +225,9 @@ export class EditQuestionnaireComponent implements OnInit {
     this.httpService.delete('question/' + this.selectedQuestion.id).subscribe({
       next: () => {
         this.questions.splice(this.questions.indexOf(this.selectedQuestion), 1);
+        this.toastr.success('Vraag succesvol verwijderd.', 'Succes');
       },
-      error: () => {
-        this.toastr.error("Deze vraag wordt nog in één of meerdere vragenlijsten gebruikt.", 'Vraag nog in gebruik!');
-      }
+      error: () => this.toastr.error("Deze vraag wordt nog in één of meerdere vragenlijsten gebruikt.", 'Error')
     })
   }
 

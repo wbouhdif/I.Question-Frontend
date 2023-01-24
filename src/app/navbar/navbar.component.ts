@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../services/user.service";
-import {Account} from "../shared/account.model";
 
 @Component({
   selector: 'app-navbar',
@@ -17,8 +16,6 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.accountName = this.userService.getActiveAccount()?.firstName + " " + this.userService.getActiveAccount()?.lastName;
   }
-
-  toHome() {}
 
   logOut() {
     this.userService.logOut();

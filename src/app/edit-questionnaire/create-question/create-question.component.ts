@@ -2,6 +2,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 import {HttpService} from "../../services/http.service";
 import {Question} from "../../shared/question.model";
 import {Option} from "../../shared/option.model";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-create-question',
@@ -18,7 +19,7 @@ export class CreateQuestionComponent {
   questionText = '';
   saveCalled = false;
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private toastr: ToastrService) {}
 
   onChangeType() {
     this.multipleChoice = !this.multipleChoice;
@@ -50,8 +51,10 @@ export class CreateQuestionComponent {
           }
           this.closeWindow();
           this.setQuestionsEvent.emit();
+
+          this.toastr.success('Vraag succesvol aangemaakt.', 'Succes');
         },
-        error: (error) => console.log(error)
+        error: () => this.toastr.error('Vraag kon niet aangemaakt worden.', 'Error')
       })
     }
   }

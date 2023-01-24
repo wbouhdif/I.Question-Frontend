@@ -1,14 +1,6 @@
 <form class="form">
   <h1>Inloggen</h1>
   <hr>
-  <label class="error" [hidden]="statusCode === 200 || statusCode === undefined">
-    <h3>Er is een probleem opgetreden.</h3>
-    <p>Deze combinatie van wachtwoord en e-mailadres komt niet voor in ons systeem.</p>
-  </label>
-  <label class="error" [hidden]="account.authorised === true || account.authorised === undefined">
-    <h3>Er is een probleem opgetreden.</h3>
-    <p>Het account waarop u probeert in te loggen is niet geautoriseerd, wacht tot een admin uw account heeft geautoriseerd.</p>
-  </label>
   <div class="form-group-vertical">
     <label class="label">E-mailadres</label>
     <input [(ngModel)]="email" name="email" type="email" class="field-primary" placeholder="E-mailadres invoeren">

@@ -3,6 +3,7 @@ import {HttpService} from "../services/http.service";
 import {AnsweredQuestionnaire} from "../shared/answered-questionnaire.model";
 import {UserService} from "../services/user.service";
 import {AlertService} from "../services/alert.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-answered-questionnaires',
@@ -14,7 +15,7 @@ export class AnsweredQuestionnairesComponent implements OnInit {
   answeredQuestionnaires: AnsweredQuestionnaire[] = [];
   selectedQuestionnaire: any;
 
-  constructor(private httpService: HttpService, private userService: UserService, private alertService: AlertService) {}
+  constructor(private httpService: HttpService, private userService: UserService, private alertService: AlertService, private toastr: ToastrService) {}
 
   ngOnInit() {
     this.assignAnsweredQuestionnaires();
@@ -29,11 +30,13 @@ export class AnsweredQuestionnairesComponent implements OnInit {
 
   delete() {
     this.httpService.delete('answered_questionnaire/' + this.selectedQuestionnaire.id).subscribe({
-      next: (response) => {
+      next: () => {
         this.answeredQuestionnaires.splice(this.answeredQuestionnaires.indexOf(this.selectedQuestionnaire), 1);
         this.selectedQuestionnaire = undefined
+
+        this.toastr.success('Beantwoorde vragenlijst succesvol verwijderd.', 'Succes');
       },
-      error: (error) => console.log(error)
+      error: () => this.toastr.error('Beantwoorde vragenlijst kon niet verwijderd worden.', 'Error')
     })
   }
 
