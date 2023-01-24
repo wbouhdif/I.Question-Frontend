@@ -24,4 +24,8 @@ export class NavbarComponent implements OnInit {
   accountIsAdmin() {
     return this.userService.getActiveAccount()?.type?.name == 'Admin';
   }
+
+  accountIsCaregiver() {
+    return this.userService.getActiveAccount()?.type?.name == 'Caregiver'
+  }
 }
