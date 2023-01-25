@@ -5,7 +5,7 @@
     <div *ngFor="let employedQuestion of employedQuestions" class="question">
       <div class="question-text px-3 py-1">Vraag {{employedQuestion.position}}: {{employedQuestion.question?.text}} {{!employedQuestion.mandatory ? '(Optioneel)' : ''}}</div>
       <div *ngIf="employedQuestion.question?.type == 'MULTIPLE_CHOICE'" class="p-3">
-        <div class="radioGroup" *ngFor="let option of employedQuestion.options">
+        <div class="radioGroup p-1" *ngFor="let option of employedQuestion.options">
           <input id="{{option.text}}" [value]='option.text' type="radio" name="options{{employedQuestion.position}}" (change)="getAnswerOfEmployedQuestion(employedQuestion).setText(option.text)">
           {{option.text}}
         </div>
