@@ -57,7 +57,10 @@ export class AnswerQuestionnaireComponent implements OnInit {
   setOptions() {
     for (let employedQuestion of this.employedQuestions.filter(employedQuestion => (employedQuestion.question?.type == 'MULTIPLE_CHOICE'))) {
       this.httpService.get('option/question=' + employedQuestion.question?.id).subscribe({
-        next: (response) => { employedQuestion.options = (response.body) },
+        next: (response) => {
+          response.body.sort((a: { position: number; }, b: { position: number; }) => (a.position > b.position) ? 1 : -1);
+          employedQuestion.options = (response.body)
+        },
         error: (error) => { console.log(error) }
       })
     }

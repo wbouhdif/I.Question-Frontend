@@ -62,7 +62,7 @@ export class CreateQuestionComponent {
   postOptions(questionId: string) {
     for(let option of this.options) {
       if(option.text != '') {
-        this.httpService.post('option', new Option(undefined, option.text, new Question(questionId))).subscribe({
+        this.httpService.post('option', new Option(undefined, option.text, this.options.indexOf(option) + 1 ,new Question(questionId))).subscribe({
           next: (response) => {console.log(response)},
           error: (error) => {console.log(error)}
         })
