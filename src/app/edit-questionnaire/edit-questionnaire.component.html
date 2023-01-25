@@ -7,7 +7,7 @@
       <input #questionnaire_name_input [hidden]="!editingName" class="name-input px-3" value="{{this.questionnaire.name}}">
       <button class="button-primary icon-background" (click)="editingName ? saveName(questionnaire_name_input.value) : editName()"><mat-icon>{{editingName ? 'checkmark' : 'edit'}}</mat-icon></button>
       <button [hidden]="!editingName" class="button-primary icon-background" (click)="cancelNameEditing()"><mat-icon>clear</mat-icon></button>
-      <input [hidden]="true" class="position-absolute" class="field-primary" [(ngModel)]="questionnaire.name">
+      <input [hidden]="true" class="position-absolute field-primary" [(ngModel)]="questionnaire.name">
     </div>
     <div class="button-box">
       <button class="button-primary px-3" (click)="saveEdits()"><mat-icon>save</mat-icon>Opslaan</button>
@@ -73,7 +73,15 @@
             (click)="setSelectedQuestion(question)"
             [ngStyle]="selectedQuestion === question ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}" [ngClass]="selectedQuestion == question ? 'white' : 'black'">
           <td class="column px-4"> {{ question.text}} </td>
-          <td class="column px-4"> {{ question.type === "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>
+          <td class="column px-4">
+            {{ question.type === "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }}
+            <div [hidden]="selectedQuestion != question" class="option-box p-2" *ngFor="let option of question.options">
+              <div class="multiple-choice-container">
+                <div class="fw-semibold">{{'ABCD'[option.position - 1]}}.</div>
+                <div>{{option.text}}</div>
+              </div>
+            </div>
+          </td>
         </tr>
       </app-table>
     </div>

@@ -209,7 +209,10 @@ export class EditQuestionnaireComponent implements OnInit {
 
   setQuestions() {
     this.httpService.get('question').subscribe({
-      next: (response) => {Object.assign(this.questions, response.body)},
+      next: (response) => {
+        Object.assign(this.questions, response.body);
+        this.setOptions();
+      },
       error: (error) => {console.log(error)}
     })
   }
@@ -252,6 +255,18 @@ export class EditQuestionnaireComponent implements OnInit {
         this.deleteQuestion()
       }
     })
+  }
+
+  setOptions() {
+    for (let question of this.questions.filter(question => (question.type == 'MULTIPLE_CHOICE'))) {
+      this.httpService.get('option/question=' + question.id).subscribe({
+        next: (response) => {
+          response.body.sort((a: { position: number; }, b: { position: number; }) => (a.position > b.position) ? 1 : -1);
+          question.options = (response.body)
+        },
+        error: (error) => { console.log(error) }
+      })
+    }
   }
 
 }
