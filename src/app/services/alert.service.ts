@@ -21,4 +21,15 @@ export class AlertService {
       cancelButtonText: 'Nee, annuleer het',
     })
   }
+
+  fireSuccess(text: string) {
+    return swal.fire({
+      title: 'Gelukt!',
+      text: text,
+      icon: 'success',
+      iconColor: 'green',
+      confirmButtonColor: '#1d2951',
+      confirmButtonText: 'Ok',
+    })
+  }
 }

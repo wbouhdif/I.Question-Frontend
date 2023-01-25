@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import {Account} from "../shared/account.model";
 import {HttpService} from "../services/http.service";
 import {ToastrService} from "ngx-toastr";
-import swal from 'sweetalert2';
 import {AlertService} from "../services/alert.service";
 
 @Component({
