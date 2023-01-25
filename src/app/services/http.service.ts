@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { jsonIgnoreReplacer} from "json-ignore";
 import {UserService} from "./user.service";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
-  private apiPath: string = 'http://localhost:8080/api/';
+  private apiPath: string = environment.apiUrl;
 
   constructor(private http: HttpClient, private userService: UserService) { }
 
