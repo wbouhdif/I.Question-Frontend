@@ -11,6 +11,9 @@ export class RegisterComponent {
 
   registerForm: FormGroup = new FormGroup({});
 
+  passwordIsValid = false;
+
+
   roles = [
     {name: 'Zorgverlener', value: 'a0211c55-911f-4520-b240-da9f670eb976'},
     {name: 'Spine-medewerker', value: 'd2de260f-097e-436f-85df-02419a41257a'}];
@@ -61,6 +64,10 @@ export class RegisterComponent {
       return false;
     }
     return true;
+  }
+
+  passwordValid(event: boolean) {
+    this.passwordIsValid = event;
   }
 
 }

@@ -15,7 +15,7 @@
   <div class="form-group-vertical">
     <label>Wachtwoord</label>
     <input type="password" class="field-primary" formControlName="password" placeholder="Wachtwoord">
-
+    <app-password-requirments [passwordToCheck]="registerForm.get('password')?.value" (passwordStrength)="passwordValid($event)"></app-password-requirments>
   </div>
   <div class="form-group-vertical">
     <input type="password" class="field-primary" formControlName="confirmPassword" placeholder="Wachtwoord herhalen">
@@ -30,6 +30,6 @@
       </select>
     </div>
   </div>
-  <button class="button-primary" type="submit">Registreer</button>
+  <button class="button-primary" type="submit" [disabled]="!passwordIsValid">Registreer</button>
   <p>Heeft u al een account? <a [routerLink]="['/login']" style="text-decoration: none">Meld u zich dan aan.</a></p>
 </form>

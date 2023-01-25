@@ -21,7 +21,7 @@ import { AnswerQuestionnaireComponent } from './answer-questionnaire/answer-ques
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accounts.component';
-import { PasswordStrengthComponent } from './register/password-strength/password-strength.component';
+import { PasswordRequirmentsComponent } from './register/password-requirments/password-requirments.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +38,7 @@ import { PasswordStrengthComponent } from './register/password-strength/password
     PageNotFoundComponent,
     CreateQuestionComponent,
     AuthoriseAccountsComponent,
-    PasswordStrengthComponent
+    PasswordRequirmentsComponent
   ],
   imports: [
     BrowserModule,
