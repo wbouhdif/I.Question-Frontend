@@ -19,6 +19,7 @@ import { CreateQuestionComponent } from './edit-questionnaire/create-question/cr
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { AnswerQuestionnaireComponent } from './answer-questionnaire/answer-questionnaire.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {QuestionnaireAnswersComponent} from "./questionnaire-answers/questionnaire-answers.component";
 
 import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accounts.component';
 import { PasswordRequirementsComponent } from './register/password-requirements/password-requirements.component';
@@ -38,7 +39,8 @@ import { PasswordRequirementsComponent } from './register/password-requirements/
     PageNotFoundComponent,
     CreateQuestionComponent,
     AuthoriseAccountsComponent,
-    PasswordRequirementsComponent
+    PasswordRequirementsComponent,
+    QuestionnaireAnswersComponent
   ],
   imports: [
     BrowserModule,

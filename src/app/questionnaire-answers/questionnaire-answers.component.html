@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<body class ="mx-5 my-3">
+<div class="flex">
+  <h2>{{answeredQuestionnaire.questionnaire?.name}} door {{answeredQuestionnaire.clientName}}</h2>
+  <div class="button-box">
+    <button class="button-primary px-3" (click)="returnToAnsweredQuestionnaires()"><mat-icon>keyboard_return</mat-icon>Terug</button>
+  </div>
+</div>
+
+<hr>
+<app-table [columns]="['#','Vraag', 'Antwoord']" [height]="80">
+  <tr *ngFor="let questionnaireAnswer of questionnaireAnswers"
+    class="questionnaire-answers">
+    <th class="px-4" scope="row" >{{questionnaireAnswer.employedQuestion?.position}}</th>
+    <td class="px-4">{{questionnaireAnswer.employedQuestion?.question.text}}</td>
+    <td class="px-4">{{questionnaireAnswer.text}}</td>
+  </tr>
+</app-table>
+
+</body>
