@@ -6,9 +6,10 @@ import { QuestionnairesComponent } from "./questionnaires/questionnaires.compone
 import { AnsweredQuestionnairesComponent } from "./answered-questionnaires/answered-questionnaires.component";
 import { EditQuestionnaireComponent } from "./edit-questionnaire/edit-questionnaire.component";
 import { AnswerQuestionnaireComponent } from "./answer-questionnaire/answer-questionnaire.component";
-import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
-import {AuthoriseAccountsComponent} from "./authorise-accounts/authorise-accounts.component";
-import {QuestionnaireAnswersComponent} from "./questionnaire-answers/questionnaire-answers.component";
+import { PageNotFoundComponent } from "./page-not-found/page-not-found.component";
+import { AuthoriseAccountsComponent } from "./authorise-accounts/authorise-accounts.component";
+import { QuestionnaireAnswersComponent } from "./questionnaire-answers/questionnaire-answers.component";
+import { ResetPasswordComponent } from "./reset-password/reset-password.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'answer-questionnaire/:id', component: AnswerQuestionnaireComponent },
   { path: 'account-management', component: AuthoriseAccountsComponent },
   { path: 'questionnaire-answers/:id', component: QuestionnaireAnswersComponent},
+  { path: 'password-reset', component: ResetPasswordComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
