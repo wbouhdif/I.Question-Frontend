@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, SimpleChange} from '@angular/core';
 import { HttpService} from "../services/http.service";
 import { FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 

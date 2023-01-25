@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnChanges, Output, SimpleChange} from '@angular/core';
 
 @Component({
-  selector: 'app-password-requirments',
-  templateUrl: './password-requirments.component.html',
-  styleUrls: ['./password-requirments.component.scss']
+  selector: 'app-password-requirements',
+  templateUrl: './password-requirements.component.html',
+  styleUrls: ['./password-requirements.component.scss']
 })
-export class PasswordRequirmentsComponent implements OnChanges {
+export class PasswordRequirementsComponent implements OnChanges {
   @Input() public passwordToCheck: string;
   @Output() passwordStrength = new EventEmitter<boolean>();
 
@@ -41,8 +41,6 @@ export class PasswordRequirmentsComponent implements OnChanges {
 
 
   ngOnChanges(changes: { [propName: string]: SimpleChange }): void {
-
-
     this.resetBarColors();
     const score = this.checkStrength(changes['passwordToCheck'].currentValue);
     this.setBarColors(score);
@@ -55,7 +53,7 @@ export class PasswordRequirmentsComponent implements OnChanges {
       if(score > 0 ){
         this.msg = 'Uw wachtwoord voldoet niet aan de eisen van het wachtwoord'
       }else{
-        this.msg = 'Een wachtwoord moet minimaal 10 tekens bevatten en moet minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken bevatten';
+        this.msg = 'Een wachtwoord moet minimaal 10 tekens bevatten en minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken';
       }
       this.passwordStrength.emit(false);
     }
