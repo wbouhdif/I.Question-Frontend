@@ -72,7 +72,7 @@
             class="table-item"
             (click)="setSelectedQuestion(question)"
             [ngStyle]="selectedQuestion === question ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}" [ngClass]="selectedQuestion == question ? 'white' : 'black'">
-          <th class="column px-4" scope="row"> {{ question.text}} </th>
+          <td class="column px-4"> {{ question.text}} </td>
           <td class="column px-4"> {{ question.type === "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }} </td>
         </tr>
       </app-table>
