@@ -1,6 +1,9 @@
 import {Component, SimpleChange} from '@angular/core';
 import { HttpService} from "../services/http.service";
 import { FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {ToastrService} from "ngx-toastr";
+import {Account} from "../shared/account.model";
+import {AccountType} from "../shared/account-type.model";
 
 @Component({
   selector: 'app-register',
@@ -12,6 +15,7 @@ export class RegisterComponent {
   registerForm: FormGroup = new FormGroup({});
 
   passwordIsValid = false;
+  emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 
   roles = [
@@ -19,12 +23,12 @@ export class RegisterComponent {
     {name: 'Spine-medewerker', value: 'd2de260f-097e-436f-85df-02419a41257a'}];
 
 
-  constructor(private httpService: HttpService, private fb: FormBuilder) {
+  constructor(private httpService: HttpService, private fb: FormBuilder, private toastr: ToastrService) {
     this.registerForm = this.fb.group({
       firstName: [''],
       lastName: [''],
       email: [''],
-      password: ['', Validators.required],
+      password: [''],
       confirmPassword: [''],
       role: ['']
     })
@@ -61,6 +65,14 @@ export class RegisterComponent {
   passwordsMatch(): boolean {
     if (this.registerForm.get('password')?.value != this.registerForm.get('confirmPassword')?.value) {
       alert('Wachtwoorden komen niet overeen');
+      return false;
+    }
+    return true;
+  }
+
+  emailIsValid() {
+    if(!this.emailRegex.test(this.registerForm.get('email')?.value)) {
+      this.toastr.error('Vul een geldig email adres in', 'Error');
       return false;
     }
     return true;
