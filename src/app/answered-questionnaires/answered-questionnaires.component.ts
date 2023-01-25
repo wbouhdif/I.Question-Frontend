@@ -4,6 +4,7 @@ import {AnsweredQuestionnaire} from "../shared/answered-questionnaire.model";
 import {UserService} from "../services/user.service";
 import {AlertService} from "../services/alert.service";
 import {ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-answered-questionnaires',
@@ -15,7 +16,7 @@ export class AnsweredQuestionnairesComponent implements OnInit {
   answeredQuestionnaires: AnsweredQuestionnaire[] = [];
   selectedQuestionnaire: any;
 
-  constructor(private httpService: HttpService, private userService: UserService, private alertService: AlertService, private toastr: ToastrService) {}
+  constructor(private httpService: HttpService, private userService: UserService, private alertService: AlertService, private toastr: ToastrService, private router: Router) {}
 
   ngOnInit() {
     this.assignAnsweredQuestionnaires();
@@ -55,6 +56,10 @@ export class AnsweredQuestionnairesComponent implements OnInit {
         this.delete()
       }
     })
+  }
+
+  inspect(){
+    this.router.navigate(['questionnaire-answers/' + this.selectedQuestionnaire.id])
   }
 
 }

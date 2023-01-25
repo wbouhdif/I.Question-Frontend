@@ -4,15 +4,17 @@ import {HttpService} from "../services/http.service";
 import {UserService} from "../services/user.service";
 import {Questionnaire} from "../shared/questionnaire.model";
 import {ActivatedRoute} from "@angular/router";
+import {AnsweredQuestionnaire} from "../shared/answered-questionnaire.model";
+import {Answer} from "../shared/answer.model";
 
 @Component({
   selector: 'app-questionnaire-answers',
-  templateUrl: './questionnnaire-answers.component.html',
+  templateUrl: './questionnaire-answers.component.html',
   styleUrls: ['./questionnaire-answers.component.scss']
 })
 export class QuestionnaireAnswersComponent implements OnInit{
 
-  questionnaire: Questionnaire | any;
+  answeredQuestionnaire: AnsweredQuestionnaire | any;
   routeId: any;
   questionnaireAnswers: any;
 
@@ -24,8 +26,35 @@ export class QuestionnaireAnswersComponent implements OnInit{
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.routeId = params['id'];
+      this.setAnsweredQuestionnaire();
     })
   }
 
+  setAnsweredQuestionnaire(){
+    this.httpService.get("answered_questionnaire/" + this.routeId).subscribe({
+      next: (response) => {
+        this.answeredQuestionnaire = response.body;
+        this.setAnswers();
+      },
+      error: (error) => {
+         this.router.navigate(["answered-questionnaires"])
+      }
+    })
+  }
 
+  setAnswers(){
+    this.httpService.get("answer/answered_questionnaire=" + this.answeredQuestionnaire.id).subscribe({
+      next: (response) => {
+        response.body.sort((a: Answer, b: Answer) => (Number (a.employedQuestion?.position) > Number(b.employedQuestion?.position)) ? 1 : -1);
+        this.questionnaireAnswers = response.body;
+      },
+      error: (error) =>{
+        console.log(error);
+      }
+    })
+  }
+
+  returnToAnsweredQuestionnaires() {
+    this.router.navigate(["answered-questionnaires"]);
+  }
 }

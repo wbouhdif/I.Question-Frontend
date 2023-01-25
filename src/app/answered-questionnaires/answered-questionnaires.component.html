@@ -3,6 +3,7 @@
 <div class="flex">
   <h2>Beantwoorde Vragenlijsten</h2>
   <div class="button-box">
+    <button class="button-primary px-3" [disabled]="selectedQuestionnaire == undefined" (click)="inspect()"><mat-icon>search</mat-icon>Bekijken</button>
     <button class="button-secondary px-3" [disabled]="selectedQuestionnaire == undefined" (click)="showDeleteAlert()"><mat-icon>delete</mat-icon>Verwijderen</button>
   </div>
 </div>

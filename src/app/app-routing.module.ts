@@ -20,7 +20,7 @@ const routes: Routes = [
   { path: 'edit-questionnaire/:id', component: EditQuestionnaireComponent },
   { path: 'answer-questionnaire/:id', component: AnswerQuestionnaireComponent },
   { path: 'account-management', component: AuthoriseAccountsComponent },
-  { path: 'questionnaire-answers', component: QuestionnaireAnswersComponent},
+  { path: 'questionnaire-answers/:id', component: QuestionnaireAnswersComponent},
   { path: '**', component: PageNotFoundComponent }
 ];
 
