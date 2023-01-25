@@ -1,9 +1,11 @@
-import {Component, SimpleChange} from '@angular/core';
+import { Component, SimpleChange} from '@angular/core';
 import { HttpService} from "../services/http.service";
 import { FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ToastrService} from "ngx-toastr";
-import {Account} from "../shared/account.model";
-import {AccountType} from "../shared/account-type.model";
+import { ToastrService } from "ngx-toastr";
+import { Account } from "../shared/account.model";
+import { AccountType } from "../shared/account-type.model";
+import { AlertService } from "../services/alert.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -23,7 +25,7 @@ export class RegisterComponent {
     {name: 'Spine-medewerker', value: 'd2de260f-097e-436f-85df-02419a41257a'}];
 
 
-  constructor(private httpService: HttpService, private fb: FormBuilder, private toastr: ToastrService) {
+  constructor(private httpService: HttpService, private fb: FormBuilder, private toastr: ToastrService, private alertService: AlertService, private router: Router) {
     this.registerForm = this.fb.group({
       firstName: [''],
       lastName: [''],
@@ -33,20 +35,6 @@ export class RegisterComponent {
       role: ['']
     })
   }
-
-  /*  registerAccount(firstName: string, lastName: string, email: string, password: string, confirmPassword: string) {
-        let account: Account = new Account(undefined, email, password, firstName, lastName, false, accountType);
-
-        this.httpService.post("account/register", account).subscribe({
-          next: (response) => {
-            console.log(response);
-          },
-          error: (error) => {
-            console.log(error);
-          }
-
-        });
-      }*/
 
   onSubmit() {
     if(this.allFieldsFilled() && this.passwordsMatch() && this.emailIsValid()){
@@ -60,9 +48,13 @@ export class RegisterComponent {
         this.httpService.post("account/register", account).subscribe({
           next: (response) => {
             console.log(response);
-            this.toastr.success('Account aangemaakt', 'Success');
+            this.alertService.fireSuccess("Uw account is aangemaakt. Uw account moet nog worden goedgekeurd door een beheerder. U ontvangt een email wanneer uw account is goedgekeurd.")
+              .then(() => {
+                this.router.navigate(['/login']);
+              });
           },
           error: (error) => {
+            this.toastr.error('Er is iets fout gegaan, probeer het later opnieuw.', 'Error');
             console.log(error);
           }
         });
