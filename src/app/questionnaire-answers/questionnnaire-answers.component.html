@@ -1,0 +1,12 @@
+<app-navbar></app-navbar>
+<body class ="mx-5 my-3">
+<h3>Vragenlijst antwoorden</h3>
+<hr>
+<app-table [columns]="['Vraag', 'Antwoord']" [height]="80">
+  <tr *ngFor="let questionnireAnswer of questionnaireAnswers"
+    class="questionnaire-answers">
+
+  </tr>
+</app-table>
+
+</body>
