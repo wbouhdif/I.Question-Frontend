@@ -64,7 +64,7 @@ export class RegisterComponent {
   allFieldsFilled(): boolean {
     for(let key in this.registerForm.value) {
       if (this.registerForm.get(key)?.value == '') {
-        this.toastr.error('Vul alle velden in', 'Error');
+        this.toastr.error('Niet alle velden zijn ingevuld.', 'Error');
         return false;
       }
     }
@@ -73,7 +73,7 @@ export class RegisterComponent {
 
   passwordsMatch(): boolean {
     if (this.registerForm.get('password')?.value != this.registerForm.get('confirmPassword')?.value) {
-      this.toastr.error('Wachtwoorden komen niet overeen', 'Error');
+      this.toastr.error('Wachtwoorden komen niet overeen.', 'Error');
       return false;
     }
     return true;
@@ -81,7 +81,7 @@ export class RegisterComponent {
 
   emailIsValid() {
     if(!this.emailRegex.test(this.registerForm.get('email')?.value)) {
-      this.toastr.error('Vul een geldig email adres in', 'Error');
+      this.toastr.error('Er is geen geldig email adres ingevuld.', 'Error');
       return false;
     }
     return true;
