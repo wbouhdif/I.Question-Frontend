@@ -1,26 +1,30 @@
-<form class="form">
-  <h1>Inloggen</h1>
-  <hr>
-  <div class="form-group-vertical">
-    <label class="label">E-mailadres</label>
-    <input [(ngModel)]="email" name="email" type="email" class="field-primary" placeholder="E-mailadres invoeren">
-    <small [hidden]="!(email === '') || !logInCalled">Vul uw e-mailadres in.</small>
+<body>
+  <div class="form-container">
+    <form class="form">
+      <h1>Inloggen</h1>
+      <hr>
+      <div class="form-group-vertical">
+        <label class="label">E-mailadres</label>
+        <input [(ngModel)]="email" name="email" type="email" class="field-primary" placeholder="E-mailadres invoeren">
+        <small [hidden]="!(email === '') || !logInCalled">Vul uw e-mailadres in.</small>
+      </div>
+      <div class="form-group-vertical">
+        <label class="label">Wachtwoord</label>
+        <input [(ngModel)]="password" name="password" type="password" class="field-primary" placeholder="Wachtwoord invoeren">
+        <small [hidden]="!(password === '') || !logInCalled">Vul uw wachtwoord in.</small>
+      </div>
+      <button class="button-primary" (click)="logIn()">Log In</button>
+      <hr>
+      <div class="form-group-horizontal">
+        <div class="form-group-vertical">
+          <label class="label">Wachtwoord vergeten?</label>
+          <button class="button-primary">Wachtwoord opnieuw instellen</button>
+        </div>
+        <div class="form-group-vertical">
+          <label class="label">Nog geen account?</label>
+          <button class="button-primary" [routerLink]="['/register']">Registreren</button>
+        </div>
+      </div>
+    </form>
   </div>
-  <div class="form-group-vertical">
-    <label class="label">Wachtwoord</label>
-    <input [(ngModel)]="password" name="password" type="password" class="field-primary" placeholder="Wachtwoord invoeren">
-    <small [hidden]="!(password === '') || !logInCalled">Vul uw wachtwoord in.</small>
-  </div>
-  <button class="button-primary" (click)="logIn()">Log In</button>
-  <hr>
-  <div class="form-group-horizontal">
-    <div class="form-group-vertical">
-      <label class="label">Wachtwoord vergeten?</label>
-      <button class="button-primary">Wachtwoord opnieuw instellen</button>
-    </div>
-    <div class="form-group-vertical">
-      <label class="label">Nog geen account?</label>
-      <button class="button-primary" [routerLink]="['/register']">Registreren</button>
-    </div>
-  </div>
-</form>
+</body>

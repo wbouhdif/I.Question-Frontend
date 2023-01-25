@@ -1,35 +1,39 @@
- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
-    <h1>Registreren</h1>
-    <hr>
-  <div>
-    <label>Naam</label>
-    <div class="form-group-horizontal">
-      <input type="text" class="field-primary" formControlName="firstName" placeholder="Voornaam">
-      <input type="text" class="field-primary" formControlName="lastName" placeholder="Achternaam">
-    </div>
-  </div>
-  <div class="form-group-vertical">
-    <label>E-mailadres</label>
-    <input type="email" class="field-primary" formControlName="email" placeholder="E-mailadres" >
-  </div>
-  <div class="form-group-vertical">
-    <label>Wachtwoord</label>
-    <input type="password" class="field-primary" formControlName="password" placeholder="Wachtwoord">
-    <app-password-requirements [passwordToCheck]="registerForm.get('password')?.value" (passwordStrength)="passwordValid($event)"></app-password-requirements>
-  </div>
-  <div class="form-group-vertical">
-    <input type="password" class="field-primary" formControlName="confirmPassword" placeholder="Wachtwoord herhalen">
-  </div>
+<body>
+  <div class="form-container">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="form">
+        <h1>Registreren</h1>
+        <hr>
+      <div>
+        <label>Naam</label>
+        <div class="form-group-horizontal">
+          <input type="text" class="field-primary" formControlName="firstName" placeholder="Voornaam">
+          <input type="text" class="field-primary" formControlName="lastName" placeholder="Achternaam">
+        </div>
+      </div>
+      <div class="form-group-vertical">
+        <label>E-mailadres</label>
+        <input type="email" class="field-primary" formControlName="email" placeholder="E-mailadres" >
+      </div>
+      <div class="form-group-vertical">
+        <label>Wachtwoord</label>
+        <input type="password" class="field-primary" formControlName="password" placeholder="Wachtwoord">
+        <app-password-requirements [passwordToCheck]="registerForm.get('password')?.value" (passwordStrength)="passwordValid($event)"></app-password-requirements>
+      </div>
+      <div class="form-group-vertical">
+        <input type="password" class="field-primary" formControlName="confirmPassword" placeholder="Wachtwoord herhalen">
+      </div>
 
-  <div class="form-group-vertical">
-    <label>Rol</label>
-    <div class="form-group-horizontal">
-      <select formControlName="role" class="form-select-lg">
-        <option value="" disabled selected>Selecteer uw rol</option>
-        <option *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
-      </select>
-    </div>
+      <div class="form-group-vertical">
+        <label>Rol</label>
+        <div class="form-group-horizontal">
+          <select formControlName="role" class="form-select-lg">
+            <option value="" disabled selected>Selecteer uw rol</option>
+            <option *ngFor="let role of roles" [ngValue]="role">{{role.name}}</option>
+          </select>
+        </div>
+      </div>
+      <button class="button-primary" type="submit" [disabled]="!passwordIsValid">Registreer</button>
+      <p>Heeft u al een account? <a [routerLink]="['/login']" style="text-decoration: none">Meld u zich dan aan.</a></p>
+    </form>
   </div>
-  <button class="button-primary" type="submit" [disabled]="!passwordIsValid">Registreer</button>
-  <p>Heeft u al een account? <a [routerLink]="['/login']" style="text-decoration: none">Meld u zich dan aan.</a></p>
-</form>
+</body>
