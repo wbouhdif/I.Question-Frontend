@@ -55,7 +55,7 @@ export class RegisterComponent {
   allFieldsFilled(): boolean {
     for(let key in this.registerForm.value) {
       if (this.registerForm.get(key)?.value == '') {
-        alert('Vul alle velden in');
+        this.toastr.error('Vul alle velden in', 'Error');
         return false;
       }
     }
@@ -64,7 +64,7 @@ export class RegisterComponent {
 
   passwordsMatch(): boolean {
     if (this.registerForm.get('password')?.value != this.registerForm.get('confirmPassword')?.value) {
-      alert('Wachtwoorden komen niet overeen');
+      this.toastr.error('Wachtwoorden komen niet overeen', 'Error');
       return false;
     }
     return true;
