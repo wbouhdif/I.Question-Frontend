@@ -49,7 +49,24 @@ export class RegisterComponent {
       }*/
 
   onSubmit() {
+    if(this.allFieldsFilled() && this.passwordsMatch() && this.emailIsValid()){
+      let firstName = this.registerForm.get('firstName')?.value;
+      let lastName = this.registerForm.get('lastName')?.value;
+      let email = this.registerForm.get('email')?.value;
+      let password = this.registerForm.get('password')?.value;
+      let accountType: AccountType = new AccountType(this.registerForm.get('role')?.value.value, this.registerForm.get('role')?.value.name);
+      let account: Account = new Account(undefined, email, password, firstName, lastName, false, accountType);
 
+        this.httpService.post("account/register", account).subscribe({
+          next: (response) => {
+            console.log(response);
+            this.toastr.success('Account aangemaakt', 'Success');
+          },
+          error: (error) => {
+            console.log(error);
+          }
+        });
+    }
   }
 
   allFieldsFilled(): boolean {
