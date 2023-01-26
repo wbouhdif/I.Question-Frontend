@@ -22,6 +22,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accounts.component';
 import { PasswordRequirementsComponent } from './register/password-requirements/password-requirements.component';
+import { InspectAnonDataComponent } from './questionnaires/inspect-anon-data/inspect-anon-data.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { PasswordRequirementsComponent } from './register/password-requirements/
     PageNotFoundComponent,
     CreateQuestionComponent,
     AuthoriseAccountsComponent,
-    PasswordRequirementsComponent
+    PasswordRequirementsComponent,
+    InspectAnonDataComponent
   ],
   imports: [
     BrowserModule,
