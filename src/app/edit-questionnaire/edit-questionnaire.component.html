@@ -72,16 +72,15 @@
             class="table-item"
             (click)="setSelectedQuestion(question)"
             [ngStyle]="selectedQuestion === question ? {'background-color': 'rgba(29, 41, 81, 0.7)'} : {}" [ngClass]="selectedQuestion == question ? 'white' : 'black'">
-          <td class="column px-4"> {{ question.text}} </td>
-          <td class="column px-4">
-            {{ question.type === "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }}
-            <div [hidden]="selectedQuestion != question" class="option-box p-2" *ngFor="let option of question.options">
+          <td class="column px-4"> {{ question.text}}
+            <div [hidden]="selectedQuestion != question" class="option-box p-2 my-2" *ngFor="let option of question.options">
               <div class="multiple-choice-container">
                 <div class="fw-semibold">{{'ABCD'[option.position - 1]}}.</div>
                 <div>{{option.text}}</div>
               </div>
             </div>
           </td>
+          <td class="column px-4">{{ question.type === "MULTIPLE_CHOICE" ? "Meerkeuze" : "Open" }}</td>
         </tr>
       </app-table>
     </div>
