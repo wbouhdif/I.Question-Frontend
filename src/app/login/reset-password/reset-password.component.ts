@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ToastrService } from "ngx-toastr";
-import { AlertService } from "../services/alert.service";
-import { Account } from "../shared/account.model";
-import { HttpService } from "../services/http.service";
+import { AlertService } from "../../services/alert.service";
+import { Account } from "../../models/account.model";
+import { HttpService } from "../../services/http.service";
 
 @Component({
   selector: 'app-reset-password',

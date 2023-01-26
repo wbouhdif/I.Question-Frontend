@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import { HttpService} from "../services/http.service";
 import { FormBuilder, FormGroup} from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
-import { Account } from "../shared/account.model";
-import { AccountType } from "../shared/account-type.model";
+import { Account } from "../models/account.model";
+import { AccountType } from "../models/account-type.model";
 import { AlertService } from "../services/alert.service";
 import { Router } from "@angular/router";
 

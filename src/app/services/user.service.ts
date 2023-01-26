@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Account} from "../shared/account.model";
+import {Account} from "../models/account.model";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 

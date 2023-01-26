@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {HttpService} from "../services/http.service";
-import {LoginCredentials} from "../shared/login-credentials.model";
+import {LoginCredentials} from "../models/login-credentials.model";
 import {UserService} from "../services/user.service";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";

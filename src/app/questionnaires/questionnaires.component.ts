@@ -1,5 +1,5 @@
 import {Component,OnInit} from '@angular/core';
-import { Questionnaire } from "../shared/questionnaire.model";
+import { Questionnaire } from "../models/questionnaire.model";
 import { HttpService } from "../services/http.service";
 import { Router } from "@angular/router";
 import { UserService } from "../services/user.service";

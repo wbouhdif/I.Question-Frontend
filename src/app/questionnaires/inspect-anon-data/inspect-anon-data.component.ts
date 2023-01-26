@@ -1,10 +1,10 @@
 import {AfterViewInit, Component} from '@angular/core';
-import {Answer} from "../../shared/answer.model";
+import {Answer} from "../../models/answer.model";
 import {HttpService} from "../../services/http.service";
-import {EmployedQuestion} from "../../shared/employed-question.model";
-import {Option} from "../../shared/option.model";
+import {EmployedQuestion} from "../../models/employed-question.model";
+import {Option} from "../../models/option.model";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Questionnaire} from "../../shared/questionnaire.model";
+import {Questionnaire} from "../../models/questionnaire.model";
 import {UserService} from "../../services/user.service";
 
 @Component({

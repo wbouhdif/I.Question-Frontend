@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpService } from "../services/http.service";
-import { UserService } from "../services/user.service";
-import { EmployedQuestion } from "../shared/employed-question.model";
+import { HttpService } from "../../services/http.service";
+import { UserService } from "../../services/user.service";
+import { EmployedQuestion } from "../../models/employed-question.model";
 import { ActivatedRoute, Router } from "@angular/router";
-import { Questionnaire } from "../shared/questionnaire.model";
-import { Answer } from "../shared/answer.model";
-import { AnsweredQuestionnaire } from "../shared/answered-questionnaire.model";
+import { Questionnaire } from "../../models/questionnaire.model";
+import { Answer } from "../../models/answer.model";
+import { AnsweredQuestionnaire } from "../../models/answered-questionnaire.model";
 import { ToastrService } from "ngx-toastr";
 
 @Component({

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Account} from "../shared/account.model";
+import {Account} from "../models/account.model";
 import {HttpService} from "../services/http.service";
 import {ToastrService} from "ngx-toastr";
 import {AlertService} from "../services/alert.service";

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from "../services/http.service";
-import {AnsweredQuestionnaire} from "../shared/answered-questionnaire.model";
+import {AnsweredQuestionnaire} from "../models/answered-questionnaire.model";
 import {UserService} from "../services/user.service";
 import {AlertService} from "../services/alert.service";
 import {ToastrService} from "ngx-toastr";

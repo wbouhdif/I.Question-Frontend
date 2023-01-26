@@ -1,11 +1,11 @@
 import {Component, NgZone, OnInit, ViewChild} from '@angular/core';
-import {Questionnaire} from "../shared/questionnaire.model";
+import {Questionnaire} from "../models/questionnaire.model";
 import { ActivatedRoute, Router } from "@angular/router";
 import {HttpService} from "../services/http.service";
 import {ToastrService} from "ngx-toastr";
-import {EmployedQuestion} from "../shared/employed-question.model";
+import {EmployedQuestion} from "../models/employed-question.model";
 import {UserService} from "../services/user.service";
-import {Question} from "../shared/question.model";
+import {Question} from "../models/question.model";
 import {AlertService} from "../services/alert.service";
 
 @Component({
