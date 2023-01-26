@@ -8,10 +8,12 @@ import { EditQuestionnaireComponent } from "./edit-questionnaire/edit-questionna
 import { AnswerQuestionnaireComponent } from "./answer-questionnaire/answer-questionnaire.component";
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {AuthoriseAccountsComponent} from "./authorise-accounts/authorise-accounts.component";
+import {InspectAnonDataComponent} from "./questionnaires/inspect-anon-data/inspect-anon-data.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'inspect-anondata/:id', component: InspectAnonDataComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'questionnaires', component: QuestionnairesComponent },
   { path: 'answered-questionnaires', component: AnsweredQuestionnairesComponent },
