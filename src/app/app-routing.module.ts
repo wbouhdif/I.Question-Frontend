@@ -11,7 +11,7 @@ import {AuthoriseAccountsComponent} from "./authorise-accounts/authorise-account
 import {QuestionnaireAnswersComponent} from "./questionnaire-answers/questionnaire-answers.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'questionnaires', component: QuestionnairesComponent },
