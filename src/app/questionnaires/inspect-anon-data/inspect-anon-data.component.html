@@ -1,0 +1,21 @@
+<app-navbar></app-navbar>
+<body class="mx-5 my-3">
+  <div class="col-xs-12">
+    <h2>Beantwoorde vragenlijst: {{ questionnaire.name }}</h2>
+    <div class="button-box">
+      <button class="button-primary px-3"(click)="cancelInspect()">Terug</button>
+    </div>
+    <hr>
+    <div *ngFor="let employedQuestion of employedQuestions;index as i" class="card">
+      <div class="card-header">
+        Vraag: {{i+1}}/{{employedQuestions.length}} {{employedQuestion.question?.text}}
+      </div>
+      <div class="card-body">
+        <blockquote class ="blockquote mb-0">
+          <p>Type vraag: {{employedQuestion.question?.type}}</p>
+          <p>Verplicht: {{employedQuestion.mandatory}}</p>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+</body>

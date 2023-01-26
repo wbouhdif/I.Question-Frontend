@@ -34,7 +34,6 @@ export class LoginComponent {
   postCredentials() {
     this.httpService.post("auth/login", new LoginCredentials(this.email, this.password)).subscribe({
       next: (response) => {
-
         this.userService.setActiveAccount(response.body.account);
         this.userService.setJwtToken(response.body.token);
 

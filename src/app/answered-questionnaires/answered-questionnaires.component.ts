@@ -52,10 +52,14 @@ export class AnsweredQuestionnairesComponent implements OnInit {
       + '"' + this.selectedQuestionnaire.clientName + '"'
       + ' te verwijderen. U kunt dit niet ongedaan maken!',)
       .then((result) => {
-      if(result.isConfirmed){
-        this.delete()
-      }
-    })
+        if(result.isConfirmed){
+          this.delete()
+        }
+      })
+  }
+
+  inspect(){
+    this.router.navigate(['questionnaire-answers/' + this.selectedQuestionnaire.id])
   }
 
   inspect(){

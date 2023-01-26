@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component,OnInit} from '@angular/core';
 import { Questionnaire } from "../shared/questionnaire.model";
 import { HttpService } from "../services/http.service";
 import { Router } from "@angular/router";
@@ -51,6 +51,10 @@ export class QuestionnairesComponent implements OnInit {
 
   createQuestionnaire() {
     this.router.navigate(['create-questionnaire']);
+  }
+
+  inspectQuestionnaire(){
+    this.router.navigate(['inspect-anondata', this.selectedQuestionnaire.id])
   }
 
   editQuestionnaire() {
