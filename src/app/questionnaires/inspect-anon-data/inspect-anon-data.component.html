@@ -11,7 +11,7 @@
     <div class="questions-container px-3 py-3">
       <div *ngFor="let employedQuestion of employedQuestions;index as i" class="card">
         <div class="card-header">
-          Vraag: {{i+1}}/{{employedQuestions.length}} {{employedQuestion.question?.text}}
+          Vraag {{i+1}}/{{employedQuestions.length}}: {{employedQuestion.question?.text}} ({{employedQuestion.answeredAmount}} van de {{filledAmount}} keer ingevuld).
         </div>
         <div class="card-body">
           <blockquote class ="blockquote mb-0">

@@ -18,6 +18,7 @@ export class InspectAnonDataComponent implements AfterViewInit{
   options: Option[] = [];
   answers: [] = [];
   routeId : any;
+  filledAmount: any;
 
   constructor(private router: Router,private httpService: HttpService, private route: ActivatedRoute,private userService: UserService) {
   }
@@ -31,7 +32,10 @@ export class InspectAnonDataComponent implements AfterViewInit{
   }
   assignEmployedQuestions(){
     this.httpService.get("employed_question/questionnaire=" + this.routeId).subscribe({
-      next: (response) => { this.employedQuestions =  response.body; },
+      next: (response) => {
+        this.employedQuestions =  response.body;
+        this.setAnsweredAmountEmployedQuestions()
+      },
       error: (error) => { console.log(error); }
       }
     )
@@ -42,6 +46,7 @@ export class InspectAnonDataComponent implements AfterViewInit{
       next: (response) => {
         this.questionnaire = response.body;
         console.log(this.routeId);
+        this.setAnsweredAmount();
       },
       error: () => { this.router.navigate(['questionnaires']) }
     })
@@ -53,8 +58,27 @@ export class InspectAnonDataComponent implements AfterViewInit{
       this.answers.push(new Answer(undefined, '', this.answeredQuestionnaire, employedQuestion))
     }
   }
+
   cancelInspect(){
     this.router.navigate(['questionnaires']);
   }
+
+  setAnsweredAmount() {
+    this.httpService.get('answered_questionnaire/questionnaire=' + this.questionnaire.id).subscribe({
+      next: (response) => this.filledAmount = response.body.length,
+      error: (error) => console.log(error)
+    })
+  }
+
+  setAnsweredAmountEmployedQuestions() {
+    for (let employedQuestion of this.employedQuestions) {
+      this.httpService.get('answer/employed_question=' + employedQuestion.id).subscribe({
+        next: (response) => employedQuestion.answeredAmount = response.body.length,
+        error: (error) => console.log(error)
+      })
+    }
+
+  }
+
 
 }
