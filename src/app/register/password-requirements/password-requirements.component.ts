@@ -44,7 +44,6 @@ export class PasswordRequirementsComponent implements OnChanges {
     this.resetBarColors();
     const score = this.checkStrength(changes['passwordToCheck'].currentValue);
     this.setBarColors(score);
-    console.log(score);
     if(score === 5) {
       this.msg = 'Uw wachtwoord voldoet aan de eisen.';
       this.passwordStrength.emit(true);

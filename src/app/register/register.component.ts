@@ -50,7 +50,6 @@ export class RegisterComponent implements OnInit {
 
         this.httpService.post("account/register", account).subscribe({
           next: (response) => {
-            console.log(response);
             this.alertService.fireSuccess("Uw account is aangemaakt. Uw account moet nog worden goedgekeurd door een beheerder. U ontvangt een email wanneer uw account is goedgekeurd.")
               .then(() => {
                 this.router.navigate(['/login']);

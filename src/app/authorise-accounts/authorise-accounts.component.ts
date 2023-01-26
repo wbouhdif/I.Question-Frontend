@@ -52,7 +52,6 @@ export class AuthoriseAccountsComponent implements OnInit {
 
     this.httpService.get('account/authorisationEmail/' + (account.email + ","  + authorisation)).subscribe( {
       next: (response) => {
-        console.log(response);
       },
       error: (error) => {
         console.log(error);}
