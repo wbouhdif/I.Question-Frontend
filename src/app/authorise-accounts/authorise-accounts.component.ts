@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Account} from "../shared/account.model";
 import {HttpService} from "../services/http.service";
 import {ToastrService} from "ngx-toastr";
@@ -9,13 +9,13 @@ import {AlertService} from "../services/alert.service";
   templateUrl: './authorise-accounts.component.html',
   styleUrls: ['./authorise-accounts.component.scss']
 })
-export class AuthoriseAccountsComponent {
+export class AuthoriseAccountsComponent implements OnInit {
 
   accounts: Account[] = [];
 
   selectedAccount: any;
 
-  constructor(private httpService: HttpService, private toastr: ToastrService, private alertservice: AlertService) {}
+  constructor(private httpService: HttpService, private toastr: ToastrService, private alertService: AlertService) {}
 
   assignAccounts() {
     this.accounts = [];
@@ -38,33 +38,40 @@ export class AuthoriseAccountsComponent {
 
   changeAuthorisationAccount(account: Account, authorisation: boolean) {
     this.httpService.put('account/' + account.id + '/authorised', authorisation).subscribe({
-      next: (response) => {
+      next: () => {
         this.assignAccounts();
         if (authorisation){
-          this.toastr.success('Account geautoriseerd', 'Succes');
+          this.toastr.success('Account geautoriseerd.', 'Succes');
         }else{
-          this.toastr.success('Account autorisatie ontzegt', 'Succes');
+          this.toastr.success('Account autorisatie ontzegd.', 'Succes');;
         }
       },
-      error: (error) => {
-      this.toastr.error('Error, er heeft zich een probleem plaatsgevonden', 'Error');}
+      error: () => {
+      this.toastr.error('Account autorisatie kon niet aangepast worden.', 'Error');}
     });
+
+    this.httpService.get('account/authorisationEmail/' + (account.email + ","  + authorisation)).subscribe( {
+      next: (response) => {
+      },
+      error: (error) => {
+        console.log(error);}
+    })
   }
 
   deleteAccount(account: Account) {
     this.httpService.delete('account/' + account.id).subscribe({
-      next: (response) => {
+      next: () => {
         this.assignAccounts();
         this.toastr.success('Account verwijderd', 'Succes');
           },
-          error: (error) => {
-            this.toastr.error('Error, er heeft zich een probleem plaatsgevonden', 'Error');
+          error: () => {
+            this.toastr.error('Account kon niet verwijderd worden.', 'Error');
           }
         });
       }
 
   showDeleteAccountWarning(account: Account){
-    this.alertservice.fireWarning('Je staat op het punt om het account van ' + account.firstName + ' ' + account.lastName + ' te verwijderen. Je kan dit niet ongedaan maken!')
+    this.alertService.fireWarning('Je staat op het punt om het account van ' + account.firstName + ' ' + account.lastName + ' te verwijderen. Je kan dit niet ongedaan maken!')
       .then((result) => {
         if(result.isConfirmed){
           this.deleteAccount(account)}

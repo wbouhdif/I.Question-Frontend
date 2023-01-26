@@ -44,17 +44,11 @@ export class PasswordRequirementsComponent implements OnChanges {
     this.resetBarColors();
     const score = this.checkStrength(changes['passwordToCheck'].currentValue);
     this.setBarColors(score);
-    console.log(score);
     if(score === 5) {
-      this.msg = 'Uw wachtwoord voldoet aan de eisen';
+      this.msg = 'Uw wachtwoord voldoet aan de eisen.';
       this.passwordStrength.emit(true);
-    }
-    else{
-      if(score > 0 ){
-        this.msg = 'Uw wachtwoord voldoet niet aan de eisen van het wachtwoord'
-      }else{
-        this.msg = 'Een wachtwoord moet minimaal 10 tekens bevatten en minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken';
-      }
+    } else {
+      this.msg = 'Een wachtwoord moet minimaal 10 tekens bevatten en minimaal 1 hoofdletter, 1 kleine letter, 1 cijfer en 1 speciaal teken.'
       this.passwordStrength.emit(false);
     }
   }

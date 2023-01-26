@@ -1,6 +1,6 @@
-import { Component, SimpleChange} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { HttpService} from "../services/http.service";
-import { FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormGroup} from "@angular/forms";
 import { ToastrService } from "ngx-toastr";
 import { Account } from "../shared/account.model";
 import { AccountType } from "../shared/account-type.model";
@@ -12,18 +12,17 @@ import { Router } from "@angular/router";
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
   registerForm: FormGroup = new FormGroup({});
 
   passwordIsValid = false;
   emailRegex = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-
   roles = [
-    {name: 'Zorgverlener', value: 'a0211c55-911f-4520-b240-da9f670eb976'},
-    {name: 'Spine-medewerker', value: 'd2de260f-097e-436f-85df-02419a41257a'}];
-
+    { name: 'Zorgverlener', value: '' },
+    { name: 'Spine-medewerker', value: '' }
+  ];
 
   constructor(private httpService: HttpService, private fb: FormBuilder, private toastr: ToastrService, private alertService: AlertService, private router: Router) {
     this.registerForm = this.fb.group({
@@ -34,6 +33,10 @@ export class RegisterComponent {
       confirmPassword: [''],
       role: ['']
     })
+  }
+
+  ngOnInit() {
+    this.assignRoleIds();
   }
 
   onSubmit() {
@@ -47,7 +50,6 @@ export class RegisterComponent {
 
         this.httpService.post("account/register", account).subscribe({
           next: (response) => {
-            console.log(response);
             this.alertService.fireSuccess("Uw account is aangemaakt. Uw account moet nog worden goedgekeurd door een beheerder. U ontvangt een email wanneer uw account is goedgekeurd.")
               .then(() => {
                 this.router.navigate(['/login']);
@@ -64,7 +66,7 @@ export class RegisterComponent {
   allFieldsFilled(): boolean {
     for(let key in this.registerForm.value) {
       if (this.registerForm.get(key)?.value == '') {
-        this.toastr.error('Vul alle velden in', 'Error');
+        this.toastr.error('Niet alle velden zijn ingevuld.', 'Error');
         return false;
       }
     }
@@ -73,7 +75,7 @@ export class RegisterComponent {
 
   passwordsMatch(): boolean {
     if (this.registerForm.get('password')?.value != this.registerForm.get('confirmPassword')?.value) {
-      this.toastr.error('Wachtwoorden komen niet overeen', 'Error');
+      this.toastr.error('Wachtwoorden komen niet overeen.', 'Error');
       return false;
     }
     return true;
@@ -81,7 +83,7 @@ export class RegisterComponent {
 
   emailIsValid() {
     if(!this.emailRegex.test(this.registerForm.get('email')?.value)) {
-      this.toastr.error('Vul een geldig email adres in', 'Error');
+      this.toastr.error('Er is geen geldig email adres ingevuld.', 'Error');
       return false;
     }
     return true;
@@ -89,6 +91,17 @@ export class RegisterComponent {
 
   passwordValid(event: boolean) {
     this.passwordIsValid = event;
+  }
+
+  assignRoleIds() {
+    this.httpService.get('account_type/name=Caregiver').subscribe({
+      next: (response) => this.roles[0].value = response.body.id,
+      error: (error) => console.log(error)
+    })
+    this.httpService.get('account_type/name=Spine').subscribe({
+      next: (response) => this.roles[1].value = response.body.id,
+      error: (error) => console.log(error)
+    })
   }
 
 }
