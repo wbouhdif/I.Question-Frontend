@@ -32,4 +32,15 @@ export class AlertService {
       confirmButtonText: 'Ok',
     })
   }
+
+  fireError(text: string) {
+    return swal.fire({
+      title: 'Oeps!',
+      text: text,
+      icon: 'error',
+      iconColor: '#e95c4b',
+      confirmButtonColor: '#1d2951',
+      confirmButtonText: 'Ok',
+    })
+  }
 }

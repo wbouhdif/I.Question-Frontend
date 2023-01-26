@@ -18,10 +18,10 @@
       <div class="form-group-horizontal">
         <div class="form-group-vertical">
           <label class="label">Wachtwoord vergeten?</label>
-          <button class="button-primary">Wachtwoord opnieuw instellen</button>
+          <button class="button-primary" [routerLink]="['/password-reset']" >Wachtwoord opnieuw instellen</button>
         </div>
         <div class="form-group-vertical">
-          <label class="label">Nog geen account?</label>
+          <label class="label" [routerLink]="['/register']">Nog geen account?</label>
           <button class="button-primary" [routerLink]="['/register']">Registreren</button>
         </div>
       </div>

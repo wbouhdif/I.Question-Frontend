@@ -19,10 +19,12 @@ import { CreateQuestionComponent } from './edit-questionnaire/create-question/cr
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { AnswerQuestionnaireComponent } from './answer-questionnaire/answer-questionnaire.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import {QuestionnaireAnswersComponent} from "./questionnaire-answers/questionnaire-answers.component";
 
 import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accounts.component';
 import { PasswordRequirementsComponent } from './register/password-requirements/password-requirements.component';
 import { InspectAnonDataComponent } from './questionnaires/inspect-anon-data/inspect-anon-data.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { InspectAnonDataComponent } from './questionnaires/inspect-anon-data/ins
     AuthoriseAccountsComponent,
     PasswordRequirementsComponent,
     InspectAnonDataComponent
+    QuestionnaireAnswersComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

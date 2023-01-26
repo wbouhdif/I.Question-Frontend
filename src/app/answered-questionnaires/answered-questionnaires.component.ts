@@ -62,4 +62,8 @@ export class AnsweredQuestionnairesComponent implements OnInit {
     this.router.navigate(['questionnaire-answers/' + this.selectedQuestionnaire.id])
   }
 
+  inspect(){
+    this.router.navigate(['questionnaire-answers/' + this.selectedQuestionnaire.id])
+  }
+
 }

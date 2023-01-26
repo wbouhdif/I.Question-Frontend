@@ -59,7 +59,6 @@ export class EditQuestionnaireComponent implements OnInit {
     let employedQuestions: any = sessionStorage.getItem('edited-questionnaire-employed-questions');
     employedQuestions = JSON.parse(employedQuestions);
 
-    console.log(this.routeId === questionnaire?.id)
     if (this.routeId === questionnaire?.id) {
       Object.assign(this.questionnaire, questionnaire);
       Object.assign(this.employedQuestions, employedQuestions);
@@ -71,7 +70,6 @@ export class EditQuestionnaireComponent implements OnInit {
   }
 
   loadQuestionnaire() {
-    console.log(this.routeId != undefined);
     if (this.routeId != undefined) {
       this.setQuestionnaire();
     }
