@@ -42,7 +42,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     CreateQuestionComponent,
     AuthoriseAccountsComponent,
     PasswordRequirementsComponent,
-    InspectAnonDataComponent
+    InspectAnonDataComponent,
     QuestionnaireAnswersComponent,
     ResetPasswordComponent
   ],
