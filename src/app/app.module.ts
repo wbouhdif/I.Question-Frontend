@@ -23,6 +23,7 @@ import {QuestionnaireAnswersComponent} from "./questionnaire-answers/questionnai
 
 import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accounts.component';
 import { PasswordRequirementsComponent } from './register/password-requirements/password-requirements.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { PasswordRequirementsComponent } from './register/password-requirements/
     CreateQuestionComponent,
     AuthoriseAccountsComponent,
     PasswordRequirementsComponent,
-    QuestionnaireAnswersComponent
+    QuestionnaireAnswersComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
