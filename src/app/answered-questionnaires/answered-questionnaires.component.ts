@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpService} from "../services/http.service";
-import {AnsweredQuestionnaire} from "../shared/answered-questionnaire.model";
+import {AnsweredQuestionnaire} from "../models/answered-questionnaire.model";
 import {UserService} from "../services/user.service";
 import {AlertService} from "../services/alert.service";
 import {ToastrService} from "ngx-toastr";
@@ -52,10 +52,10 @@ export class AnsweredQuestionnairesComponent implements OnInit {
       + '"' + this.selectedQuestionnaire.clientName + '"'
       + ' te verwijderen. U kunt dit niet ongedaan maken!',)
       .then((result) => {
-      if(result.isConfirmed){
-        this.delete()
-      }
-    })
+        if(result.isConfirmed){
+          this.delete()
+        }
+      })
   }
 
   inspect(){

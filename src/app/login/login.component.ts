@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {HttpService} from "../services/http.service";
-import {LoginCredentials} from "../shared/login-credentials.model";
+import {LoginCredentials} from "../models/login-credentials.model";
 import {UserService} from "../services/user.service";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
@@ -34,7 +34,6 @@ export class LoginComponent {
   postCredentials() {
     this.httpService.post("auth/login", new LoginCredentials(this.email, this.password)).subscribe({
       next: (response) => {
-
         this.userService.setActiveAccount(response.body.account);
         this.userService.setJwtToken(response.body.token);
 

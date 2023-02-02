@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 import {HttpService} from "../../services/http.service";
-import {Question} from "../../shared/question.model";
-import {Option} from "../../shared/option.model";
+import {Question} from "../../models/question.model";
+import {Option} from "../../models/option.model";
 import {ToastrService} from "ngx-toastr";
 
 @Component({

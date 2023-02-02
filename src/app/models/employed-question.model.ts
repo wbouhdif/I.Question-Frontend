@@ -13,6 +13,9 @@ export class EmployedQuestion {
   @jsonIgnore()
   options: any;
 
+  @jsonIgnore()
+  answeredAmount: any;
+
   constructor(id?: string | undefined, question?: Question, questionnaire?: Questionnaire, position?: number, mandatory?: boolean) {
     this.id = id;
     this.question = question;

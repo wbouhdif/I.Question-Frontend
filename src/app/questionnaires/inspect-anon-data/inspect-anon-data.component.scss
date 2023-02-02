@@ -1,0 +1,35 @@
+.return{
+  color: white;
+  background-color: #6883ba;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
+.button-box {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.questions-container {
+  width: 100%;
+  overflow-y: scroll;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-top: #1d2951 5px solid;
+  border-bottom: #1d2951 5px solid;
+}
+
+.card {
+  width: 100%;
+
+}
+
+
+
+
+
+
+

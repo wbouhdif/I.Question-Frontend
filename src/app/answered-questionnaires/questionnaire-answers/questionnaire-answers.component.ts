@@ -1,11 +1,11 @@
 import {Component, OnInit} from "@angular/core";
 import {Router} from "@angular/router";
-import {HttpService} from "../services/http.service";
-import {UserService} from "../services/user.service";
-import {Questionnaire} from "../shared/questionnaire.model";
+import {HttpService} from "../../services/http.service";
+import {UserService} from "../../services/user.service";
+import {Questionnaire} from "../../models/questionnaire.model";
 import {ActivatedRoute} from "@angular/router";
-import {AnsweredQuestionnaire} from "../shared/answered-questionnaire.model";
-import {Answer} from "../shared/answer.model";
+import {AnsweredQuestionnaire} from "../../models/answered-questionnaire.model";
+import {Answer} from "../../models/answer.model";
 
 @Component({
   selector: 'app-questionnaire-answers',

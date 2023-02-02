@@ -17,13 +17,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableComponent } from './table/table.component';
 import { CreateQuestionComponent } from './edit-questionnaire/create-question/create-question.component';
 import { MatCheckboxModule } from "@angular/material/checkbox";
-import { AnswerQuestionnaireComponent } from './answer-questionnaire/answer-questionnaire.component';
+import { AnswerQuestionnaireComponent } from './questionnaires/answer-questionnaire/answer-questionnaire.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import {QuestionnaireAnswersComponent} from "./questionnaire-answers/questionnaire-answers.component";
+import {QuestionnaireAnswersComponent} from "./answered-questionnaires/questionnaire-answers/questionnaire-answers.component";
 
 import { AuthoriseAccountsComponent } from './authorise-accounts/authorise-accounts.component';
 import { PasswordRequirementsComponent } from './register/password-requirements/password-requirements.component';
-import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { InspectAnonDataComponent } from './questionnaires/inspect-anon-data/inspect-anon-data.component';
+import { ResetPasswordComponent } from './login/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     CreateQuestionComponent,
     AuthoriseAccountsComponent,
     PasswordRequirementsComponent,
+    InspectAnonDataComponent,
     QuestionnaireAnswersComponent,
     ResetPasswordComponent
   ],
