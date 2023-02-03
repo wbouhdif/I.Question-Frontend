@@ -13,7 +13,7 @@
         <input [(ngModel)]="password" name="password" type="password" class="field-primary" placeholder="Wachtwoord invoeren">
         <small [hidden]="!(password === '') || !logInCalled">Vul uw wachtwoord in.</small>
       </div>
-      <button class="button-primary" (click)="logIn()">Log In</button>
+      <button class="button-primary" (click)="logIn()" id="logInButton">Log In</button>
       <hr>
       <div class="form-group-horizontal">
         <div class="form-group-vertical">

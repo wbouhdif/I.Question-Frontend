@@ -10,8 +10,8 @@
       <input [hidden]="true" class="position-absolute field-primary" [(ngModel)]="questionnaire.name">
     </div>
     <div class="button-box">
-      <button class="button-primary px-3" (click)="saveEdits()"><mat-icon>save</mat-icon>Opslaan</button>
-      <button class="button-primary px-3" (click)="cancelEdits()"><mat-icon>cancel</mat-icon>Annuleren</button>
+      <button class="button-primary px-3" (click)="saveEdits()" id="saveButton"><mat-icon>save</mat-icon>Opslaan</button>
+      <button class="button-primary px-3" (click)="cancelEdits()" id="cancelButton"><mat-icon>cancel</mat-icon>Annuleren</button>
     </div>
   </div>
   <hr>
@@ -41,7 +41,7 @@
           <button
             [disabled]="selectedEmployedQuestion === undefined"
             class="button-secondary px-3"
-            (click)="removeEmployedQuestion()">
+            (click)="removeEmployedQuestion()" id="removeEmployedQuestion">
             <mat-icon>remove_circle</mat-icon>Verwijderen
           </button>
         </div>
@@ -62,8 +62,8 @@
       <div class="flex">
         <h3>Vragen</h3>
         <div class="button-box">
-          <button class="button-primary px-3" [disabled]="selectedQuestion === undefined" (click)="addEmployedQuestion()"><mat-icon>add_circle</mat-icon>Toevoegen</button>
-          <button class="button-primary px-3" (click)="createQuestion()"><mat-icon>build</mat-icon>Vraag Aanmaken</button>
+          <button class="button-primary px-3" [disabled]="selectedQuestion === undefined" (click)="addEmployedQuestion()" id="addEmployedQuestion"><mat-icon>add_circle</mat-icon>Toevoegen</button>
+          <button class="button-primary px-3" (click)="createQuestion()" id="createQuestionButton"><mat-icon>build</mat-icon>Vraag Aanmaken</button>
           <button class="button-secondary px-3" [disabled]="selectedQuestion === undefined" (click)="showDeleteQuestionAlert()"><mat-icon>delete</mat-icon>Verwijderen</button>
         </div>
       </div>

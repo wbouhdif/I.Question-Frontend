@@ -17,7 +17,7 @@
   </div>
   <div class="button-box">
     <input class="field-primary px-3" placeholder="Naam" [(ngModel)]="answeredQuestionnaire.clientName">
-    <button class="button-primary px-3" (click)="submit()"><mat-icon>archive</mat-icon>Indienen</button>
-    <button class="button-primary px-3" [routerLink]="['../../questionnaires']" ><mat-icon>cancel</mat-icon>Annuleren</button>
+    <button class="button-primary px-3" (click)="submit()" id="submitButton"><mat-icon>archive</mat-icon>Indienen</button>
+    <button class="button-primary px-3" [routerLink]="['../../questionnaires']" id="cancelButton"><mat-icon>cancel</mat-icon>Annuleren</button>
   </div>
 </body>

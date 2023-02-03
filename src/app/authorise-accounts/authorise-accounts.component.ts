@@ -43,19 +43,13 @@ export class AuthoriseAccountsComponent implements OnInit {
         if (authorisation){
           this.toastr.success('Account geautoriseerd.', 'Succes');
         }else{
-          this.toastr.success('Account autorisatie ontzegd.', 'Succes');;
+          this.toastr.success('Account autorisatie ontzegd.', 'Succes');
         }
       },
       error: () => {
-      this.toastr.error('Account autorisatie kon niet aangepast worden.', 'Error');}
+      this.toastr.error('Account autorisatie kon niet aangepast worden.', 'Error');
+      }
     });
-
-    this.httpService.get('account/authorisationEmail/' + (account.email + ","  + authorisation)).subscribe( {
-      next: (response) => {
-      },
-      error: (error) => {
-        console.log(error);}
-    })
   }
 
   deleteAccount(account: Account) {

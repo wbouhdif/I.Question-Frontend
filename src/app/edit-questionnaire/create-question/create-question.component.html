@@ -6,7 +6,7 @@
     <form class="form px-4 py-3">
       <div class="form-group-vertical">
         <label class="label">Vraag</label>
-        <input class="field-primary" placeholder="Vraag invoeren" name='text' [(ngModel)]="questionText">
+        <input class="field-primary" placeholder="Vraag invoeren" name='text' [(ngModel)]="questionText" id="questionNameField">
         <small [hidden]="questionText != '' || !saveCalled">Er is nog geen vraag ingevuld.</small>
       </div>
       <div class="form-group-vertical">
@@ -28,8 +28,8 @@
         <small [hidden]="checkEnoughOptions() || !saveCalled">Een meerkeuze vraag heeft tenminste twee opties nodig.</small>
       </div>
       <div class="button-box">
-        <button class="button-primary px-3 py-2" (click)="postQuestion()"><mat-icon>save</mat-icon>Opslaan</button>
-        <button class="button-primary px-3" (click)="closeWindow()"><mat-icon>cancel</mat-icon>Annuleren</button>
+        <button class="button-primary px-3 py-2" (click)="postQuestion()" id="saveButton"><mat-icon>save</mat-icon>Opslaan</button>
+        <button class="button-primary px-3" (click)="closeWindow()" id="cancelButton"><mat-icon>cancel</mat-icon>Annuleren</button>
       </div>
     </form>
   </div>
