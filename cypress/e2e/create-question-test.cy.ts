@@ -22,16 +22,16 @@ describe('Create Question Test', () => {
   it('should create a multiple choice question with 2 options.', function () {
     cy.get('td').first().click();
     cy.get('questionNameField').type('TestQuestion');
-    // cy.get( options fields ).type('TestAnswer1');
-    // cy.get( options fields ).type('TestAnswer2');
-    // cy.get('#saveButton').click();
+    cy.get('option1').type('TestAnswer1');
+    cy.get('option2').type('TestAnswer2');
+    cy.get('#saveButton').click();
   });
 
   it('should create an open question', function () {
     cy.get('td').first().click();
     cy.get('questionNameField').type('TestQuestion');
-    // cy.get('#open').click();
-    // cy.get('#saveButton').click();
+    cy.get('#open').click();
+    cy.get('#saveButton').click();
   });
 
   it('should cancel the creation of a new question', function () {
