@@ -27,6 +27,13 @@ describe('Register Test', () => {
     cy.get('.toast-message').should('have.text',' Niet alle velden zijn ingevuld. ')
   })
 
+  it('Should give email is not valid error.', function () {
+    cy.get('[formcontrolname="email"]').clear().type('testemailtest.nl')
+    cy.get('button[type=submit]').click();
+    cy.wait(500);
+    cy.get('.toast-message').should('have.text',' Er is geen geldig email adres ingevuld. ')
+  })
+
 
   it('Should register correctly.', function () {
     cy.intercept(environment.apiUrl + '/account/*', {
