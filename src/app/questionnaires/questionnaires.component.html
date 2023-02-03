@@ -4,7 +4,7 @@
     <h2>Vragenlijsten</h2>
     <div class="button-box">
       <button [hidden]="accountIsCaregiver()" [disabled]="selectedQuestionnaire == undefined" class="button-secondary px-3" (click)="showDeleteAlert()"><mat-icon>delete</mat-icon>Verwijderen</button>
-      <button [hidden]="accountIsCaregiver()" [disabled]="selectedQuestionnaire == undefined" class="button-primary px-3" (click)="inspectQuestionnaire()"><mat-icon>dvr</mat-icon>Data Inzien</button>
+      <button [hidden]="accountIsCaregiver()" [disabled]="selectedQuestionnaire == undefined" class="button-primary px-3" (click)="inspectQuestionnaire()" id="inspectQuestionnaireButton"><mat-icon>dvr</mat-icon>Data Inzien</button>
       <button [hidden]="accountIsCaregiver()" [disabled]="selectedQuestionnaire == undefined" class="button-primary px-3" (click)="editQuestionnaire()"><mat-icon>edit</mat-icon>Aanpassen</button>
       <button [hidden]="!accountIsCaregiver()" [disabled]="selectedQuestionnaire == undefined" class="button-primary px-3" (click)="answerQuestionnaire()" id="answerQuestionnaireButton"><mat-icon>list</mat-icon>Invullen</button>
       <button [hidden]="accountIsCaregiver()" class="button-primary px-3" (click)="createQuestionnaire()" id="createQuestionnaireButton"><mat-icon>add</mat-icon>Vragenlijst Aanmaken</button>
